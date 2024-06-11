@@ -16,6 +16,7 @@
   -webkit-text-size-adjust: 100%;
 }
 
+a { text-decoration: none !important; }
 
 .page-content {
   min-height: 100vh;
@@ -114,8 +115,8 @@ h4 {
 /* buttons */
 
 .primary {
-  background-color: #005FC3;
-  color: white;
+  background-color: #005FC3 !important;
+  color: white !important;
 }
 
 .secondary {
@@ -311,6 +312,20 @@ h4 {
   transition: ease-out 0.5s;
 }
 
+
+.tab-button-1 {
+  text-align: center;
+  width: 95px;
+  cursor: pointer;
+  font-size: 14px;
+  display: block;
+  padding: 10px 8px 10px 8px;
+  position: relative;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  transition: 0.2s;
+  color: #888888 !important;
+}
 
 
 

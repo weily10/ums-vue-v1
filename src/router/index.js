@@ -1,13 +1,26 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import Home from '../pages/Home.vue'
+import HomeView from '../pages/Home.vue'
+import SmartAdv from '../pages/SmartAdv.vue'
+import SmartAdvkeyword from '../pages/SmartAdvkeyword.vue'
 
 
 const routes = [
     {
         path: "/",
         name: "Home",
-        component: Home,
+        component: HomeView,
     },
+    {
+        path: "/smart-ad-theme-advertising",
+        name: "SmartAdv",
+        component: SmartAdv,
+    },
+    {
+        path: "/smart-ad-keyword-advertising",
+        name: "SmartAdvkeyword",
+        component: SmartAdvkeyword,
+    }
+
 ]
 
 
@@ -20,11 +33,9 @@ const router = createRouter({
 
 
 
-router.beforeEach((to, from, next) => {
 
 
 
-})
 
 
 export default router

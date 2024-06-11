@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue';
-// import HelloWorld from './components/HelloWorld.vue'
 let menuItems = ref([])
 
 menuItems.value = [{
@@ -705,9 +704,9 @@ function createPieChart() {
 					<header>
 						<div class="d-flex justify-content-between">
 							<div>
-								<a href="index.html">
-									<img src="./public/img/umsLogo.svg" alt="">
-								</a>
+								<RouterLink to="/" >
+									<img src="../public/logo.svg" alt="">
+								</RouterLink>
 							</div>
 							<div class="close-btn position-relative">
 								<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
@@ -750,17 +749,17 @@ function createPieChart() {
 														<div class="accordion-body subgroup " style="padding-inline:0">
 															<div :id="'subbody' + index2" style="">
 																<div class="menu-accordion-item accordion-item"
-																	v-for="(item3, index3) in item2.subgroup" :index="'item'+index3">
+																	v-for="(item3, index3) in item2.subgroup"
+																	:index="'item' + index3">
 																	<div class="accordion-header py-1 ">
-																		<a href="`+ menuItems[i].group[j].subgroup[k].route + `"
-																			id="menu-btn-` + i + j + k + `">
+																		<RouterLink :to="item3.route" style="text-decoration: none; color: inherit;">
 																			<button
 																				class="dashboard-nav-item btn-last-child subchild"
 																				style="padding-left:65px" type="button">
-																				<span class="subgroupLineSpan"></span> 
+																				<span class="subgroupLineSpan"></span>
 																				{{ item3.text }}
 																			</button>
-																		</a>
+																		</RouterLink>
 																	</div>
 																</div>
 															</div>
@@ -768,7 +767,6 @@ function createPieChart() {
 													</div>
 												</div>
 											</div>
-
 										</div>
 									</div>
 								</div>
@@ -905,7 +903,8 @@ function createPieChart() {
 			</div>
 			<div class="left pt-3">
 				<div id="app">
-				<router-view></router-view>
+					<router-view>
+					</router-view>
 				</div>
 			</div>
 
@@ -1029,4 +1028,38 @@ function createPieChart() {
 .logo.vue:hover {
 	filter: drop-shadow(0 0 2em #42b883aa);
 }
+
+/* texts */
+
+
+h1 {
+  font-size: 32px;
+  line-height: 48px;
+  font-weight: 400;
+  color: #005FC3;
+}
+
+h2 {
+  font-size: 24px;
+  line-height: 36px;
+  font-weight: 400;
+  color: #005FC3;
+}
+
+h3 {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 400;
+  color: #005FC3;
+}
+
+h4 {
+  color: #232323;
+  font-family: Noto Sans TC;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+}
+
+
 </style>
