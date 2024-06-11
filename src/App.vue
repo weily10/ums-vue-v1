@@ -875,7 +875,7 @@ function createPieChart() {
 			</div>
 			<div class="avatar-place position-relative d-inline-block fw-semibold  hover-label">
 
-				<img src="./public/img/profile-circle.svg" alt="" class="avatar">
+				<img src="" alt="" class="avatar">
 				<span class="custom-tooltip-2 tooltip-avatar" style=" top:106%;right: -10%;">
 					黃小明
 				</span>
