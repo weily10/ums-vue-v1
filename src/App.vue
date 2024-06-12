@@ -850,7 +850,7 @@ function createPieChart() {
 			<button id="controlBtn"
 				class="btn rounded-circle primary bg-custom-grey shadow-sm d-flex position-absolute offcanvas-btn "
 				type="button" data-bs-toggle="offcanvas" data-bs-target="#searchbar" aria-controls="offcanvasScrolling"><i
-					class="icon-openMenu"></i></button>
+					class="bi bi-list"></i></button>
 
 		</div>
 		<header id="main-header" class="dashboard-toolbar">

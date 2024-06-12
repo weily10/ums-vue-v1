@@ -2,6 +2,8 @@ import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../pages/Home.vue'
 import SmartAdv from '../pages/SmartAdv.vue'
 import SmartAdvkeyword from '../pages/SmartAdvkeyword.vue'
+import PersRFVTracking from '../pages/PersRFVtracking.vue'
+import PersRFVConfig from '../pages/PersRFVConfig.vue'
 
 
 const routes = [
@@ -19,6 +21,16 @@ const routes = [
         path: "/smart-ad-keyword-advertising",
         name: "SmartAdvkeyword",
         component: SmartAdvkeyword,
+    },
+    {
+        path: "/personal-rfv-tracking",
+        name: "PersRFVTracking",
+        component: PersRFVTracking,
+    },
+    {
+        path: "/personal-rfv-config",
+        name: "PersRFVConfig",
+        component: PersRFVConfig,
     }
 
 ]
