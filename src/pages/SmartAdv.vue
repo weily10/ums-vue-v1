@@ -1,7 +1,10 @@
 <script setup>
- import router from '../router/index.js'
+import router from '../router/index.js'
 
- 
+function toSmartAdKeywordAdvAddPage() {
+    router.push({ name: "SmartAdThemeAdvertisingAdd" })
+}
+
 </script>
 
 <template>
@@ -12,8 +15,8 @@
                     <i class="bi bi-arrow-left fs-6 py-1 "></i></button>
                 <h2 class="mb-0"> 主題標籤廣告</h2>
             </div>
-            <button class="btn secondary text-light" onclick="toSmartAdKeywordAdvAddPage()">新增 <i
-                    class="icon-add"></i></button>
+            <button class="btn secondary text-light" @click="toSmartAdKeywordAdvAddPage()">新增 <i
+                    class="bi bi-plus"></i></button>
         </div>
 
         <div class="bg-grey mt-3 filter p-3">
