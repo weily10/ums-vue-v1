@@ -1,7 +1,7 @@
 <script setup>
 import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import { ref, onMounted } from 'vue'
-import Card from '../components/Card.vue'
+import Card from '../components/CustomCard.vue'
 
 
 let cards = ref([])
