@@ -1,50 +1,80 @@
 <script setup>
- import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import { ref, onMounted } from 'vue'
 import Card from '../components/Card.vue'
 
 
 let cards = ref([])
+let cards2 = ref([])
 let addItemModalMain = ref(false)
 let filterByTime = ref('month-or-season-month')
+let rdays = ref(0)
+let activeId = ref('')
+let btnCliked = ref('')
+
+
 
 function addModal(e) {
-     addItemModalMain.value.show()
+    activeId.value = e.target.id
+    addItemModalMain.value.show()
 }
 
 
-function addRFV() {
-    cards.value.push('asddas')
+function addRFV(e) {
+    console.log(activeId.value);
+
+    const newdays = { days: rdays.value }
+    activeId.value === 'addMainButton' ? cards.value.push({ days: rdays }) : cards2.value.push({ ...newdays })
+    console.log(cards2.value);
     addItemModalMain.value.hide()
 
 }
+
+
 onMounted(() => {
     addItemModalMain.value = new Modal(document.getElementById('addItemModalMain'));
 });
 
 
+// function deleteItem(e) {
+//     // cards.value.splice(e.value, 1)
+//     e.type === 'main' ? cards.value.splice(e.index1, 1) : cards2.value.splice(e.index1, 1)
+
+
+
+// }
+
+
+function deleteOthers(index) {
+    console.log(index)
+    cards2.value.splice(index, 1)
+
+}
+
+
 </script>
 <template>
     <div class="personal-rfv-add-page">
-        
+
         <div class="d-flex align-items-center gap-1">
             <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
-                <i class="icon-arrowback fs-6 py-1 "></i></button>
+                <i class="bi bi-arrow-left fs-6 py-1 "></i></button>
             <h2 class="mb-0"> RFV條件設定</h2>
         </div>
 
         <div class="personal-tag-content mt-3">
             <div>
                 <div id="cards-list-main" class="mt-2">
-                    <template v-for="item in cards">
-                        <Card></Card>
+                    <template v-for="(item, index) in cards" :key="index">
+                        <Card :index1="index" @deleteItemCard="deleteItem" type="main" :days="item.days"
+                            :index="'card' + index"></Card>
                     </template>
-
-                    <div class="empty-div" v-show="cards.length <= 0">
-                        <button id="addMainButton" type="button" class="btn bg-secondary-subtle" @click="addModal">新增母體
-                            <i class="icon-add"></i></button>
-                    </div>
                 </div>
+                <div class="empty-div" v-show="cards.length <= 0">
+                    <button id="addMainButton" type="button" class="btn bg-secondary-subtle" @click="addModal">新增母體
+                        <i class="bi bi-plus"></i></button>
+                </div>
+
                 <div class="btn-group button-checkbox d-flex my-3" role="group" id="rfv-switch" style="width: 15rem;">
                     <input type="radio" class="btn-check" name="rfv-switch-name" id="rfv-switch-and" autocomplete="off"
                         value="rfv-switch-and" checked>
@@ -57,9 +87,13 @@ onMounted(() => {
                     <label class="btn " for="rfv-switch-not"> NOT </label>
                 </div>
                 <div id="cards-list-attached" class="mt-2">
-                    <div class="empty-div mt-3">
-                        <button id="addAttachButton" type="button" class="btn bg-secondary-subtle" data-bs-toggle="modal"
-                            data-bs-target="#addItemModalMain" @click="addModal">新增附體
+                    <template v-for="(item, index) in cards2" :key="'card'+index">
+                        {{ cards2 }}
+                        <Card @deleteItemCard="deleteOthers(index)" :index1="index" type="other" :days="item.days">
+                        </Card>
+                    </template>
+                    <div class="empty-div mt-3" v-show="cards2.length < 2">
+                        <button id="addAttachButton" type="button" class="btn bg-secondary-subtle" @click="addModal">新增附體
                             <i class="icon-add"></i></button>
                     </div>
                 </div>
@@ -121,7 +155,7 @@ onMounted(() => {
                             <div class="d-flex flex-column gap-3 ">
                                 <div class="d-flex gap-2 align-items-center ">
                                     <b>R:</b>以 <input id="r-number" type="number" placeholder="最小數字" class="form-control"
-                                        value="0" min="0" style=" width:5rem"><span>天為一個區間 </span>
+                                        min="0" style=" width:5rem" v-model="rdays"><span>天為一個區間 </span>
                                 </div>
                                 <div class="d-flex gap-2 align-items-center">
                                     <b>F:</b>以 <input id="r-number" type="number" placeholder="最小數字" class="form-control"
@@ -136,7 +170,7 @@ onMounted(() => {
 
                     </div>
                     <div class="modal-footer">
-                        <button id="add-item-modal-btn" type="button" class="btn primary" @click="addRFV()">新增</button>
+                        <button id="add-item-modal-btn" type="button" class="btn primary" @click="addRFV">新增</button>
                     </div>
                 </div>
             </div>
@@ -145,7 +179,36 @@ onMounted(() => {
     </div>
 </template>
 
-<style>
+<style scoped>
 .custom-btn-close {
     background-color: white;
-}</style>
+}
+
+.next-btn-align {
+    display: flex;
+    justify-content: right;
+    margin-top: 1rem;
+}
+
+.result-card-main {
+    background-color: white;
+    box-shadow: 0px 4px 4px 0px rgba(94, 93, 93, 0.25);
+    padding: 16px;
+}
+
+
+
+
+.rfv-confirm-info li {
+    padding-block: 3px;
+}
+
+input[type="month"]::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+}
+
+
+.readingList label {
+    cursor: pointer;
+}
+</style>

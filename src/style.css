@@ -1053,6 +1053,19 @@ button:disabled {
 }
 
 
+.custom-tooltip-3 {
+  border-radius: 3px;
+  padding: 3px;
+  position: absolute;
+  z-index: 3;
+  margin-top: 3px;
+  top: 35px;
+  left: -36px;
+}
+
+
+
+
 
 
 @keyframes rotate {

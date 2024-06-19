@@ -17,7 +17,7 @@ function addRFV() {
                 <h2> 個人化標籤維護 </h2>
             </div>
             <div>
-                <button class="btn secondary text-light" @click="addRFV">新增 <i class="icon-add"></i></button>
+                <button class="btn secondary text-light" @click="addRFV">新增 <i class="bi-add"></i></button>
             </div>
         </div>
         <div class="personal-tag-content" style="margin-top:1rem">
