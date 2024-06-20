@@ -4,7 +4,7 @@ let menuItems = ref([])
 
 menuItems.value = [{
 	text: "使用者中心",
-	icon: "icon-user",
+	icon: "bi bi-person",
 	group: [
 		{
 			text: "智慧廣告",
@@ -79,7 +79,7 @@ menuItems.value = [{
 },
 {
 	text: "資料中心",
-	icon: "icon-data",
+	icon: "bi bi-bar-chart fs-5",
 	group: [
 		{
 			text: "平台綜合分析",
@@ -205,7 +205,7 @@ menuItems.value = [{
 	]
 }, {
 	text: "行銷中心",
-	icon: "icon-advert",
+	icon: "bi bi-megaphone fs-5",
 	group: [
 		{
 			text: "電子報行銷",
@@ -261,7 +261,7 @@ menuItems.value = [{
 },
 {
 	text: " 廣告中心 ",
-	icon: "icon-hub",
+	icon: "bi bi-bezier",
 	group: [
 		{
 			text: "廣告管理",
@@ -292,7 +292,7 @@ menuItems.value = [{
 },
 {
 	text: "管理者權限",
-	icon: "icon-login_person",
+	icon: "bi bi-person-gear",
 	group: [
 		{
 			text: "權限管理",

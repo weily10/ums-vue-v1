@@ -36,13 +36,9 @@ onMounted(() => {
 });
 
 
-// function deleteItem(e) {
-//     // cards.value.splice(e.value, 1)
-//     e.type === 'main' ? cards.value.splice(e.index1, 1) : cards2.value.splice(e.index1, 1)
-
-
-
-// }
+function deleteItem(e) {
+    cards.value.splice(e.value, 1)
+ }
 
 
 function deleteOthers(index) {
@@ -66,7 +62,7 @@ function deleteOthers(index) {
             <div>
                 <div id="cards-list-main" class="mt-2">
                     <template v-for="(item, index) in cards" :key="index">
-                        <Card :index1="index" @deleteItemCard="deleteItem" type="main" :days="item.days"
+                        <Card :index1="index" @deleteItemCard="deleteItem(index)" type="main" :days="item.days"
                             :index="'card' + index"></Card>
                     </template>
                 </div>

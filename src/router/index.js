@@ -7,6 +7,8 @@ import PersRFVConfig from '../pages/PersRFVConfig.vue'
 import AddTheme from '../pages/AddTheme.vue'
 import FilterList from '../pages/FilterList.vue'
 import SmartAdThemeAdvertisingAdd from '../pages/SmartAdThemeAdvertisingAdd.vue'
+import ListFollow from '../pages/ListFollow.vue'
+import SmartSearch from '../pages/SmartSearch.vue'
 
 const routes = [
     {
@@ -48,7 +50,19 @@ const routes = [
         path: "/smart-ad-theme-advertising-add",
         name: "SmartAdThemeAdvertisingAdd",
         component: SmartAdThemeAdvertisingAdd,
+    },
+    {
+        path:"/follow",
+        name: "ListFollow",
+        component: ListFollow,
+        
+    },
+    {
+        path:"/smart-search",
+        name:"SmartSearch",
+        component:SmartSearch
     }
+
     
 
 ]
