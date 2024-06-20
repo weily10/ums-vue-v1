@@ -1117,7 +1117,7 @@ function addContext2() {
         <div class="modal fade me-5" id="productDisplayModal">
             <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered">
                 <div class="p-3 modal-content overflow-x-auto" style="display: inline;">
-                    <img src="../../public/img/product_page_hint.jpg" alt="" class="">
+                    <img src="" alt="" class="">
                 </div>
             </div>
         </div>

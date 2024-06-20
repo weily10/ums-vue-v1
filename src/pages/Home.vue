@@ -1,6 +1,11 @@
 <script setup>
+import { defineProps, watch, computed } from 'vue';
+import customChart from '../components/Chart.vue'
+
  
- 
+
+
+
 </script>
 
 <template>
@@ -157,7 +162,8 @@
 
                             </div>
                             <div>
-                                <div id="daily-trend-bar-chart" class="charts" style="width: 100%; height: 30dvh;">
+                                <div id="daily-trend-bar-chart" class="charts" >
+                                     <custom-chart></custom-chart>
                                 </div>
                             </div>
 
@@ -192,7 +198,8 @@
                             </div>
                             <div>
 
-                                <div id="udn-member-points" class="charts" style="width: 100%; height: 30dvh;">
+                                <div id="udn-member-points" class="charts"  >
+                                    <custom-chart></custom-chart>
                                 </div>
                             </div>
 
@@ -233,7 +240,8 @@
 
                         </div>
                         <div>
-                            <div id="views" class="charts" style="width: 100%; height: 30dvh;">
+                            <div id="views" class="charts" >
+                                <custom-chart></custom-chart>
                             </div>
                         </div>
 

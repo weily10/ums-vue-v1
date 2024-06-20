@@ -5,8 +5,11 @@ const smallTheme = ref('')
 const bigTheme = ref('')
 
 function addThemeBadge() {
-    let new = { bigtheme: bigTheme, smallTheme: smallTheme }
-    badges.value.push(...new)
+    const newItem = { bigtheme: bigTheme.value, smallTheme: smallTheme.value }
+    if (bigTheme.value && smallTheme.value) {
+        badges.value.push(newItem)
+    }
+
 }
 
 </script>
@@ -21,7 +24,7 @@ function addThemeBadge() {
             <div class="d-flex gap-3 align-items-end">
                 <div class="w-25">
                     <label for="ad-add-big-theme">大主題</label>
-                      <select class="form-select form-select" type="select" id="ad-add-big-theme" v-model="bigTheme">
+                    <select class="form-select form-select" type="select" id="ad-add-big-theme" v-model="bigTheme">
                         <option value="政府與企業" selected>政府與企業</option>
                         <option value="精品">精品</option>
                         <option value="健康照護">健康照護</option>
@@ -40,9 +43,8 @@ function addThemeBadge() {
             </div>
 
             <div id="badgeAreaId" class="badges-area mt-3 d-flex gap-3 align-items-start">
-                {{ badges }}
                 <template v-for="(item, index) in badges" :key="index">
-                    <div class="badge primary  pb-1 d-flex align-items-center" style="width: fit-content;">
+                    <div class="badge primary d-flex align-items-center" style="width: fit-content;">
                         <div>{{ item.bigtheme }} - {{ item.smallTheme }}</div>
                         <button class="badge-delete-btn rounded-circle btn-sm bg-transparent ps-1 pe-0  is-first-class"
                             type="button">
@@ -52,13 +54,14 @@ function addThemeBadge() {
                 </template>
 
                 <button class="sub-context border bg-grey p-3  d-flex align-items-center font-support "
-                    style="height:33px; width: fit-content;border-radius: 2rem;" type="button" @click="addThemeBadge()">
+                    style="height:33px; width: fit-content;border-radius: 2rem;" type="button" @click="addThemeBadge()"
+                    :disabled="badges.length >= 3">
                     新增 <i class="bi bi-plus"></i>
                 </button>
-                <div class="font-support limit-message align-self-center">
+                <div class="font-support limit-message align-self-center text-warning" v-show="badges.length >= 3">
                     限定三組主題 !
                 </div>
-                <div class="font-support no-badge-message align-self-center text-danger">
+                <div class="font-support no-badge-message align-self-center text-danger" v-show="badges.length <= 0">
                     須有至少一筆 !
                 </div>
 
@@ -171,3 +174,11 @@ function addThemeBadge() {
         </div>
     </form>
 </template>
+
+
+<style scoped>
+.badge {
+    padding: 9px;
+    background-color: #da8d00 !important
+}
+</style>
