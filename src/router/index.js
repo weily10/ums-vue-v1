@@ -11,6 +11,7 @@ import ListFollow from '../pages/ListFollow.vue'
 import SmartSearch from '../pages/SmartSearch.vue'
 import SmartSearchListDownload from '../pages/SmartSearchListDownload.vue'
 import OverviewAndRules from '../pages/OverviewAndRules.vue'
+import MemberOverview from '../pages/MemberOverview.vue'
 
 const routes = [
     {
@@ -73,6 +74,12 @@ const routes = [
         path: "/overview-and-rules",
         name: "OverviewAndRules",
         component: OverviewAndRules
+    },
+    {
+        path: "/member-overview",
+        name: "MemberOverview",
+        component: MemberOverview
+        
     }
 
 
