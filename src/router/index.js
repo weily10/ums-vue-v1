@@ -9,6 +9,8 @@ import FilterList from '../pages/FilterList.vue'
 import SmartAdThemeAdvertisingAdd from '../pages/SmartAdThemeAdvertisingAdd.vue'
 import ListFollow from '../pages/ListFollow.vue'
 import SmartSearch from '../pages/SmartSearch.vue'
+import SmartSearchListDownload from '../pages/SmartSearchListDownload.vue'
+import OverviewAndRules from '../pages/OverviewAndRules.vue'
 
 const routes = [
     {
@@ -52,18 +54,31 @@ const routes = [
         component: SmartAdThemeAdvertisingAdd,
     },
     {
-        path:"/follow",
+        path: "/follow",
         name: "ListFollow",
         component: ListFollow,
-        
+
     },
     {
-        path:"/smart-search",
-        name:"SmartSearch",
-        component:SmartSearch
+        path: "/smart-search",
+        name: "SmartSearch",
+        component: SmartSearch
+    },
+    {
+        path: "/smart-search-list-download",
+        name: "SmartSearchListDownload",
+        component: SmartSearchListDownload
+    },
+    {
+        path: "/overview-and-rules",
+        name: "OverviewAndRules",
+        component: OverviewAndRules
     }
 
-    
+
+
+
+
 
 ]
 

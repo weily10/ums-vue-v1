@@ -357,314 +357,44 @@ function topFunction() {
 }
 
 
-function createPlatformDropdown() {
-	let data = [{
-		item: 'Web',
-	},
-	{
-		item: 'App(IOS)',
-	},
-	{
-		item: 'App(Android)',
-	}]
-	let div = "#home-platform-dropdown"
+const updatedMenuItems = menuItems.value.map(menuItem => ({
+	...menuItem,
+	group: menuItem.group.map(subgroup => ({
+		...subgroup,
+		subgroup: subgroup.subgroup.map(item => ({
+			...item,
+			highlight: false
+		}))
+	}))
+}));
+
+
+
+
+function toggleHighlight(item3) {
+	updatedMenuItems.forEach(menuItem => {
+		menuItem.group.forEach(subgroup => {
+			subgroup.subgroup.forEach(item => {
+				item.highlighted = false;
+			});
+		});
+	});
+	item3.highlighted = true
+	console.log(item3);
 
 }
 
-function createPieChart() {
 
 
-	let brandColors = ['#CDF2C8', '#8CD7DA', '#3DA4D0', '#ee6666', '#005FC3', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'];
-	let pieChartData1 = {
-		divId: "piechart1",
-		subtext: "",
-		title: "瀏覽量佔比",
-		data: [
-			{
-				name: "WEB",
-				value: 88.6
-			},
-			{
-				name: "APP(IOS)",
-				value: 7.9
-			},
-			{
-				name: "APP(ANDROID)",
-				value: 3.5
-			},
-		],
-	}
-	let pieChartData2 = {
-		divId: "piechart2",
-		subtext: "",
-		title: "文章瀏覽量占比",
-		data: [
-			{
-				name: "WEB",
-				value: 88.6
-			},
-			{
-				name: "APP(IOS)",
-				value: 7.9
-			},
-			{
-				name: "APP(ANDROID)",
-				value: 3.5
-			},
-		],
-	}
-	let pieChartData3 = {
-		divId: "piechart3",
-		subtext: "",
-		title: "互動事件占比",
-		data: [
-			{
-				name: "WEB",
-				value: 88.6
-			},
-			{
-				name: "APP(IOS)",
-				value: 7.9
-			},
-			{
-				name: "APP(ANDROID)",
-				value: 3.5
-			},
-		],
-	}
-}
 
-// generatePieCharts(pieChartData1, brandColors)
-// generatePieCharts(pieChartData2, brandColors)
-// generatePieCharts(pieChartData3, brandColors)
 
 </script>
 
-<!-- let brandColors = ['#CDF2C8', '#8CD7DA', '#3DA4D0', '#ee6666', '#005FC3', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'];
-  let barchartdata = {
-    divId: 'daily-trend-bar-chart',
-    title: '',
-    subtext: '',
-    source: [
-      ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
-      ['2023年11月27日', 103010, 75000, 230654],
-      ['2023年11月28日', 810300, 730004, 230654],
-      ['2023年11月29日', 23864, 65214, 42145],
-      ['2023年11月30日', 633219, 74249, 421412],
-    ],
-    xAxis: { type: 'category' },
-    series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
-  }
-
-  let barchartdata1 = {
-    divId: 'udn-member-points',
-    title: '',
-    subtext: '',
-    source: [
-      ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
-      ['2023年11月27日', 103010, 75000, 230654],
-      ['2023年11月28日', 810300, 730004, 230654],
-      ['2023年11月29日', 23864, 65214, 42145],
-      ['2023年11月30日', 633219, 74249, 421412],
-    ],
-    xAxis: { type: 'category' },
-    series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
-  }
-
-  let barchartdata2 = {
-
-    divId: 'views',
-    title: '',
-    subtext: '',
-    source: [
-      ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
-      ['2023年11月27日', 103010, 75000, 230654],
-      ['2023年11月28日', 810300, 730004, 230654],
-      ['2023年11月29日', 23864, 65214, 42145],
-      ['2023年11月30日', 633219, 74249, 421412],
-    ],
-    xAxis: { type: 'category' },
-    series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
-
-  }
-
-  let barchartdata3 = {
-
-    divId: 'event-day-trends-barchart',
-    title: '事件日趨勢',
-    subtext: '',
-    source: [
-      ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
-      ['2023年11月27日', 103010, 75000, 230654],
-      ['2023年11月28日', 810300, 730004, 230654],
-      ['2023年11月29日', 23864, 65214, 42145],
-      ['2023年11月30日', 633219, 74249, 421412],
-    ],
-    xAxis: { type: 'category' },
-    series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
-
-  }
+ 
 
 
 
-
-  let articleTableData = {
-    divId: '#article-rank-table-body',
-    data: [{
-      number: '1',
-      articleID: '7601391',
-      articleTitle: '「柯文哲走了最錯的一步！」 郭正亮揭硬傷：趙少康講對了',
-      website: '新聞網',
-      accessQtd: 455861,
-    },
-    {
-      number: '2',
-      articleID: '7602253',
-      articleTitle: '鄭文燦被控開房影片鑑定結果出爐...她揪刑事局1句話 網：豁然開朗',
-      website: '新聞網',
-      accessQtd: 355861,
-    },
-    {
-      number: '3',
-      articleID: '7602648',
-      articleTitle: 'Lulu癱倒後台畫面曝光！主持金馬前夕狂吐暴瘦',
-      website: '噓星聞',
-      accessQtd: 199941,
-    },
-    ]
-  }
-  let memberarticleTableData = {
-    divId: '#member-article-rank-table-body',
-    data: [{
-      number: '1',
-      articleID: '7601391',
-      articleTitle: '「柯文哲走了最錯的一步！」 郭正亮揭硬傷：趙少康講對了',
-      website: '新聞網',
-      accessQtd: 455861,
-    },
-    {
-      number: '2',
-      articleID: '7602253',
-      articleTitle: '鄭文燦被控開房影片鑑定結果出爐...她揪刑事局1句話 網：豁然開朗',
-      website: '新聞網',
-      accessQtd: 355861,
-    },
-    {
-      number: '3',
-      articleID: '7602648',
-      articleTitle: 'Lulu癱倒後台畫面曝光！主持金馬前夕狂吐暴瘦',
-      website: '噓星聞',
-      accessQtd: 199941,
-    },
-    ]
-  }
-
-  let subsarticleTableData = {
-    divId: '#subs-article-rank-table-body',
-    data: [{
-      number: '1',
-      articleID: '7601391',
-      articleTitle: '「柯文哲走了最錯的一步！」 郭正亮揭硬傷：趙少康講對了',
-      website: '新聞網',
-      accessQtd: 455861,
-    },
-    {
-      number: '2',
-      articleID: '7602253',
-      articleTitle: '鄭文燦被控開房影片鑑定結果出爐...她揪刑事局1句話 網：豁然開朗',
-      website: '新聞網',
-      accessQtd: 355861,
-    },
-    {
-      number: '3',
-      articleID: '7602648',
-      articleTitle: 'Lulu癱倒後台畫面曝光！主持金馬前夕狂吐暴瘦',
-      website: '噓星聞',
-      accessQtd: 199941,
-    },
-    ]
-  }
-
-  init()
-
-  listenHomeTab()
-
-  function init() {
-    createBarChart(barchartdata, brandColors)
-    createBarChart(barchartdata1, brandColors)
-    createBarChart(barchartdata2, brandColors)
-  }
-
-  function listenHomeTab() {
-    $(document).on('shown.bs.tab', 'a[data-bs-toggle="pill"]', function (e) {
-      if ($(this).attr("data-bs-target") == "#home-overview") {
-        resizeChart()
-        createBarChart(barchartdata, brandColors)
-        createBarChart(barchartdata1, brandColors)
-        createBarChart(barchartdata2, brandColors)
-      }
-      if ($(this).attr("data-bs-target") == "#events-details") {
-        resizeChart()
-        createBarChart(barchartdata3, brandColors)
-        createDevicesBarCharts()
-      }
-
-      if ($(this).attr("data-bs-target") == "#article-details") {
-        resizeChart()
-      }
-
-    })
-  }
-
-
-  createTagTableBody(articleTableData)
-  createTagTableBody(memberarticleTableData)
-  createTagTableBody(subsarticleTableData)
-  createPieChart()
-
-
-  createMenu();
-
-
-
-  function createDevicesBarCharts() {
-    let brandColors = ['#fc8452', '#3DA4D0', '#ee6666', '#005FC3', '#8CD7DA', '#CDF2C8', '#3ba272', '#9a60b4', '#ea7ccc'];
-    let data = {
-      divId: 'encodechart-1',
-      title: '瀏覽器偏好',
-      yAxis: ['Chrome', 'Safari', 'Safari (in-app)', 'Android Webview', 'Edge', 'Samsung Internet', 'Firefox', 'Opera', 'Internet Explorer', '未定義'],
-      bardata: [210, 129, 98, 35, 34, 24, 20, 15, 10, 9, 8, 5, 3]
-    }
-    let data2 = {
-      divId: 'encodechart-2',
-      title: 'Android 裝置偏好',
-      yAxis: ['Samsung', 'Xiaomi', 'OPPO', 'Asus', 'Edge', 'Google', 'Vivo', 'Sony', '未定義', 'Realme'],
-      bardata: [210, 129, 98, 35, 34, 24, 20, 15, 10, 9, 8, 5, 3]
-    }
-    let data3 = {
-      divId: 'encodechart-3',
-      title: 'Apple 裝置偏好',
-      yAxis: ['iPhone', 'iPhone 11', 'iPhone 13', 'iPhone 14 Pro', 'iPhone 12', 'iPhone 14 Pro Max', 'iPhone 13 Pro Max', 'iPhone 13 Pro'],
-      bardata: [210, 129, 98, 35, 34, 24, 20, 15, 10, 9, 8, 5, 3]
-    }
-    horBarChart(data, brandColors)
-    horBarChart(data2, brandColors)
-    horBarChart(data3, brandColors)
-  }
-  // createPlatformDropdown()
-  const start = datepicker('#startDate', {
-    onSelect: (instance, date) => {
-      let startDate = document.getElementById('startDate')
-      startDate.value = Intl.DateTimeFormat('zh-TW').format(date)
-    }
-  })
-
-  const end = datepicker('#endDate', {
-    onSelect: (instance, date) => {
-      let endDate = document.getElementById('endDate')
-      endDate.value = Intl.DateTimeFormat('zh-TW').format(date)
-    }
-  }) -->
+   
 
 <template>
 	<div class="modal fade" id="confirm-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -704,7 +434,7 @@ function createPieChart() {
 					<header>
 						<div class="d-flex justify-content-between">
 							<div>
-								<RouterLink to="/" >
+								<RouterLink to="/">
 									<img src="../public/logo.svg" alt="">
 								</RouterLink>
 							</div>
@@ -716,7 +446,7 @@ function createPieChart() {
 					</header>
 					<nav id="navmenu" class="dashboard-nav-list ">
 						<div class="accordion" id="menu">
-							<div class="accordion-item" v-for="(item, index) in menuItems">
+							<div class="accordion-item" v-for="(item, index) in updatedMenuItems">
 								<div class="accordion-header">
 									<button class="dashboard-nav-item accordion-button collapsed" type="button"
 										data-bs-toggle="collapse" :data-bs-target="'#item' + index" aria-expanded="true"
@@ -752,10 +482,15 @@ function createPieChart() {
 																	v-for="(item3, index3) in item2.subgroup"
 																	:index="'item' + index3">
 																	<div class="accordion-header py-1 ">
-																		<RouterLink :to="item3.route" style="text-decoration: none; color: inherit;">
+																		<RouterLink :to="item3.route"
+																			style="text-decoration: none; color: inherit;">
+
 																			<button
 																				class="dashboard-nav-item btn-last-child subchild"
-																				style="padding-left:65px" type="button">
+																				style="padding-left:65px"
+																				:class="{ 'highlighted': item3.highlighted }"
+																				type="button"
+																				@click="toggleHighlight(item3)">
 																				<span class="subgroupLineSpan"></span>
 																				{{ item3.text }}
 																			</button>
@@ -996,7 +731,7 @@ function createPieChart() {
 
 					</div>
 					<div class="mt-4  row px-2">
-						<button class="btn primary text-light btn-block" onclick="">重設條件</button>
+						<button class="btn primary text-light btn-block" @click="">重設條件</button>
 					</div>
 				</div>
 
@@ -1014,6 +749,11 @@ function createPieChart() {
 </template>
 
 <style scoped>
+.highlighted {
+	background-color: #DDEDF3;
+ 
+}
+
 .logo {
 	height: 6em;
 	padding: 1.5em;
@@ -1033,33 +773,31 @@ function createPieChart() {
 
 
 h1 {
-  font-size: 32px;
-  line-height: 48px;
-  font-weight: 400;
-  color: #005FC3;
+	font-size: 32px;
+	line-height: 48px;
+	font-weight: 400;
+	color: #005FC3;
 }
 
 h2 {
-  font-size: 24px;
-  line-height: 36px;
-  font-weight: 400;
-  color: #005FC3;
+	font-size: 24px;
+	line-height: 36px;
+	font-weight: 400;
+	color: #005FC3;
 }
 
 h3 {
-  font-size: 20px;
-  line-height: 28px;
-  font-weight: 400;
-  color: #005FC3;
+	font-size: 20px;
+	line-height: 28px;
+	font-weight: 400;
+	color: #005FC3;
 }
 
 h4 {
-  color: #232323;
-  font-family: Noto Sans TC;
-  font-size: 16px;
-  font-weight: 500;
-  line-height: 24px;
+	color: #232323;
+	font-family: Noto Sans TC;
+	font-size: 16px;
+	font-weight: 500;
+	line-height: 24px;
 }
-
-
 </style>

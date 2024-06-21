@@ -84,8 +84,7 @@ function deleteOthers(index) {
                 </div>
                 <div id="cards-list-attached" class="mt-2">
                     <template v-for="(item, index) in cards2" :key="'card'+index">
-                        {{ cards2 }}
-                        <Card @deleteItemCard="deleteOthers(index)" :index1="index" type="other" :days="item.days">
+                         <Card @deleteItemCard="deleteOthers(index)" :index1="index" type="other" :days="item.days">
                         </Card>
                     </template>
                     <div class="empty-div mt-3" v-show="cards2.length < 2">

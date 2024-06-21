@@ -28,12 +28,14 @@ recentVisitsF.value = [{ days: props.days, number: '213,414' }, { days: '15-30�
 recentVisitsV.value = [{ days: props.days, number: '213,414' }, { days: '15-30天', number: '223,111' }, { days: '30-45天', number: '22,414' }, { days: '310-415天', number: '22,414' }]
 
 
+
 recentVisits.value.forEach(item => {
     item.color = ''
 })
 
 function onclick() {
     emit('deleteItemCard')
+    console.log('cara',props.days,recentVisits.value[0].days);
     // console.log(accordionIndex.value);
 }
 
