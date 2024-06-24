@@ -239,7 +239,7 @@ onMounted(() => {
                                 <div class="col">
                                     <div class="d-flex gap-2 align-items-end">
                                         <div class="input-group input-group ">
-                                            <span class="input-group-text border-end-0 bg-white icon-search"
+                                            <span class="input-group-text border-end-0 bg-white bi bi-search"
                                                 id="basic-addon6"></span>
                                             <input type="text" class="form-control border-start-0 "
                                                 id="smart-search-add-keywordTextBox" placeholder="關鍵字相似詞搜尋">
@@ -358,7 +358,7 @@ onMounted(() => {
                                 <div class="col">
                                     <div class="d-flex gap-2 align-items-end">
                                         <div class="input-group input-group ">
-                                            <span class="input-group-text border-end-0 bg-white icon-search"></span>
+                                            <span class="input-group-text border-end-0 bg-white bi bi-search"></span>
                                             <input type="text" class="form-control border-start-0 "
                                                 id="smart-search-add-edit-keywordTextBox" placeholder="關鍵字相似詞搜尋">
                                         </div>

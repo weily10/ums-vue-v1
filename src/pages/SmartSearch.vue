@@ -16,7 +16,7 @@
                     <div class="col">
                         <label for="input-topic-group" class="font-b4-me">主題名稱</label>
                         <div class="input-group" id="input-topic-group">
-                            <span class="input-group-text border-end-0 bg-white icon-search" id="basic-addon3"></span>
+                            <span class="input-group-text border-end-0 bg-white bi bi-search" id="basic-addon3"></span>
                             <input type="text" class="form-control border-start-0 " id="topic-keyword"
                                 placeholder="請輸入主題名稱">
                         </div>
@@ -25,7 +25,7 @@
                     <div class="col">
                         <label for="input-theme-group" class="font-b4-me">標籤名稱</label>
                         <div class="input-group" id="input-theme-group">
-                            <span class="input-group-text border-end-0 bg-white icon-search" id="basic-addon4"></span>
+                            <span class="input-group-text border-end-0 bg-white bi bi-search" id="basic-addon4"></span>
                             <input type="text" class="form-control border-start-0 " id="theme-keyword"
                                 placeholder="請輸入標籤名稱">
                         </div>

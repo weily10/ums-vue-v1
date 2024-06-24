@@ -12,6 +12,15 @@ import SmartSearch from '../pages/SmartSearch.vue'
 import SmartSearchListDownload from '../pages/SmartSearchListDownload.vue'
 import OverviewAndRules from '../pages/OverviewAndRules.vue'
 import MemberOverview from '../pages/MemberOverview.vue'
+import PersonalTagMaintain from '../pages/PersonalTagMaintain.vue'
+import MemberRegisterAct from '../pages/MemberRegisterAct.vue'
+import AccountQuery from '../pages/AccountQuery.vue'
+import AccIssuance from '../pages/AccIssuance.vue'
+import MarketingConfig from '../pages/MarketingConfig.vue'
+import AppMarketingConfig from '../pages/AppMarketingConfig.vue'
+import AppMarketingConfigAdd from '../pages/AppMarketingConfigAdd.vue'
+
+
 
 const routes = [
     {
@@ -79,16 +88,46 @@ const routes = [
         path: "/member-overview",
         name: "MemberOverview",
         component: MemberOverview
-        
-    }
 
+    },
+    {
+        path: "/personal-tag-maintain",
+        name: "PersonalTagMaintain",
+        component: PersonalTagMaintain
 
-
-
-
+    },
+    {
+        path: "/member-register-activation",
+        name: "MemberRegisterAct",
+        component: MemberRegisterAct
+    },
+    {
+        path: "/account-query",
+        name: "AccountQuery",
+        component: AccountQuery
+    },
+    {
+        path: "/acc-issuance",
+        name: "AccIssuance",
+        component: AccIssuance
+    },
+    {
+        path: "/marketing-config",
+        name: "MarketingConfig",
+        component: MarketingConfig
+    },
+    {
+        path: "/app-marketing-config",
+        name: "AppMarketingConfig",
+        component: AppMarketingConfig
+    },
+    {
+        path: "/app-marketing-config-add",
+        name: "AppMarketingConfigAdd",
+        component: AppMarketingConfigAdd
+    },
 
 ]
-
 
 
 const history = createWebHistory();
@@ -96,12 +135,6 @@ const router = createRouter({
     history,
     routes
 })
-
-
-
-
-
-
 
 
 export default router

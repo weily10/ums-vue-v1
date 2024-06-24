@@ -14,7 +14,7 @@
                 <div class="col">
                     <label for="newsletter-search-input-group" class="font-b4-me">主題名稱</label>
                     <div class="input-group" id="smart-ad-keyword-theme-group" style="min-width: 350px;">
-                        <span class="input-group-text border-end-0 bg-white icon-search"
+                        <span class="input-group-text border-end-0 bg-white bi bi-search"
                             id="newsletter-search-basic-addon"></span>
                         <input type="text" class="form-control border-start-0 " id="smart-ad-keyword-theme"
                             placeholder="主題名稱(模糊查詢)	">
@@ -41,7 +41,7 @@
                 <div class="col">
                     <label for="newsletter-search-input-group" class="font-b4-me"> 編號查詢 </label>
                     <div class="input-group" id="smart-ad-number-search" style="min-width: 350px;">
-                        <span class="input-group-text border-end-0 bg-white icon-search" id=""></span>
+                        <span class="input-group-text border-end-0 bg-white bi bi-search" id=""></span>
                         <input type="text" class="form-control border-start-0 " id="smart-ad-keyword-theme"
                             placeholder="編號查詢">
                     </div>

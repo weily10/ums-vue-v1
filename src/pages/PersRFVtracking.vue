@@ -49,7 +49,7 @@ function addRFV() {
                     <div>
                         <label for="input-group" class="font-b4-me">名單名稱</label>
                         <div class="input-group  mt-1" id="personal-rfv-input-group">
-                            <span class="input-group-text border-end-0 bg-white icon-search" id=""></span>
+                            <span class="input-group-text border-end-0 bg-white bi bi-search" id=""></span>
                             <input type="text" class="form-control border-start-0 " id="personal-rfv-searchWord"
                                 placeholder="查詢名單名稱">
                         </div>

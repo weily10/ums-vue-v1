@@ -1,5 +1,5 @@
 <script setup>
-import { defineProps, watch, computed } from 'vue';
+import { watch, computed } from 'vue';
 import customChart from '../components/Chart.vue'
 
  

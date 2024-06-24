@@ -820,7 +820,7 @@ data2.value = [{
                                             </div>
                                             <hr class="dropdown-divider">
                                             <div class="input-group input-group-sm">
-                                                <span class="input-group-text border-end-0 bg-white icon-search"
+                                                <span class="input-group-text border-end-0 bg-white bi bi-search"
                                                     id="basic-addon6"></span>
                                                 <input type="text" class="form-control border-start-0 " id="tag-lvl-keyword"
                                                     placeholder="輸入字詞以搜尋">
@@ -870,7 +870,7 @@ data2.value = [{
                                 <div class="col">
                                     <label for="input-theme-group" class="font-b4-me">標籤名稱</label>
                                     <div class="input-group" id="input-theme-group">
-                                        <span class="input-group-text border-end-0 bg-white icon-search"
+                                        <span class="input-group-text border-end-0 bg-white bi bi-search"
                                             id="basic-addon4"></span>
                                         <input type="text" class="form-control border-start-0 " id="theme-keyword"
                                             placeholder="請輸入標籤名稱">

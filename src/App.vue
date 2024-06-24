@@ -545,7 +545,7 @@ function toggleHighlight(item3) {
 							</div>
 							<hr class="dropdown-divider">
 							<div class="input-group input-group-sm">
-								<span class="input-group-text border-end-0 bg-white icon-search" id="basic-addon6"></span>
+								<span class="input-group-text border-end-0 bg-white bi bi-search" id="basic-addon6"></span>
 								<input type="text" class="form-control border-start-0 " id="tag-lvl-keyword"
 									placeholder="輸入字詞以搜尋">
 							</div>
@@ -700,7 +700,7 @@ function toggleHighlight(item3) {
 							</div>
 							<hr class="dropdown-divider">
 							<div class="input-group input-group-sm">
-								<span class="input-group-text border-end-0 bg-white icon-search" id="basic-addon6"></span>
+								<span class="input-group-text border-end-0 bg-white bi bi-search" id="basic-addon6"></span>
 								<input type="text" class="form-control border-start-0 " id="tag-lvl-keyword"
 									placeholder="輸入字詞以搜尋">
 							</div>
