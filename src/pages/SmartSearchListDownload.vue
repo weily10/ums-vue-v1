@@ -4,7 +4,7 @@
 <template  >
     <div class="">
         <div class="d-flex align-items-center gap-1">
-            <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
+            <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
                 <i class="icon-arrowback fs-6 py-1 "></i></button>
             <h2 class="mb-0"> 智慧檢索 ( Curate X ) </h2>
         </div>

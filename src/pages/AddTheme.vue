@@ -11,8 +11,12 @@ let editCard = ref(false)
 let badgesEdit = ref([])
 let badges = ref(['依文章標題'])
 let smartSearchEditTagTextBox = ref('')
-
+const searchTags = ref([])
+const keywordTextBoxSearch = ref('')
 const keywordTextBox = ref('')
+const inputs = ref([{ value: '' }])
+
+searchTags.value = [{ name: '薩達' }]
 
 function addCard() {
     cards.value.push({
@@ -38,8 +42,8 @@ function openEditModal(e) {
 }
 
 
-function removeBadge(index){
-    badgesEdit.value.splice(index,1)
+function removeBadge(index) {
+    badgesEdit.value.splice(index, 1)
 }
 
 onMounted(() => {
@@ -47,6 +51,31 @@ onMounted(() => {
     editCard.value = new Modal(document.getElementById('smart-search-add-tag-edit-modal'));
 });
 
+function smartSearchsendSearchAdKeyword() {
+    searchTags.value.push({ name: keywordTextBoxSearch.value })
+}
+
+
+function smartSearchaddToAnd(index, item) {
+  
+
+    const x = inputs.value.indexOf( console.log(item.value))
+        console.log(x);
+    if (inputs.value[index] && inputs.value[index].value === '' ) {
+  
+        inputs.value[index].value = item.name;
+    } else {
+        inputs.value.push({ value: '' })
+        console.log(inputs.value);
+        inputs.value[index].value = item.name;
+    }
+
+
+}
+
+function addNewCombo() {
+    inputs.value.push({ value: '' })
+}
 
 </script>
 
@@ -66,7 +95,6 @@ onMounted(() => {
                         <div class="input-1" id="smart-search-add-theme-name-group">
                             <input name="smartSearchAddThemeName" id="smart-search-add-theme-name" type="text"
                                 class="form-control" placeholder="請輸入策展主題名稱">
-
                         </div>
                     </div>
                     <div class="col">
@@ -242,7 +270,8 @@ onMounted(() => {
                                             <span class="input-group-text border-end-0 bg-white bi bi-search"
                                                 id="basic-addon6"></span>
                                             <input type="text" class="form-control border-start-0 "
-                                                id="smart-search-add-keywordTextBox" placeholder="關鍵字相似詞搜尋">
+                                                id="smart-search-add-keywordTextBox" placeholder="關鍵字相似詞搜尋"
+                                                v-model="keywordTextBoxSearch">
                                         </div>
                                         <button class="btn primary text-body-light btn-sm "
                                             style="height:33.6px;width:80px;" type="button"
@@ -258,21 +287,26 @@ onMounted(() => {
                                     <label for="input-group" class="font-b4-me">相似詞預覽</label>
                                     <div class="mt-1 font-b4-he">
                                         <div class="d-flex gap-3" id="smart-search-add-list-found-keywords">
-                                            <div class="hover-label rounded-4 p-2 "
-                                                style="background-color: rgb(230, 230, 230); ">
-                                                <div class="d-flex gap-1 align-items-center">
-                                                    <div>篇文章</div>
-                                                    <div class=" rounded d-flex align-items-center" type="button"
-                                                        @click="smartSearchaddToAnd(this)">
-                                                        <i class="bi bi-plus"></i>
+                                            <template v-for="(item, index) in searchTags" :key="index">
+                                                <div class="hover-label rounded-4 p-2 "
+                                                    style="background-color: rgb(230, 230, 230); ">
+
+                                                    <div class="d-flex gap-1 align-items-center">
+
+                                                        <div>{{ item.name }}</div>
+                                                        <div class=" rounded d-flex align-items-center" type="button"
+                                                            @click="smartSearchaddToAnd(index, item)">
+                                                            <i class="bi bi-plus"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="">
+                                                        <span
+                                                            class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1">
+                                                            新增相似詞
+                                                        </span>
                                                     </div>
                                                 </div>
-                                                <div class="">
-                                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1">
-                                                        新增相似詞
-                                                    </span>
-                                                </div>
-                                            </div>
+                                            </template>
 
                                         </div>
                                     </div>
@@ -283,21 +317,23 @@ onMounted(() => {
                                 <div class="mt-1">
                                     <div id="smart-search-add-input-keyword-group"
                                         class="d-flex gap-2 align-items-center flex-wrap">
-                                        <div class="input-group" style="width: 200px;">
-                                            <input type="text" class="form-control" placeholder="">
-
-                                            <div class="list-icon position-relative d-inline-block fw-semibold hover-label">
-                                                <button class="input-group-text rounded-start-0"
-                                                    id="smart-search-add-and-input-addon" type="button" disabled>
-                                                    <i class="bi bi-trash"></i>
-                                                </button>
-                                                <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
-                                                    style=" top: 100%;right: -50%;">
-                                                    刪除
-                                                </span>
+                                        <template v-for="(item, index) in inputs" :key="index">
+                                            <div class="input-group" style="width: 200px;">
+                                                <input type="text" class="form-control" placeholder="" v-model="item.value">
+                                                <div
+                                                    class="list-icon position-relative d-inline-block fw-semibold hover-label">
+                                                    <button class="input-group-text rounded-start-0"
+                                                        id="smart-search-add-and-input-addon" type="button" disabled>
+                                                        <i class="bi bi-trash"></i>
+                                                    </button>
+                                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                                        style=" top: 100%;right: -50%;">
+                                                        刪除
+                                                    </span>
+                                                </div>
                                             </div>
+                                        </template>
 
-                                        </div>
                                         <div id="smart-search-add-add-and-item-button"
                                             class="position-relative d-inline-block hover-label">
                                             <div class="sub-context border bg-grey p-2 rounded d-flex align-items-center"

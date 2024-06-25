@@ -5,7 +5,7 @@
     <div>
     <div class="d-flex gap-1 align-items-center">
         <div class="">
-            <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
+            <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
                 <i class="bi bi-arrow-left"></i></button>
             <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
                 返回
@@ -79,10 +79,10 @@
                         <div class="btn-group button-checkbox d-flex" role="group" id="radio-member-activation-group">
                             <input type="radio" class="btn-check" name="radio-member-activation" id="trend-option"
                                 autocomplete="off" value="trend-option" checked>
-                            <label class="btn text-nowrap" for="trend-option" onclick="createSignUpChart()">趨勢 </label>
+                            <label class="btn text-nowrap" for="trend-option" @click="createSignUpChart()">趨勢 </label>
                             <input type="radio" class="btn-check" name="radio-member-activation" id="total-option"
                                 autocomplete="off" value="total-option">
-                            <label class="btn " for="total-option" onclick="createNewsDailyChart()"> 合計
+                            <label class="btn " for="total-option" @click="createNewsDailyChart()"> 合計
                             </label>
                         </div>
 

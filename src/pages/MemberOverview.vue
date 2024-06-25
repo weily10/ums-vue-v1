@@ -5,7 +5,7 @@
     <div>
         <div class="d-flex align-items-center gap-1">
             <div class="">
-                <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
+                <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
                     <i class="bi bi-arrow-left"></i></button>
                 <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
                     返回

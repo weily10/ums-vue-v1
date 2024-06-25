@@ -58,7 +58,7 @@ function toSmartAdKeywordAdvAddPage() {
                         </div>
                     </div>
                     <div class=" pt-4 d-flex gap-2 ms-auto">
-                        <button class="btn primary" type="button" onclick="">
+                        <button class="btn primary" type="button" @click="">
                             查詢
                         </button>
                     </div>

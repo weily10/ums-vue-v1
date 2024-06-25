@@ -4,7 +4,7 @@
 <template>
     <div>
         <div class="d-flex align-items-center gap-1">
-            <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
+            <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
                 <i class="bi bi-arrow-left"></i></button>
             <h2 class="mb-0">智慧檢索</h2>
         </div>
@@ -40,7 +40,7 @@
                         </select>
                     </div>
                     <div class="align-self-end">
-                        <button class="btn primary" type="button" onclick="">
+                        <button class="btn primary" type="button" @click="">
                             查詢
                         </button>
                     </div>
@@ -77,7 +77,7 @@
                             <td class="text-center">
                                 <div class="d-flex justify-content-center gap-1 fs-6">
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                        <button class=" btn rounded-circle btn-sm" type="button" onclick="">
+                                        <button class=" btn rounded-circle btn-sm" type="button" @click="">
                                             <i class="icon-copy fs-6"
                                                 style="padding-right: 2px; padding-left: 2px;"></i></button>
                                         <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
@@ -86,7 +86,7 @@
                                         </span>
                                     </div>
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                        <button class=" btn rounded-circle btn-sm" type="button" onclick="toAnalysisPage()">
+                                        <button class=" btn rounded-circle btn-sm" type="button" @click="toAnalysisPage()">
                                             <i class="icon-analysis fs-6"></i></button>
                                         <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
                                             style=" top: 100%;right: -50%;">
@@ -95,7 +95,7 @@
                                     </div>
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                         <button class=" btn rounded-circle btn-sm" type="button"
-                                            onclick="showConfirmModal(this)">
+                                            @click="showConfirmModal(this)">
                                             <i class="icon-delete fs-6"></i></button>
                                         <span class="custom-tooltip-2 rounded position-absolute z-3 mt-1"
                                             style=" top: 100%;right: -50%;">

@@ -56,7 +56,7 @@ function addRFV() {
 
                     </div>
                     <div class="ps-2 pt-4">
-                        <button class="btn primary" type="button" onclick="">
+                        <button class="btn primary" type="button" @click="">
                             查詢
                         </button>
                     </div>
@@ -165,7 +165,7 @@ function addRFV() {
                                             更新 2024/01/01 ~ 2024/01/31 數據副本 ( 運算資源限制，更新數據副本一次最多 31 天。)
                                         </p>
                                         <div class="d-flex justify-content-end">
-                                            <button class="btn-secondary " onclick="">更新</button>
+                                            <button class="btn-secondary " @click="">更新</button>
                                         </div>
                                     </div>
                                 </div>
@@ -414,7 +414,7 @@ function addRFV() {
                         </div>
                     </div>
                     <div class="modal-footer border-0">
-                        <button type="button" class="btn primary" onclick="crossConfirm()">確認</button>
+                        <button type="button" class="btn primary" @click="crossConfirm()">確認</button>
                     </div>
                 </div>
             </div>

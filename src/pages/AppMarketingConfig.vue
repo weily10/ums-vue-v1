@@ -12,7 +12,7 @@ function toAppAddPage(){
 <template>
     <div class="d-flex justify-content-between">
         <div class="d-flex align-items-center">
-            <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
+            <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
                 <i class="bi bi-arrow-left"></i></button>
             <h2 class="mb-0"> App 行銷設定</h2>
         </div>
@@ -70,7 +70,7 @@ function toAppAddPage(){
                 </div>
 
                 <div class=" pt-4 d-flex gap-2">
-                    <button class="btn primary" type="button" onclick="">
+                    <button class="btn primary" type="button" @click="">
                         查詢
                     </button>
 

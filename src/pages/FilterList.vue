@@ -161,7 +161,7 @@ function addContext2() {
 <template>
     <div class="">
         <div class="d-flex align-items-center gap-1">
-            <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
+            <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
                 <i class="bi bi-arrow-left "></i></button>
             <h2>名單篩選</h2>
         </div>
@@ -338,7 +338,7 @@ function addContext2() {
                                                 </div>
                                                 天以上的會員
                                                 <div class="position-relative text-label hover-label ms-2">
-                                                    <i class="icon-qa" onclick="showProductDisplay()" data-bs-toggle="modal"
+                                                    <i class="icon-qa" @click="showProductDisplay()" data-bs-toggle="modal"
                                                         data-bs-target="#productDisplayModal"></i>
                                                     <span class="custom-tooltip-2 rounded p-1 position-absolute">
                                                         (點選以查看產品頁面示意圖) 篩選高度關注產品頁，輔助優惠策略。
@@ -608,14 +608,14 @@ function addContext2() {
                                     <div class="d-flex gap-3 ps-2" role="group">
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="subscrtiberadio" id="valid"
-                                                checked onclick="change(event)">
+                                                checked @click="change(event)">
                                             <label class="form-check-label" for="valid">
                                                 有效訂戶
                                             </label>
                                         </div>
                                         <div class="form-check">
                                             <input class="form-check-input" type="radio" name="subscrtiberadio" id="invalid"
-                                                onclick="change(event)">
+                                                @click="change(event)">
                                             <label class="form-check-label" for="invalid">
                                                 已流失訂戶
                                             </label>
@@ -635,7 +635,7 @@ function addContext2() {
                                                 type="button" data-bs-toggle="dropdown" aria-expanded="false">
                                                 請選擇訂閱商品
                                             </button>
-                                            <ul id="productslist" class="dropdown-menu p-3" onclick="onClick(event)">
+                                            <ul id="productslist" class="dropdown-menu p-3" @click="onclick(event)">
                                             </ul>
                                         </div>
                                     </div>
@@ -811,7 +811,7 @@ function addContext2() {
 
                                             </div>
                                             <div class="mt-2">
-                                                <button class="btn secondary w-100" onclick="addContext3()">
+                                                <button class="btn secondary w-100" @click="addContext3()">
                                                     新增情境
                                                 </button>
                                             </div>
@@ -875,7 +875,7 @@ function addContext2() {
 
                                             </div>
                                             <div class="mt-2">
-                                                <button class="btn secondary w-100" onclick="addContext4()">
+                                                <button class="btn secondary w-100" @click="addContext4()">
                                                     新增情境
                                                 </button>
                                             </div>
@@ -1107,7 +1107,7 @@ function addContext2() {
                         </div>
                         <div class="modal-footer border-0">
                             <button type="button" class="btn" data-bs-dismiss="modal">修改</button>
-                            <button type="button" class="btn primary " onclick="saveList()">儲存</button>
+                            <button type="button" class="btn primary " @click="saveList()">儲存</button>
                         </div>
                     </div>
                 </div>

@@ -7,7 +7,7 @@
         <div class="d-flex gap-1">
             <div class="">
                 <button class="btn rounded-circle btn-sm" type="button">
-                    <i class="bi bi-arrow-left" onclick="goback()"></i></button>
+                    <i class="bi bi-arrow-left" @click="goback()"></i></button>
                 <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
                     返回
                 </span>
@@ -16,7 +16,7 @@
                 使用者帳號核發
             </h2>
             <div class="d-flex ms-auto ">
-                <button class="btn secondary text-light d-flex align-items-center gap-1" onclick="gotoUserDetail()">新增
+                <button class="btn secondary text-light d-flex align-items-center gap-1" @click="gotoUserDetail()">新增
                     <i class="icon-add"></i></button>
             </div>
         </div>
@@ -47,7 +47,7 @@
                     </div>
                 </div>
                 <div class=" pt-4 d-flex gap-2">
-                    <button class="btn primary" type="button" onclick="">
+                    <button class="btn primary" type="button" @click="">
                         查詢
                     </button>
                 </div>

@@ -2,12 +2,12 @@
     <div class="personal-tag-page">
         <div class="d-flex justify-content-between align-items-end">
             <div class="d-flex align-items-center gap-1">
-                <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
+                <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
                     <i class="bi bi-arrow-left"></i></button>
                 <h2> 個人化標籤維護 </h2>
             </div>
 
-            <button class="btn secondary text-light" onclick="toMaintainAddPage()">新增 <i class="icon-add"></i></button>
+            <button class="btn secondary text-light" @click="toMaintainAddPage()">新增 <i class="icon-add"></i></button>
         </div>
         <div class="personal-tag-content" style="margin-top:1rem">
             <div class="d-flex align-items-center gap-2 border-bottom pb-3">
@@ -45,7 +45,7 @@
 
                     </div>
                     <div class="ps-2 pt-4">
-                        <button class="btn primary" type="button" onclick="">
+                        <button class="btn primary" type="button" @click="">
                             查詢
                         </button>
                     </div>

@@ -9,7 +9,7 @@ array.value = [{item1:'1',item2:'2',item3:'2023/10/12 17:50:53',item4:'2023/10/1
 <template>
     <div class="">
         <div class="d-flex align-items-center gap-1">
-            <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
+            <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
                 <i class="bi bi-arrow-left"></i></button>
             <h2> 追蹤清單</h2>
         </div>
@@ -48,7 +48,7 @@ array.value = [{item1:'1',item2:'2',item3:'2023/10/12 17:50:53',item4:'2023/10/1
 
                     </div>
                     <div class="ps-2 pt-4">
-                        <button class="btn primary" type="button" onclick="">
+                        <button class="btn primary" type="button" @click="">
                             查詢
                         </button>
                     </div>
@@ -91,8 +91,8 @@ array.value = [{item1:'1',item2:'2',item3:'2023/10/12 17:50:53',item4:'2023/10/1
                                 <td class="list-data" id="list-data">
 
                                     <div class="d-flex justify-content-center flex-wrap">
-                                        <button class="btn-secondary m-1" onclick="goTobackTrace()">回溯</button>
-                                        <button class="btn-secondary btn-sm m-1" onclick="goToComparePage()">比較</button>
+                                        <button class="btn-secondary m-1" @click="goTobackTrace()">回溯</button>
+                                        <button class="btn-secondary btn-sm m-1" @click="goToComparePage()">比較</button>
                                         <button class="btn-secondary btn-sm m-1" data-bs-toggle="modal"
                                             data-bs-target="#confirmUpdateModal">更新</button>
 
@@ -126,18 +126,18 @@ array.value = [{item1:'1',item2:'2',item3:'2023/10/12 17:50:53',item4:'2023/10/1
                                                     <i class="bi bi-share"></i>分享</button>
                                             </div>
                                             <div>
-                                                <button class=" btn  w-100 d-flex gap-3 rounded-0" onclick="copyItem()">
+                                                <button class=" btn  w-100 d-flex gap-3 rounded-0" @click="copyItem()">
                                                     <i class="bi bi-clipboard"></i>複製</button>
                                             </div>
 
                                             <div>
-                                                <button class=" btn w-100 d-flex gap-3 rounded-0" onclick="goToSmsPage()">
+                                                <button class=" btn w-100 d-flex gap-3 rounded-0" @click="goToSmsPage()">
                                                     <i class="bi bi-chat-text-fill"></i>簡訊</button>
 
                                             </div>
                                             <div>
                                                 <button class=" btn  w-100 d-flex gap-3 rounded-0"
-                                                    onclick="goToaddAppMarketing()">
+                                                    @click="goToaddAppMarketing()">
                                                     <i class="bi bi-phone"></i> APP</button>
                                             </div>
                                             <div>
@@ -148,7 +148,7 @@ array.value = [{item1:'1',item2:'2',item3:'2023/10/12 17:50:53',item4:'2023/10/1
                                             </div>
                                             <div>
                                                 <button class=" btn w-100 d-flex gap-3 rounded-0" type="button"
-                                                    data-bs-toggle="modal" onclick="showConfirmModal(this)"
+                                                    data-bs-toggle="modal" @click="showConfirmModal(this)"
                                                     data-bs-target="#deleteModal">
                                                     <i class="bi bi-trash "></i>刪除</button>
 
@@ -342,7 +342,7 @@ array.value = [{item1:'1',item2:'2',item3:'2023/10/12 17:50:53',item4:'2023/10/1
 
                             <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                 <button type="button" class="btn secondary" data-bs-dismiss="modal"
-                                    onclick="addEdmPage()">新增EDM</button>
+                                    @click="addEdmPage()">新增EDM</button>
                                 <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                     style=" top:106%;right: -10%;">
                                     若尚未建立EDM，請選擇新增EDM前往建立
@@ -367,7 +367,7 @@ array.value = [{item1:'1',item2:'2',item3:'2023/10/12 17:50:53',item4:'2023/10/1
                             名單追蹤數據更新中，完成後會Email告知，請耐心稍後。
                         </div>
                         <div class="modal-footer border-0">
-                            <button type="button" class="btn primary " onclick="updateFollowItem()">OK</button>
+                            <button type="button" class="btn primary " @click="updateFollowItem()">OK</button>
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@
 <template>
     <div class="">
         <div class="d-flex align-items-center gap-1">
-            <button class="btn rounded-circle btn-sm" type="button" onclick="leaveSMSpage()">
+            <button class="btn rounded-circle btn-sm" type="button" @click="leaveSMSpage()">
                 <i class="icon-arrowback fs-6 py-1"></i></button>
             <h2> APP推播基本設定
             </h2>
@@ -262,9 +262,9 @@
 
             </div>
             <div class="d-flex flex-wrap mt-2">
-                <button class="btn m-1 me-auto bg-light" onclick="leaveSMSpage()" style="width: 85px"
+                <button class="btn m-1 me-auto bg-light" @click="leaveSMSpage()" style="width: 85px"
                     type="button">離開</button>
-                <button class="btn secondary m-1 " onclick="saveSMS()" style="width: 85px" type="button">儲存</button>
+                <button class="btn secondary m-1 " @click="saveSMS()" style="width: 85px" type="button">儲存</button>
                 <button class="btn primary  m-1 " style="width: 85px" type="submit">發送</button>
             </div>
         </form>

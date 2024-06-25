@@ -382,14 +382,14 @@ import customChart from '../components/Chart.vue'
                             <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
                                     class="icon-openMenu fs-4"></i></button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><button class="dropdown-item" type="button" onclick="">Export</button>
+                                <li><button class="dropdown-item" type="button" @click="">Export</button>
                                 </li>
                                 <li>
-                                <li><button class="dropdown-item" type="button" onclick="">Redefine</button>
+                                <li><button class="dropdown-item" type="button" @click="">Redefine</button>
                                 </li>
                                 </li>
                                 <li>
-                                <li><button class="dropdown-item" type="button" onclick="">Explore</button>
+                                <li><button class="dropdown-item" type="button" @click="">Explore</button>
                                 </li>
                                 </li>
                             </ul>
@@ -403,19 +403,19 @@ import customChart from '../components/Chart.vue'
                                     </th>
                                     <th scope="col" class="text-start">文章 ID <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">文章標題 <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">網站 <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-end">瀏覽量<button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                 </tr>
                             </thead>
@@ -470,14 +470,14 @@ import customChart from '../components/Chart.vue'
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
                                         class="lh-1 ifont icon-openMenu p-0"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">Export</button>
+                                    <li><button class="dropdown-item" type="button" @click="">Export</button>
                                     </li>
                                     <li>
-                                    <li><button class="dropdown-item" type="button" onclick="">Redefine</button>
+                                    <li><button class="dropdown-item" type="button" @click="">Redefine</button>
                                     </li>
                                     </li>
                                     <li>
-                                    <li><button class="dropdown-item" type="button" onclick="">Explore</button>
+                                    <li><button class="dropdown-item" type="button" @click="">Explore</button>
                                     </li>
                                     </li>
                                 </ul>
@@ -490,19 +490,19 @@ import customChart from '../components/Chart.vue'
                                     </th>
                                     <th scope="col" class="text-start">文章 ID <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">文章標題 <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">網站 <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-end">瀏覽量<button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                 </tr>
                             </thead>
@@ -549,14 +549,14 @@ import customChart from '../components/Chart.vue'
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
                                         class="lh-1 ifont icon-openMenu p-0"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">Export</button>
+                                    <li><button class="dropdown-item" type="button" @click="">Export</button>
                                     </li>
                                     <li>
-                                    <li><button class="dropdown-item" type="button" onclick="">Redefine</button>
+                                    <li><button class="dropdown-item" type="button" @click="">Redefine</button>
                                     </li>
                                     </li>
                                     <li>
-                                    <li><button class="dropdown-item" type="button" onclick="">Explore</button>
+                                    <li><button class="dropdown-item" type="button" @click="">Explore</button>
                                     </li>
                                     </li>
                                 </ul>
@@ -570,19 +570,19 @@ import customChart from '../components/Chart.vue'
                                     </th>
                                     <th scope="col" class="text-start">文章 ID <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">文章標題 <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">網站 <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-end">瀏覽量<button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button>
+                                                @click=""></i></button>
                                     </th>
                                 </tr>
                             </thead>

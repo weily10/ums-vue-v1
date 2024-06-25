@@ -660,12 +660,12 @@ data2.value = [{
                                 <tbody id="tag-data-table-body">
                                     <template v-for="item in data1">
                                         <tr>
-                                            <td class="text-start" onclick="">{{ item.number }}</td>
-                                            <td class="text-start" onclick="">{{ item.level }}</td>
-                                            <td class="text-start" onclick="">{{ item.type }}</td>
-                                            <td class="text-end" onclick="">{{ item.qtd }}</td>
-                                            <td class="text-end" onclick="">{{ item.projectsQtd }}</td>
-                                            <td class="text-end" onclick="">{{ item.tagQtd }}</td>
+                                            <td class="text-start" @click="">{{ item.number }}</td>
+                                            <td class="text-start" @click="">{{ item.level }}</td>
+                                            <td class="text-start" @click="">{{ item.type }}</td>
+                                            <td class="text-end" @click="">{{ item.qtd }}</td>
+                                            <td class="text-end" @click="">{{ item.projectsQtd }}</td>
+                                            <td class="text-end" @click="">{{ item.tagQtd }}</td>
                                         </tr>
                                     </template>
 

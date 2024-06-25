@@ -1,16 +1,55 @@
 <script setup>
+import { ref } from 'vue'
+
+const items = ref([])
+
+items.value = [{
+    sendDate: {
+        text: '2023/10/26',
+        align: 'text-center'
+    },
+    item: {
+        text: '1',
+        align: 'text-start'
+    },
+    eletterName: {
+        text: '【跨部】1003 DDD跨部測試【編輯中】',
+        align: 'text-start'
+    },
+    createdPerson: {
+        text: '	2023/10/03 10:45:43(紀韋恩)- 經濟日報數位服務部',
+        align: 'text-start'
+    },
+    estimateSendQtd: {
+        text: 0,
+        align: 'text-end'
+    },
+    listWholeFile: {
+        text: '<span class="badge txt-success"> Y</span>',
+        align: 'text-center'
+    },
+    materialUpload: {
+        text: '<span class="badge txt-error"> N</span>',
+        align: 'text-center'
+    },
+    actions: {
+        text: '<div id="eletter-tablebtns-section-' + 1 + '"></div>',
+        align: 'text-center'
+    }
+}
+]
 
 </script>
 <template>
     <div class="d-flex justify-content-between align-items-end">
         <div class="d-flex  gap-1">
-            <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
+            <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
                 <i class="bi bi-arrow-left"></i></button>
             <h2 class="mb-0"> 電子報設定</h2>
         </div>
         <div>
 
-            <button class="btn txt-info text-light me-3" onclick="gotoSechedulePage()">預約跨步電子報 </button>
+            <button class="btn txt-info text-light me-3" @click="gotoSechedulePage()">預約跨步電子報 </button>
             <button class="btn secondary text-light" data-bs-toggle="modal" data-bs-target="#add-enews-modal">新增 <i
                     class="icon-add"></i></button>
         </div>
@@ -68,7 +107,7 @@
                     </div>
                 </div>
                 <div class=" pt-4 d-flex gap-2">
-                    <button class="btn primary" type="button" onclick="">
+                    <button class="btn primary" type="button" @click="">
                         查詢
                     </button>
 
@@ -102,7 +141,111 @@
                     </tr>
                 </thead>
 
-                <tbody id="eletter-detail-tbody">
+                <tbody>
+                    <template v-for="(item, index) in items" :key="index">
+                        <tr>
+                            <td :class="item.sendDate.align">
+                                {{ item.sendDate.text }}
+                            </td>
+                            <td>
+                                {{ item.item.text }}
+                            </td>
+                            <td>
+                                {{ item.eletterName.text }}
+                            </td>
+                            <td>
+                                {{ item.createdPerson.text }}
+                            </td>
+                            <td>
+                                {{ item.estimateSendQtd.text }}
+                            </td>
+                            <td>
+                                <span class="badge txt-success"> Y</span>
+                            </td>
+                            <td>
+                                <span class="badge txt-success"> Y</span>
+                            </td>
+                            <td>
+                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                    <button class="iconbtn btn rounded-circle btn-sm " onclick="goToEletterView()"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem">
+                                        <i class="icon-view"></i></button>
+                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                        style=" top: 100%;right: -50%;">
+                                        檢視
+                                    </span>
+                                </div>
+
+                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem"
+                                        onclick="goToemailAnalysisReport()">
+                                        <i class="icon-layout fs-5"></i></button>
+                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                        style=" top: 100%;right: -50%;">
+                                        電子報發送回應分析報表
+                                    </span>
+                                </div>
+
+                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem" onclick="goToReviewPage()">
+                                        <i class="icon-review fs-5"></i></button>
+                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                        style=" top: 100%;right: -50%;">
+                                        整檔/送審
+                                    </span>
+                                </div>
+
+                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem" onclick="">
+                                        <i class="icon-preview fs-5"></i></button>
+                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                        style=" top: 100%;right: -50%;">
+                                        預覽
+                                    </span>
+                                </div>
+
+                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem" data-bs-toggle="modal"
+                                        data-bs-target="#history-dialog">
+                                        <i class="icon-timeline fs-5"></i></button>
+                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                        style=" top: 100%;right: -50%;">
+                                        歷程
+                                    </span>
+                                </div>
+
+                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
+                                        data-bs-target="#marketing-config-edit-dialog" data-bs-toggle="modal"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem">
+                                        <i class="icon-edit fs-5"></i></button>
+                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                        style=" top: 100%;right: -50%;">
+                                        編輯
+                                    </span>
+                                </div>
+
+
+                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem"
+                                        data-bs-target="#marketing-config-deleteModal" data-bs-toggle="modal"
+                                        onclick="getMarketingConfigID(this)">
+                                        <i class="icon-delete fs-5"></i></button>
+                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                        style=" top: 100%;right: -50%;">
+                                        刪除
+                                    </span>
+                                </div>
+                            </td>
+                        </tr>
+
+                    </template>
+
 
                 </tbody>
             </table>
@@ -172,14 +315,14 @@
                             <div class="flex-fill" style="width: 200px;">
                                 <label for="" class="font-b4-me">電子報類型</label>
                                 <select class="form-select mt-1" type="select" value="" id="membership-monthly-data-month"
-                                    onchange="onchangeSelect(this)">
+                                    @change="changeSelect(this)">
                                     <option value="20231101">會員</option>
                                 </select>
                             </div>
                             <div class="flex-fill" style="width: 200px;">
                                 <label for="" class="font-b4-me">電子報種類</label>
                                 <select class="form-select mt-1" type="select" value="" id="membership-monthly-data-month"
-                                    onchange="onchangeSelect(this)">
+                                    @change="changeSelect(this)">
                                     <option value="1231">經濟日報電子報</option>
                                 </select>
                             </div>
@@ -377,10 +520,9 @@
                     確定要刪除<span id="marketing-remove-modal-enews-name">20240301_3</span>電子報?
                 </div>
                 <div class="modal-footer border-0">
-                    <button type="button" class="btn" data-bs-dismiss="modal" onclick="removeDeleteClass()">取消</button>
-                    <button type="button" class="btn primary" onclick="confirmDeleteEnews()">確定</button>
+                    <button type="button" class="btn" data-bs-dismiss="modal" @click="removeDeleteClass()">取消</button>
+                    <button type="button" class="btn primary" @click="confirmDeleteEnews()">確定</button>
                 </div>
             </div>
-        </div>
     </div>
-</template>
+</div></template>

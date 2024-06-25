@@ -69,7 +69,7 @@
                             <td class="text-end">12</td>
                             <td class="text-end">20200</td>
                             <td class="text-center">
-                                <button class="btn primary btn-sm" onclick="viewArticle()">檢視文章</button>
+                                <button class="btn primary btn-sm" @click="viewArticle()">檢視文章</button>
                             </td>
                             <td class="text-start">標籤名稱</td>
                             <td class="text-center"><span class="badge primary"> 依文章標題</span></td>
@@ -105,7 +105,7 @@
                     </div>
                     <div class="modal-footer border-0">
                         <button type="button" class="btn " data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn primary" onclick="confirmExecute()">確定</button>
+                        <button type="button" class="btn primary" @click="confirmExecute()">確定</button>
                     </div>
                 </div>
             </div>

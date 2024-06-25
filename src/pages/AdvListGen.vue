@@ -1,7 +1,7 @@
 <template>
     <div class="">
         <div class="d-flex align-items-center gap-1">
-            <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
+            <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
                  <i class="bi bi-arrow-left  fs-6 py-1 "></i></button>
             <h2 class="mb-0"> 關鍵字名單生成
             </h2>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class=" pt-4 d-flex gap-2 ms-auto">
-                        <button class="btn primary" type="button" onclick="">
+                        <button class="btn primary" type="button" @click="">
                             查詢
                         </button>
                     </div>
