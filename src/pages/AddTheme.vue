@@ -1,6 +1,7 @@
 <script setup>
 import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import { ref, onMounted } from 'vue'
+import router from '../router';
 
 const cards = ref([{
     theme: '範例', badges: ['依文章標題', '111']
@@ -8,13 +9,15 @@ const cards = ref([{
 
 let addNewCard = ref(false)
 let editCard = ref(false)
+let tagModal = ref(false)
 let badgesEdit = ref([])
 let badges = ref(['依文章標題'])
 let smartSearchEditTagTextBox = ref('')
 const searchTags = ref([])
 const keywordTextBoxSearch = ref('')
 const keywordTextBox = ref('')
-const inputs = ref([{ value: '' }])
+const inputs = ref([{ inputbox: '' }])
+const keywordbadges = ref([])
 
 searchTags.value = [{ name: '薩達' }]
 
@@ -24,12 +27,15 @@ function addCard() {
     })
     console.log(cards);
     addNewCard.value.hide()
-
 }
 
 
 function smartSearchAddcleanModalInputs() {
+    addNewCard.value.show()
+}
 
+function next() {
+    tagModal.value.show()
 }
 
 
@@ -43,38 +49,58 @@ function openEditModal(e) {
 
 
 function removeBadge(index) {
-    badgesEdit.value.splice(index, 1)
+    keywordbadges.value.splice(index, 1)
 }
 
 onMounted(() => {
     addNewCard.value = new Modal(document.getElementById('keyword-ad-tag-modal'));
     editCard.value = new Modal(document.getElementById('smart-search-add-tag-edit-modal'));
+    tagModal.value = new Modal(document.getElementById('smart-search-add-tagModal'));
+
 });
 
 function smartSearchsendSearchAdKeyword() {
-    searchTags.value.push({ name: keywordTextBoxSearch.value })
+    if (keywordTextBoxSearch.value) {
+        searchTags.value.push({ name: keywordTextBoxSearch.value })
+    }
 }
 
-
 function smartSearchaddToAnd(index, item) {
-  
 
-    const x = inputs.value.indexOf( console.log(item.value))
-        console.log(x);
-    if (inputs.value[index] && inputs.value[index].value === '' ) {
-  
-        inputs.value[index].value = item.name;
+    const isSomeEmpty = inputs.value.some(input => input.inputbox == '')
+    const x = inputs.value.findIndex(input => input.inputbox === '')
+    if (!isSomeEmpty) {
+        inputs.value.push({ inputbox: '' })
+        const y = inputs.value.findIndex(input => input.inputbox === '')
+        inputs.value[y].inputbox = item.name;
     } else {
-        inputs.value.push({ value: '' })
-        console.log(inputs.value);
-        inputs.value[index].value = item.name;
+        inputs.value[x].inputbox = item.name;
     }
+
 
 
 }
 
 function addNewCombo() {
-    inputs.value.push({ value: '' })
+    inputs.value.push({ inputbox: '' })
+}
+
+
+function smartSearchaddAdvertisingAddKeyword() {
+    inputs.value.forEach(el => {
+        if (el.inputbox) {
+            keywordbadges.value.push(el.inputbox)
+        }
+
+    });
+
+}
+
+
+function smartSearchAddtoNextPage() {
+    router.push({ name: 'MatchmakingAnalysis' })
+    tagModal.value.hide()
+
 }
 
 </script>
@@ -104,7 +130,6 @@ function addNewCombo() {
                             <input type="number" max="90" min="0" class="form-control" value="1"
                                 id="smart-search-add-input-days-within-article" placeholder="最大限制 90 天"
                                 name="smartSearchAddDaysWithinArticle">
-
                         </div>
                     </div>
 
@@ -174,8 +199,7 @@ function addNewCombo() {
 
                     <button id="btn-add-tag-card"
                         class="border bg-grey p-3 rounded sub-context  fs-6 d-flex justify-content-center align-items-center font-support gap-3 "
-                        style="height: 16vh; width: 20vh;" type="button" data-bs-toggle="modal"
-                        data-bs-target="#keyword-ad-tag-modal" @click="smartSearchAddcleanModalInputs()">
+                        style="height: 16vh; width: 20vh;" type="button" @click="smartSearchAddcleanModalInputs()">
                         <span class="">新增下一個面向</span><span class="bi bi-plus"></span>
                     </button>
                 </div>
@@ -183,7 +207,8 @@ function addNewCombo() {
 
             </div>
             <div class="d-flex justify-content-end">
-                <button id="smart-search-add-nextbtnid" class="btn primary text-body-light mt-3 me-0 mb-2 " type="submit">
+                <button id="smart-search-add-nextbtnid" class="btn primary text-body-light mt-3 me-0 mb-2 " type="button"
+                    @click="next()">
                     下一步
                 </button>
             </div>
@@ -319,7 +344,8 @@ function addNewCombo() {
                                         class="d-flex gap-2 align-items-center flex-wrap">
                                         <template v-for="(item, index) in inputs" :key="index">
                                             <div class="input-group" style="width: 200px;">
-                                                <input type="text" class="form-control" placeholder="" v-model="item.value">
+                                                <input type="text" class="form-control" placeholder=""
+                                                    v-model="item.inputbox">
                                                 <div
                                                     class="list-icon position-relative d-inline-block fw-semibold hover-label">
                                                     <button class="input-group-text rounded-start-0"
@@ -361,9 +387,20 @@ function addNewCombo() {
                             <div class="mt-3">
                                 <label class="font-b4-me">關鍵字預覽 </label>
                                 <div class="d-flex mt-1 gap-2 flex-wrap" id="smart-search-add-badges-group">
-
+                                    <template v-for="(item, index) in keywordbadges" :key="index">
+                                        <div class="badge primary d-flex align-items-center"
+                                            id="smart-search-add-badge-`+ randomNumber + `" style="width: fit-content;">
+                                            <div class="badge-title">{{ item }}</div>
+                                            <button
+                                                class="badge-delete-btn rounded-circle btn-sm bg-transparent ps-1 pe-0 pt-1 is-first-class"
+                                                @click="removeBadge(index)" type="button">
+                                                <i class="bi bi-x-circle text-white fs-6"></i>
+                                            </button>
+                                        </div>
+                                    </template>
                                 </div>
-                                <div class="font-support no-badge-message align-self-center text-danger"> 須有至少一筆 ! </div>
+                                <div class="font-support no-badge-message align-self-center text-danger"
+                                    v-show="keywordbadges.length <= 0"> 須有至少一筆 ! </div>
                             </div>
                         </div>
 

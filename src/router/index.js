@@ -19,6 +19,7 @@ import AccIssuance from '../pages/AccIssuance.vue'
 import MarketingConfig from '../pages/MarketingConfig.vue'
 import AppMarketingConfig from '../pages/AppMarketingConfig.vue'
 import AppMarketingConfigAdd from '../pages/AppMarketingConfigAdd.vue'
+import MatchmakingAnalysis from '../pages/MatchmakingAnalysis.vue'
 
 
 
@@ -126,6 +127,12 @@ const routes = [
         name: "AppMarketingConfigAdd",
         component: AppMarketingConfigAdd
     },
+    {
+        path: "/matchmaking-analysis",
+        name: "MatchmakingAnalysis",
+        component: MatchmakingAnalysis
+        
+    }
 
 ]
 

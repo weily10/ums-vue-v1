@@ -1,10 +1,20 @@
 <script setup>
+import router from '../router';
+
+
+function back(){
+    router.go(-1)
+}
 
 </script>
 <template>
     <div>
-        <div class="">
+        <div class="d-flex gap-2">
+            <button class="btn rounded-circle btn-sm "   type="button" @click="back()">
+                <i class="bi bi-arrow-left"></i>
+            </button>
             <h2 class="mb-0"> 智慧檢索</h2>
+      
         </div>
         <div class="bg-grey mt-3 p-3">
             <div class="d-flex justify-content-between p-0 border-bottom">
