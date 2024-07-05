@@ -103,6 +103,11 @@ function smartSearchAddtoNextPage() {
 
 }
 
+
+function removeInputs(index){
+    inputs.value.splice(index, 1)
+}
+
 </script>
 
 <template>
@@ -349,9 +354,9 @@ function smartSearchAddtoNextPage() {
                                                 <div
                                                     class="list-icon position-relative d-inline-block fw-semibold hover-label">
                                                     <button class="input-group-text rounded-start-0"
-                                                        id="smart-search-add-and-input-addon" type="button" disabled>
+                                                        id="smart-search-add-and-input-addon" type="button" :disabled="index === 0" @click="removeInputs(index)">
                                                         <i class="bi bi-trash"></i>
-                                                    </button>
+                                                    </button> 
                                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                                         style=" top: 100%;right: -50%;">
                                                         刪除

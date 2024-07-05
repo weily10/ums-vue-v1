@@ -1,8 +1,19 @@
+<script setup>
+import router from '../router';
+
+
+function toMaintainAddPage() {
+    router.push({ name: 'PersonalTagAdd' })
+}
+
+
+</script>
+
 <template>
     <div class="personal-tag-page">
         <div class="d-flex justify-content-between align-items-end">
             <div class="d-flex align-items-center gap-1">
-                <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
+                <button class="btn rounded-circle btn-sm" type="button" @click="router.go(-1)">
                     <i class="bi bi-arrow-left"></i></button>
                 <h2> 個人化標籤維護 </h2>
             </div>
@@ -228,8 +239,8 @@
                                     員工Email或編號
                                 </div>
                                 <div class="mt-2">
-                                    <textarea   class="form-control form-control-sm"
-                                        placeholder="" id="maintain-custom-textarea"></textarea>
+                                    <textarea class="form-control form-control-sm" placeholder=""
+                                        id="maintain-custom-textarea"></textarea>
                                 </div>
                                 <span class="font-support">
                                     若有多組 員工Email或編號 請使用半形逗號(,)分隔，且勿空格。

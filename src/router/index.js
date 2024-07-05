@@ -20,6 +20,10 @@ import MarketingConfig from '../pages/MarketingConfig.vue'
 import AppMarketingConfig from '../pages/AppMarketingConfig.vue'
 import AppMarketingConfigAdd from '../pages/AppMarketingConfigAdd.vue'
 import MatchmakingAnalysis from '../pages/MatchmakingAnalysis.vue'
+import MarketingReview from '../pages/MarketingReview.vue'
+import MarketingSendingTest from '../pages/MarketingSendingTest.vue'
+import MarketingSendingTestDetail from '../pages/MarketingSendingTestDetail.vue'
+import PersonalTagAdd from '../pages/PersonalTagAdd.vue'
 
 
 
@@ -131,8 +135,32 @@ const routes = [
         path: "/matchmaking-analysis",
         name: "MatchmakingAnalysis",
         component: MatchmakingAnalysis
-        
+
+    },
+    {
+        path: "/marketing-review",
+        name: "MarketingReview",
+        component: MarketingReview
+
+    },
+    {
+        path: "/marketing-sending-test",
+        name: "MarketingSendingTest",
+        component: MarketingSendingTest
+    },
+    {
+        path: "/marketing-sending-test-detail",
+        name: "MarketingSendingTestDetail",
+        component: MarketingSendingTestDetail
+    },
+    {
+        path: "/personal-tag-maintain",
+        name: "PersonalTagAdd",
+        component: PersonalTagAdd
     }
+
+
+
 
 ]
 
