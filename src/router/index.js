@@ -26,7 +26,10 @@ import MarketingSendingTestDetail from '../pages/MarketingSendingTestDetail.vue'
 import PersonalTagAdd from '../pages/PersonalTagAdd.vue'
 import InsightAnalysisListPath from '../pages/InsightAnalysisListPath.vue'
 import AccInssuanceAdd from '../pages/AccInssuanceAdd.vue'
- 
+import SmartAnalysisReport from '../pages/SmartAnalysisReport.vue'
+import ViewArticle from '../pages/ViewArticle.vue'
+import ViewFullArticle from '../pages/ViewFullArticle.vue'
+
 
 
 
@@ -170,8 +173,24 @@ const routes = [
         path: "/acc-inssuance-add",
         name: "AccInssuanceAdd",
         component: AccInssuanceAdd
-    }
-
+    },
+    {
+        path: "/smart-analysis-report",
+        name: "SmartAnalysisReport",
+        component: SmartAnalysisReport
+        
+    },
+    {
+        path: "/view-article",
+        name: "ViewArticle",
+        component: ViewArticle
+    },
+    {
+        path: "/view-full-article",
+        name: "ViewFullArticle",
+        component: ViewFullArticle
+    },
+ 
 
 
 

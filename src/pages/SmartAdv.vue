@@ -1,9 +1,38 @@
 <script setup>
 import router from '../router/index.js'
+import { ref } from 'vue'
+
+const items = ref([
+    {
+        no: '1',
+        no2: '4124',
+        themename: 'wayneTest',
+        themeTag: '美妝_綜合美妝	',
+        analysis: '執行完成',
+        actionanalysis: '未執行',
+        zaiju: 'Desktop',
+        desktopmobile: 0,
+        list: ' N/ A',
+        status: 'N / A	',
+        phonelist: 'N / A',
+        phonestatus: ' N / A	',
+        creatorname: '周冠廷',
+        createdate: ' 2023 / 10 / 20 11:04: 34'
+    }
+])
+
 
 function toSmartAdKeywordAdvAddPage() {
     router.push({ name: "SmartAdThemeAdvertisingAdd" })
 }
+
+
+function viewAnalysisReport(){
+    router.push({ name: "SmartAnalysisReport" })
+}
+
+
+
 
 </script>
 
@@ -104,7 +133,82 @@ function toSmartAdKeywordAdvAddPage() {
                             </tr>
                         </thead>
                         <tbody id="smart-ad-theme-detail-tbody">
-
+                            <template v-for="(item, index) in items" :key="index">
+                                <tr>
+                                    <td>
+                                        {{ item.no }}
+                                    </td>
+                                    <td>
+                                        {{ item.no2 }}
+                                    </td>
+                                    <td>
+                                        {{ item.themename }}
+                                    </td>
+                                    <td>
+                                        {{ item.themeTag }}
+                                    </td>
+                                    <td>
+                                        {{ item.analysis }}
+                                    </td>
+                                    <td>
+                                        {{ item.actionanalysis }}
+                                    </td>
+                                    <td>
+                                        {{ item.zaiju }}
+                                    </td>
+                                    <td>
+                                        {{ item.desktopmobile }}
+                                    </td>
+                                    <td>
+                                        {{ item.list }}
+                                    </td>
+                                    <td>
+                                        {{ item.status }}
+                                    </td>
+                                    <td>
+                                        {{ item.phonelist }}
+                                    </td>
+                                    <td>
+                                        {{ item.phonestatus }}
+                                    </td>
+                                    <td>
+                                        {{ item.creatorname }}
+                                    </td>
+                                    <td>
+                                        {{ item.createdate }}
+                                    </td>
+                                    <td>
+                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                            <button class="iconbtn btn rounded-circle btn-sm" type="button"
+                                                @click="gotoCopyPage()">
+                                                <i class="bi bi-copy fs-6"
+                                                    style="padding-right: 2px; padding-left: 2px;"></i></button>
+                                            <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
+                                                style=" top: 100%;right: -50%;">
+                                                複製
+                                            </span>
+                                        </div>
+                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                            <button class="iconbtn btn rounded-circle btn-sm" type="button"
+                                                @click="viewAnalysisReport()">
+                                                <i class="bi bi-graph-up fs-6"></i></button>
+                                            <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
+                                                style=" top: 100%;right: -50%;">
+                                                檢視分析報告
+                                            </span>
+                                        </div>
+                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                            <button class="iconbtn btn rounded-circle btn-sm" type="button"
+                                                @click="showConfirmModal(this)">
+                                                <i class="bi bi-trash fs-6"></i></button>
+                                            <span class="custom-tooltip-2 rounded position-absolute z-3 mt-1"
+                                                style=" top: 100%;right: -50%;">
+                                                刪除
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </template>
                         </tbody>
                     </table>
                 </div>
@@ -169,7 +273,6 @@ function toSmartAdKeywordAdvAddPage() {
                         <button type="button" class="btn primary ">建立</button>
                     </div>
                 </div>
-            </div>
         </div>
     </div>
-</template>
+</div></template>

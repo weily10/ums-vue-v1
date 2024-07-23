@@ -1199,3 +1199,7 @@ button:disabled {
 .operatingbuttons > .dropstart > .dropdown-toggle::before {
   content: none !important;
 }
+
+.custom-acc-button .accordion-button:not(.collapsed) {
+  background-color: rgb(255, 255, 255) !important;
+}
