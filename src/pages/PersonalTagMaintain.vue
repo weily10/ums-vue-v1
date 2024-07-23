@@ -18,7 +18,7 @@ function toMaintainAddPage() {
                 <h2> 個人化標籤維護 </h2>
             </div>
 
-            <button class="btn secondary text-light" @click="toMaintainAddPage()">新增 <i class="icon-add"></i></button>
+            <button class="btn secondary text-light" @click="toMaintainAddPage()">新增 <i class="bi bi-plus"></i></button>
         </div>
         <div class="personal-tag-content" style="margin-top:1rem">
             <div class="d-flex align-items-center gap-2 border-bottom pb-3">

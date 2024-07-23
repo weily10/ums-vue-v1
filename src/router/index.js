@@ -24,6 +24,9 @@ import MarketingReview from '../pages/MarketingReview.vue'
 import MarketingSendingTest from '../pages/MarketingSendingTest.vue'
 import MarketingSendingTestDetail from '../pages/MarketingSendingTestDetail.vue'
 import PersonalTagAdd from '../pages/PersonalTagAdd.vue'
+import InsightAnalysisListPath from '../pages/InsightAnalysisListPath.vue'
+import AccInssuanceAdd from '../pages/AccInssuanceAdd.vue'
+ 
 
 
 
@@ -157,6 +160,16 @@ const routes = [
         path: "/personal-tag-maintain",
         name: "PersonalTagAdd",
         component: PersonalTagAdd
+    },
+    {
+        path: "/insight-analysis-list-path",
+        name: "InsightAnalysisListPath",
+        component: InsightAnalysisListPath
+    },
+    {
+        path: "/acc-inssuance-add",
+        name: "AccInssuanceAdd",
+        component: AccInssuanceAdd
     }
 
 

@@ -1,9 +1,22 @@
+<script setup>
+import router from '../router/index.js'
+
+function toAdKeywordAddPage() {
+    router.push({ name: "add-theme" })
+}
+
+
+function goback() {
+
+}
+</script>
+
 <template >
     <div class="">
         <div class="d-flex justify-content-between gap-1">
             <div class="d-flex align-items-center gap-1">
                 <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
-                     <i class="bi bi-arrow-left  fs-6 py-1 "></i></button>
+                    <i class="bi bi-arrow-left  fs-6 py-1 "></i></button>
                 <h2 class="mb-0"> 關鍵字廣告</h2>
             </div>
             <button class="btn secondary text-light" @click="toAdKeywordAddPage()">新增 <i class="icon-add"></i></button>

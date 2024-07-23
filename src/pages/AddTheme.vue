@@ -39,13 +39,6 @@ function next() {
 }
 
 
-function openEditModal(e) {
-    editCard.value.show()
-    console.log(e);
-    badgesEdit.value = e.badges
-    smartSearchEditTagTextBox.value = e.theme
-
-}
 
 
 function removeBadge(index) {
@@ -104,7 +97,7 @@ function smartSearchAddtoNextPage() {
 }
 
 
-function removeInputs(index){
+function removeInputs(index) {
     inputs.value.splice(index, 1)
 }
 
@@ -171,44 +164,195 @@ function removeInputs(index){
                         <span class="badge primary">Tags</span>
                     </div>
                 </div>
-                <!-- 標籤 -->
-                <label class="font-b4-me mt-3">策展面向</label>
-                <div class="cards-area mt-2 d-flex gap-3 flex-wrap">
-                    <template v-for="(item, index) in cards" :key="index">
-                        <div class="card border-0 shadow-sm pt-3 ps-3 pe-3" style="width: 20vh;" id="card-1">
+                <hr>
 
-                            <div class="d-flex justify-content-between align-items-start">
-                                <div>
-                                    <label class="font-b4-me">{{ item.theme }}</label>
-                                    <div class="font-b4-he text-wrap" style="width:6rem">
-                                        範例
+                <!-- 標籤 -->
+                <label class="font-b4-me  ">策展面向</label>
+                <div class="cards-area mt-2  gap-3 flex-wrap">
+                    <template v-for="(item, index) in cards" :key="index">
+
+                        <div class="accordion" :id="'addItemAccordion' + index">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header custom-acc-button">
+                                    <button class="accordion-button" type="button" data-bs-toggle="collapse"
+                                        :data-bs-target="'#addItem' + index" aria-expanded="true" aria-controls="addItem">
+                                        <span class="fw-semibold"> 策展面向</span>
+
+                                    </button>
+                                </h2>
+                                <div :id="'addItem' + index" class="accordion-collapse collapse show"
+                                    :data-bs-parent="'#addItemAccordion' + index">
+                                    <div class="card  border-0 p-2">
+                                        <div class="card-body">
+                                            <form name="smartSearchAddModalContent">
+                                                <div class="  ">
+                                                    <div id="smart-search-add-collapseContent" class="bg-gray">
+                                                        <div class="w-100" id="smart-search-add-input-tag-title-group ">
+                                                            <label for="keywordTextBox" class="font-b4-me">標籤 <span
+                                                                    class="text-danger">
+                                                                    *</span></label>
+                                                            <input name="keywordTextBox" id="keywordTextBox"
+                                                                class="form-control mt-1" type="text" value="" />
+                                                        </div>
+                                                        <div class="row  pt-3">
+                                                            <div class="col">
+                                                                <div class="d-flex gap-2 align-items-end">
+                                                                    <div>
+                                                                        <label for="keywordTextBox"
+                                                                            class="font-b4-me mb-1">關鍵字相似詞搜尋
+                                                                        </label>
+                                                                        <div class="input-group input-group ">
+                                                                            <span
+                                                                                class="input-group-text border-end-0 bg-white icon-search"
+                                                                                id="basic-addon6"></span>
+                                                                            <input type="text"
+                                                                                class="form-control border-start-0 "
+                                                                                id="smart-search-add-keywordTextBox"
+                                                                                placeholder="關鍵字相似詞搜尋"
+                                                                                v-model="keywordTextBoxSearch">
+                                                                        </div>
+                                                                    </div>
+                                                                    <button class="btn primary text-body-light btn-sm "
+                                                                        style="height:33.6px;width:80px;" type="button"
+                                                                        @click="smartSearchsendSearchAdKeyword()">
+                                                                        查詢
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="row mt-3">
+                                                            <div class="col">
+                                                                <label for="input-group" class="font-b4-me">相似詞預覽</label>
+                                                                <div class="mt-1 font-b4-he">
+                                                                    <div class="d-flex gap-3">
+                                                                        <template v-for="(item, index) in searchTags"
+                                                                            :key="index">
+                                                                            <div class="hover-label rounded-4 p-2 "
+                                                                                style="background-color: rgb(230, 230, 230); ">
+
+                                                                                <div
+                                                                                    class="d-flex gap-1 align-items-center">
+
+                                                                                    <div>{{ item.name }}</div>
+                                                                                    <div class=" rounded d-flex align-items-center"
+                                                                                        type="button"
+                                                                                        @click="smartSearchaddToAnd(index, item)">
+                                                                                        <i class="bi bi-plus"></i>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="">
+                                                                                    <span
+                                                                                        class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1">
+                                                                                        新增相似詞
+                                                                                    </span>
+                                                                                </div>
+                                                                            </div>
+                                                                        </template>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-3   pt-3">
+                                                            <label for="input-group" class="font-b4-me">文章需同時存在(and)</label>
+                                                            <div class="mt-1">
+                                                                <div id="smart-search-add-input-keyword-group"
+                                                                    class="d-flex gap-2 align-items-center flex-wrap">
+                                                                    <template v-for="(item, index) in inputs" :key="index">
+                                                                        <div class="input-group" style="width: 200px;">
+                                                                            <input type="text" class="form-control"
+                                                                                placeholder="" v-model="item.inputbox">
+
+                                                                            <div
+                                                                                class="list-icon position-relative d-inline-block fw-semibold hover-label">
+                                                                                <button
+                                                                                    class="input-group-text rounded-start-0"
+                                                                                    id="smart-search-add-and-input-addon"
+                                                                                    type="button" :disabled="index === 0"
+                                                                                    @click="removeInputs(index)">
+                                                                                    <i class="bi bi-trash"></i>
+                                                                                </button>
+                                                                                <span
+                                                                                    class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                                                                    style=" top: 100%;right: -50%;">
+                                                                                    刪除
+                                                                                </span>
+                                                                            </div>
+
+                                                                        </div>
+                                                                    </template>
+
+                                                                    <div
+                                                                        class="position-relative d-inline-block hover-label">
+                                                                        <div class="sub-context border bg-grey p-2 rounded d-flex align-items-center"
+                                                                            style="height:33px" type="button"
+                                                                            @click="addNewCombo()">
+                                                                            <i class="bi bi-plus"></i>
+                                                                        </div>
+                                                                        <span
+                                                                            class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                                                            style=" top: 100%;right: -50%;">
+                                                                            新增組合
+                                                                        </span>
+                                                                    </div>
+                                                                </div>
+                                                                <div id="smart-search-add-input-keyword-group-error-msg"
+                                                                    class="text-danger" style="display: none;">
+                                                                    <span>請輸入關鍵字後，再送出! (確保每個欄位都有資料)</span>
+                                                                </div>
+
+                                                                <button class="btn primary text-body-light btn-sm mt-2 "
+                                                                    style="height:33.6px" type="button"
+                                                                    @click="smartSearchaddAdvertisingAddKeyword()">
+                                                                    加入關鍵字
+                                                                </button>
+
+                                                            </div>
+                                                        </div>
+                                                        <div class="mt-3">
+                                                            <label class="font-b4-me">關鍵字預覽 </label>
+                                                            <div class="d-flex mt-1 gap-2 flex-wrap">
+                                                                <template v-for="(item, index) in keywordbadges"
+                                                                    :key="index">
+                                                                    <div class="badge primary d-flex align-items-center"
+                                                                        id="smart-search-add-badge-`+ randomNumber + `"
+                                                                        style="width: fit-content;">
+                                                                        <div class="badge-title">{{ item }}</div>
+                                                                        <button
+                                                                            class="badge-delete-btn rounded-circle btn-sm bg-transparent ps-1 pe-0 pt-1 is-first-class"
+                                                                            @click="removeBadge(index)" type="button">
+                                                                            <i class="bi bi-x-circle text-white fs-6"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </template>
+                                                            </div>
+                                                            <div
+                                                                class="font-support no-badge-message align-self-center text-danger" v-show="keywordbadges.length <= 0">
+                                                                須有至少一筆 !
+                                                            </div>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
-                                <div class="d-flex gap-2 justify-content-end">
-                                    <button class="btn btn-sm rounded-circle py-0 px-1" type="button"
-                                        @click="openEditModal(item)"> <i class="bi bi-pencil-fill"></i></button>
-                                    <button v-show="false" class="btn btn-sm rounded-circle py-0 px-1 badge-delete-btn-2"
-                                        type="button"> <i class="bi bi-x"></i></button>
-                                </div>
-                            </div>
-
-                            <label class="font-b4-me mt-3">關鍵字預覽 </label>
-                            <div class="modal-badge-area d-flex gap-2 mt-2 flex-wrap">
-                                <template v-for="item in item.badges">
-                                    <span class="badge primary p-2"> {{ item }}</span>
-                                </template>
-
                             </div>
                         </div>
+                        <div id="accordionsAdd" class=" mt-3">
+
+                        </div>
+
                     </template>
 
-                    <button id="btn-add-tag-card"
-                        class="border bg-grey p-3 rounded sub-context  fs-6 d-flex justify-content-center align-items-center font-support gap-3 "
-                        style="height: 16vh; width: 20vh;" type="button" @click="smartSearchAddcleanModalInputs()">
-                        <span class="">新增下一個面向</span><span class="bi bi-plus"></span>
-                    </button>
-                </div>
 
+                </div>
+                <div class="border bg-grey p-3 rounded sub-context my-3 d-flex justify-content-center">
+                    <button type="button" class="btn bg-secondary-subtle" @click="addCard()">新增下一筆
+                        <i class="icon-add"></i></button>
+                </div>
 
             </div>
             <div class="d-flex justify-content-end">
@@ -354,9 +498,10 @@ function removeInputs(index){
                                                 <div
                                                     class="list-icon position-relative d-inline-block fw-semibold hover-label">
                                                     <button class="input-group-text rounded-start-0"
-                                                        id="smart-search-add-and-input-addon" type="button" :disabled="index === 0" @click="removeInputs(index)">
+                                                        id="smart-search-add-and-input-addon" type="button"
+                                                        :disabled="index === 0" @click="removeInputs(index)">
                                                         <i class="bi bi-trash"></i>
-                                                    </button> 
+                                                    </button>
                                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                                         style=" top: 100%;right: -50%;">
                                                         刪除

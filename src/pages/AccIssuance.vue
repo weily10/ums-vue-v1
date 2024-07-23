@@ -1,16 +1,30 @@
 <script setup>
+import { ref } from 'vue'
+import router from '../router';
+
+const array = ref([])
+
+
+array.value = [{
+    account: '0000',
+    name: '0000',
+    email: 'rkf67781@cndps.com',
+    status: '正常'
+}]
+
+function gotoUserDetail() {
+    router.push({ name: 'AccInssuanceAdd' })
+}
 
 </script>
 
 <template>
     <div>
-        <div class="d-flex gap-1">
+        <div class="d-flex gap-1 align-items-center">
             <div class="">
                 <button class="btn rounded-circle btn-sm" type="button">
                     <i class="bi bi-arrow-left" @click="goback()"></i></button>
-                <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
-                    返回
-                </span>
+
             </div>
             <h2 class="mb-0">
                 使用者帳號核發
@@ -66,6 +80,34 @@
                         </tr>
                     </thead>
                     <tbody id="user-acc-table">
+                        <template v-for="(item, index) in array" :key="index">
+                            <tr>
+                                <td>
+                                    {{ item.account }}
+                                </td>
+                                <td>
+                                    {{ item.name }}
+                                </td>
+                                <td>
+                                    {{ item.email }}
+                                </td>
+                                <td>
+                                    {{ item.status }}
+                                </td>
+                                <td class="text-center">
+                                    <button class="iconbtn btn rounded-circle btn-sm" type="button"
+                                        onclick="gotoCopyPage()">
+                                        <i class="bi bi-pencil-fill fs-6"></i></button>
+                                    <button class="iconbtn btn rounded-circle btn-sm" type="button"
+                                        onclick="gotoCopyPage()">
+                                        <i class="bi bi-person-fill-x fs-6"></i></button>
+                                    <button class="iconbtn btn rounded-circle btn-sm" type="button"
+                                        onclick="gotoCopyPage()">
+                                        <i class="bi bi-chat-right-dots fs-6"></i></button>
+                                </td>
+                            </tr>
+                        </template>
+
                     </tbody>
                 </table>
             </div>
