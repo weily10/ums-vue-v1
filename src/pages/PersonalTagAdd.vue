@@ -152,7 +152,7 @@ function addItem() {
                         </div>
                     </template>
                     <div class="empty-div">
-                        <img src="../../public/icons/empty-data.svg" alt="" width="30px" style="filter: opacity(0.2);">
+                        <img src="" alt="" width="30px" style="filter: opacity(0.2);">
                         <p>無資料</p>
                     </div>
                 </div>
