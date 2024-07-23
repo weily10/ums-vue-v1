@@ -228,8 +228,5 @@ function goTofullArticle(){
 <style scoped>
 
 
-td :deep a {
-    
-    word-break:break-all !important
-}
+
 </style>

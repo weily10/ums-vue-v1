@@ -1203,3 +1203,8 @@ button:disabled {
 .custom-acc-button .accordion-button:not(.collapsed) {
   background-color: rgb(255, 255, 255) !important;
 }
+
+td > a {
+    
+  word-break:break-all !important
+}
