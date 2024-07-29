@@ -151,7 +151,7 @@ checkboxes.value = [
         <div class="d-flex gap-1">
             <div class="">
                 <button class="btn rounded-circle btn-sm" type="button">
-                    <i class="icon-arrowback fs-6 py-1 " onclick="goback()"></i></button>
+                    <i class="icon-arrowback fs-6 py-1 " @click="goback()"></i></button>
                 <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
                     返回
                 </span>
@@ -539,7 +539,7 @@ checkboxes.value = [
                     </div>
                     <div class="modal-footer border-0">
                         <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn primary " onclick="confirmSave()">確定</button>
+                        <button type="button" class="btn primary " @click="confirmSave()">確定</button>
                     </div>
                 </div>
             </div>

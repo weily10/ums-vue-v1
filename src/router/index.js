@@ -29,6 +29,9 @@ import AccInssuanceAdd from '../pages/AccInssuanceAdd.vue'
 import SmartAnalysisReport from '../pages/SmartAnalysisReport.vue'
 import ViewArticle from '../pages/ViewArticle.vue'
 import ViewFullArticle from '../pages/ViewFullArticle.vue'
+import RFVconfirm from '../pages/RFVconfirm.vue'
+import  PersonalTagUpload from '../pages/PersonalTagUpload.vue'
+
 
 
 
@@ -190,10 +193,21 @@ const routes = [
         name: "ViewFullArticle",
         component: ViewFullArticle
     },
- 
-
-
-
+    {
+        path: "/personal-rfv-confirm",
+        name: "RFVconfirm",
+        component: RFVconfirm
+    },
+    {
+        path: "/trend-overview",
+        name: "OverviewAndRules2",
+        component: OverviewAndRules
+    },
+    {
+        path: "/personal-tag-upload",
+        name: "PersonalTagUpload",
+        component: PersonalTagUpload
+    },
 ]
 
 

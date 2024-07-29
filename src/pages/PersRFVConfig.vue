@@ -2,6 +2,7 @@
 import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import { ref, onMounted } from 'vue'
 import Card from '../components/CustomCard.vue'
+import router  from '../router/index.js'
 
 
 let cards = ref([])
@@ -38,7 +39,7 @@ onMounted(() => {
 
 function deleteItem(e) {
     cards.value.splice(e.value, 1)
- }
+}
 
 
 function deleteOthers(index) {
@@ -46,6 +47,12 @@ function deleteOthers(index) {
     cards2.value.splice(index, 1)
 
 }
+function toConfirmPage() {
+   
+}
+
+
+
 
 
 </script>
@@ -84,7 +91,7 @@ function deleteOthers(index) {
                 </div>
                 <div id="cards-list-attached" class="mt-2">
                     <template v-for="(item, index) in cards2" :key="'card'+index">
-                         <Card @deleteItemCard="deleteOthers(index)" :index1="index" type="other" :days="item.days">
+                        <Card @deleteItemCard="deleteOthers(index)" :index1="index" type="other" :days="item.days">
                         </Card>
                     </template>
                     <div class="empty-div mt-3" v-show="cards2.length < 2">
@@ -95,7 +102,7 @@ function deleteOthers(index) {
             </div>
         </div>
         <div class="next-btn-align">
-            <button class="btn primary" @click="toConfirmPage()">下一步</button>
+            <button class="btn primary" @click="router.push({ name: 'RFVconfirm' })">下一步</button>
         </div>
         <div class="modal fade  modal-lg" id="addItemModalMain" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
             <div class="modal-dialog" role="document">

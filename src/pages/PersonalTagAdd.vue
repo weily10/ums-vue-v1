@@ -1,5 +1,8 @@
 <script setup>
 import { ref } from 'vue'
+import router from '../router/index'
+
+
 const items = ref([])
 const addTagSelect = ref('產品成交 (3)')
 
@@ -15,7 +18,7 @@ function addItem() {
                 <i class="bi bi-arrow-left fs-6 py-1 "></i></button>
             <h2 class="mb-0"> 新增標籤</h2>
             <div class="ms-auto">
-                <button class="btn secondary text-light" @click="uploadTag()">上傳標籤 </button>
+                <button class="btn secondary text-light" @click="router.push({name:'PersonalTagUpload'})">上傳標籤 </button>
             </div>
         </div>
         <div class="stayonTop">

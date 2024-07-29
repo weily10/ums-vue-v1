@@ -1,6 +1,16 @@
 <script setup>
 import router from '../router';
+import { ref } from 'vue'
 
+const items = ref([{
+    no: '1',
+    tagname: '潛在投資人 (清晨活躍)',
+    comment: '閱讀時間長+清晨時段出沒+關心國際金融+35-45歲 (社會人士)+ 可以進行 EDM 行銷。',
+    createDate: '2023-12-10 18:08:51',
+    updateDate: '2023-12-10 18:08:51',
+    listNumber: 32518,
+    createAuthor: '王小明'
+}])
 
 function toMaintainAddPage() {
     router.push({ name: 'PersonalTagAdd' })
@@ -86,8 +96,74 @@ function toMaintainAddPage() {
                         </th>
                     </tr>
                 </thead>
-                <tbody id="maintain-table-body">
+                <tbody>
+                    <template v-for="(item, index) in items" :key="index">
+                        <td>
+                            {{ item.no }}
+                        </td>
+                        <td> {{ item.tagname }} </td>
+                        <td> {{ item.comment }} </td>
+                        <td> {{ item.createDate }} </td>
+                        <td> {{ item.updateDate }} </td>
+                        <td class="text-end"> {{ item.listNumber }} </td>
+                        <td class="text-center"> {{ item.createAuthor }} </td>
+                        <td >
+                            <div class="d-flex justify-content-center flex-wrap  "
+                                style="background-color: #f8f9fa;">
+                                <button class="btn-secondary m-1" @click="goTobackTrace()">首次</button>
+                                <button class="btn-secondary btn-sm m-1" @click="gotoMaintainComparePage()">比較</button>
+                                <button class="btn-secondary btn-sm m-1" @click="updateItem()">更新</button>
+                            </div>
+                        </td>
+                        <td class="custom-td">
+                            <div class="btn-group dropstart bg-transparent">
+                                <button type="button" class="bg-transparent fs-6  dropdown-toggle" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    <i class="bi bi-three-dots-vertical"></i>
+                                </button>
+                                <ul class="dropdown-menu border-0 shadow-sm">
+                                    <div>
+                                        <button class="btn w-100 d-flex gap-3 rounded-0" data-bs-toggle="modal"
+                                            data-bs-target="#editModal">
+                                            <i class="bi bi-pencil "></i> 編輯</button>
+                                    </div>
+                                    <div>
+                                        <button class=" btn  w-100 d-flex gap-3 rounded-0" data-bs-toggle="modal"
+                                            data-bs-target="#shareModal">
+                                            <i class="bi bi-share "></i>分享</button>
+                                    </div>
+                                    <div>
+                                        <button class=" btn  w-100 d-flex gap-3 rounded-0" onclick="copyItem()">
+                                            <i class="bi bi-copy "></i>複製</button>
+                                    </div>
 
+                                    <div>
+                                        <button class=" btn w-100 d-flex gap-3 rounded-0" onclick="goToSmsPage()">
+                                            <i class="bi bi-chat-left-text  "></i>簡訊</button>
+
+                                    </div>
+                                    <div>
+                                        <button class=" btn  w-100 d-flex gap-3 rounded-0" onclick="goToaddAppMarketing()">
+                                            <i class="bi bi-phone "></i> APP</button>
+                                    </div>
+                                    <div>
+                                        <button class=" btn w-100 d-flex gap-3 rounded-0" data-bs-toggle="modal"
+                                            data-bs-target="#edmModal">
+                                            <i class="bi bi-envelope  "></i> EDM</button>
+
+                                    </div>
+                                    <div>
+                                        <button class=" btn w-100 d-flex gap-3 rounded-0" type="button"
+                                            data-bs-toggle="modal" onclick="showConfirmModal(this)"
+                                            data-bs-target="#deleteModal">
+                                            <i class="bi bi-trash"></i>刪除</button>
+
+                                    </div>
+
+                                </ul>
+                            </div>
+                        </td>
+                    </template>
                 </tbody>
             </table>
             <div class="d-flex justify-content-between">
