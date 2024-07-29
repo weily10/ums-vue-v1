@@ -351,7 +351,7 @@ function removeInputs(index) {
                 </div>
                 <div class="border bg-grey p-3 rounded sub-context my-3 d-flex justify-content-center">
                     <button type="button" class="btn bg-secondary-subtle" @click="addCard()">新增下一筆
-                        <i class="icon-add"></i></button>
+                        <i class="bi bi-plus"></i></button>
                 </div>
 
             </div>

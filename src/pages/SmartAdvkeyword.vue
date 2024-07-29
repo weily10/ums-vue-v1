@@ -50,7 +50,7 @@ function goback() {
                     <i class="bi bi-arrow-left  fs-6 py-1 "></i></button>
                 <h2 class="mb-0"> 關鍵字廣告</h2>
             </div>
-            <button class="btn secondary text-light" @click="toAdKeywordAddPage()">新增 <i class="icon-add"></i></button>
+            <button class="btn secondary text-light" @click="toAdKeywordAddPage()">新增 <i class="bi bi-plus"></i></button>
         </div>
 
         <div class="bg-grey mt-3 filter p-3">

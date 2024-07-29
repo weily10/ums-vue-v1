@@ -94,7 +94,7 @@ function addItem() {
 
                     
                     <div style="min-width:6%;margin-top: 0.2rem;">
-                        <button class="btn secondary text-light" @click="addItem()">新增 <i class="icon-add"></i></button>
+                        <button class="btn secondary text-light" @click="addItem()">新增 <i class="bi bi-plus"></i></button>
                     </div>
 
                 </div>
@@ -147,7 +147,7 @@ function addItem() {
 
                                     <button id="add-item-button-`+ random + `" type="button" class="add-badge-button "
                                         @click="openAddItemModal(` + random + `)">
-                                        <span>more</span> <i class="icon-add pt-auto"></i>
+                                        <span>more</span> <i class="bi bi-plus pt-auto"></i>
                                     </button>
                                     <span class="max3message text-danger" style="display:none">最多只能加3筆!</span>
                                 </div>

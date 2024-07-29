@@ -51,7 +51,7 @@ items.value = [{
 
             <button class="btn txt-info text-light me-3" @click="gotoSechedulePage()">預約跨步電子報 </button>
             <button class="btn secondary text-light" data-bs-toggle="modal" data-bs-target="#add-enews-modal">新增 <i
-                    class="icon-add"></i></button>
+                    class="bi bi-plus"></i></button>
         </div>
     </div>
     <div class="bg-grey mt-3 filter p-3">

@@ -96,7 +96,7 @@ function toConfirmPage() {
                     </template>
                     <div class="empty-div mt-3" v-show="cards2.length < 2">
                         <button id="addAttachButton" type="button" class="btn bg-secondary-subtle" @click="addModal">新增附體
-                            <i class="icon-add"></i></button>
+                            <i class="bi bi-plus"></i></button>
                     </div>
                 </div>
             </div>

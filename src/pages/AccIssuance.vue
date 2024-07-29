@@ -31,7 +31,7 @@ function gotoUserDetail() {
             </h2>
             <div class="d-flex ms-auto ">
                 <button class="btn secondary text-light d-flex align-items-center gap-1" @click="gotoUserDetail()">新增
-                    <i class="icon-add"></i></button>
+                    <i class="bi bi-plus"></i></button>
             </div>
         </div>
         <div class="mb-2 d-flex flex-column mt-3 bg-grey p-3">
