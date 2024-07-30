@@ -1,16 +1,18 @@
 <script setup>
 import { ref } from 'vue'
+import router from '../router';
 
 const array = ref([])
 
-array.value = [{item1:'1',item2:'2',item3:'2023/10/12 17:50:53',item4:'2023/10/12 17:50:53',item5:46.753,item6:'大家不喜歡'}]
+array.value = [{ item1: '1', item2: '2', item3: '2023/10/12 17:50:53', item4: '2023/10/12 17:50:53', item5: 46.753, item6: '大家不喜歡' }]
+
 
 </script>
 <template>
     <div class="">
         <div class="d-flex align-items-center gap-1">
             <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
-                <i class="bi bi-arrow-left"></i></button>
+                <i class="bi bi-arrow-left "></i></button>
             <h2> 追蹤清單</h2>
         </div>
         <div class="bg-grey mt-3 filter p-3">
@@ -78,7 +80,7 @@ array.value = [{item1:'1',item2:'2',item3:'2023/10/12 17:50:53',item4:'2023/10/1
                         </tr>
                     </thead>
                     <tbody>
-                        <template v-for="(item,index) in array" :key="index">
+                        <template v-for="(item, index) in array" :key="index">
                             <tr>
                                 <td>{{ item.item1 }}</td>
                                 <td>{{ item.item2 }}
@@ -129,9 +131,8 @@ array.value = [{item1:'1',item2:'2',item3:'2023/10/12 17:50:53',item4:'2023/10/1
                                                 <button class=" btn  w-100 d-flex gap-3 rounded-0" @click="copyItem()">
                                                     <i class="bi bi-clipboard"></i>複製</button>
                                             </div>
-
-                                            <div>
-                                                <button class=" btn w-100 d-flex gap-3 rounded-0" @click="goToSmsPage()">
+                                             <div>
+                                                <button class=" btn w-100 d-flex gap-3 rounded-0" @click="router.push({name:'AppMarketingConfigAdd'})">
                                                     <i class="bi bi-chat-text-fill"></i>簡訊</button>
 
                                             </div>
@@ -367,7 +368,7 @@ array.value = [{item1:'1',item2:'2',item3:'2023/10/12 17:50:53',item4:'2023/10/1
                             名單追蹤數據更新中，完成後會Email告知，請耐心稍後。
                         </div>
                         <div class="modal-footer border-0">
-                            <button type="button" class="btn primary " @click="updateFollowItem()">OK</button>
+                            <button type="button" class="btn primary " data-bs-dismiss="modal">OK</button>
                         </div>
                     </div>
                 </div>

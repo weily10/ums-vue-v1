@@ -4,46 +4,11 @@ import { onMounted, ref, watchEffect, computed } from 'vue';
 
 const customRef = ref(null);
 
-const option = computed(() => ({
+const props = defineProps({
+    option: Object
+})
 
-    legend: {
-        bottom: 0,
-        left: 'center',
-
-    },
-    tooltip: {
-        trigger: 'item',
-    },
-    toolbox: {
-        show: true,
-        feature: {
-            saveAsImage: {},
-        }
-    },
-    title: {
-        text: '',
-        subtext: '',
-        left: 'center',
-    },
-    dataset: {
-        source: [
-            ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
-            ['2023年11月27日', 103010, 75000, 230654],
-            ['2023年11月28日', 810300, 730004, 230654],
-            ['2023年11月29日', 23864, 65214, 42145],
-            ['2023年11月30日', 633219, 74249, 421412],
-        ],
-    },
-    xAxis: {
-        type: 'category',
-
-    },
-    yAxis: {
-
-    },
-
-    series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
-}));
+const option = computed(() => (props.option));
 
 function initChart() {
     if (!customRef.value) return;
@@ -66,7 +31,7 @@ watchEffect(() => {
 </script>
 
 <template>
-    <div ref="customRef" class="chart-container" style="width: 100%; height: 30dvh;"></div>
+    <div ref="customRef" class="chart-container" ></div>
 </template>
 
 <style scoped>

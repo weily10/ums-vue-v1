@@ -61,7 +61,7 @@ function toConfirmPage() {
 
         <div class="d-flex align-items-center gap-1">
             <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
-                <i class="bi bi-arrow-left fs-6 py-1 "></i></button>
+                <i class="bi bi-arrow-left  fs-6 py-1 "></i></button>
             <h2 class="mb-0"> RFV條件設定</h2>
         </div>
 

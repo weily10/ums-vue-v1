@@ -1220,13 +1220,17 @@ td>a {
 }
 
 
- 
 
-.custom-td > .dropstart >.dropdown-toggle::after {
+
+.custom-td>.dropstart>.dropdown-toggle::after {
   content: none !important;
-  margin-left: 0  !important
+  margin-left: 0 !important
 }
 
-.custom-td > .dropstart > .dropdown-toggle::before {
+.custom-td>.dropstart>.dropdown-toggle::before {
   content: none !important;
+}
+
+.linechart {
+  height: 60vh
 }

@@ -23,7 +23,7 @@ function gotoUserDetail() {
         <div class="d-flex gap-1 align-items-center">
             <div class="">
                 <button class="btn rounded-circle btn-sm" type="button">
-                    <i class="bi bi-arrow-left" @click="goback()"></i></button>
+                    <i class="bi bi-arrow-left " @click="goback()"></i></button>
 
             </div>
             <h2 class="mb-0">

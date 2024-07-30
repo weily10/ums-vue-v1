@@ -545,7 +545,7 @@ data2.value = [{
         <div class="d-flex gap-1">
             <div class="">
                 <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
-                    <i class="icon-arrowback fs-6 py-1 "></i></button>
+                    <i class="bi bi-arrow-left fs-6 py-1 "></i></button>
                 <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
                     返回
                 </span>

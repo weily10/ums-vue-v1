@@ -11,7 +11,7 @@ function back(){
     <div>
         <div class="d-flex gap-2">
             <button class="btn rounded-circle btn-sm "   type="button" @click="back()">
-                <i class="bi bi-arrow-left"></i>
+                <i class="bi bi-arrow-left "></i>
             </button>
             <h2 class="mb-0"> 智慧檢索</h2>
       

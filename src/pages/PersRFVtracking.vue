@@ -13,7 +13,7 @@ function addRFV() {
         <div class="d-flex justify-content-between align-items-end">
             <div class="d-flex align-items-center gap-1">
                 <button class="btn rounded-circle btn-sm" type="button" @click="router.go(-1)">
-                    <i class="bi bi-arrow-left fs-6 py-1 "></i></button>
+                    <i class="bi bi-arrow-left  fs-6 py-1 "></i></button>
                 <h2> 個人化標籤維護 </h2>
             </div>
             <div>

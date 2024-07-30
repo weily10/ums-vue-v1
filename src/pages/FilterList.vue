@@ -162,7 +162,7 @@ function addContext2() {
     <div class="">
         <div class="d-flex align-items-center gap-1">
             <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
-                <i class="bi bi-arrow-left "></i></button>
+                <i class="bi bi-arrow-left  "></i></button>
             <h2>名單篩選</h2>
         </div>
         <div class="bg-grey mt-3 filter p-3">

@@ -17,7 +17,7 @@ function addThemeBadge() {
     <form name="theme-advertising-add-form">
         <div class="d-flex align-items-center gap-1">
             <button class="btn rounded-circle btn-sm" type="button" @click="router.go(-1)">
-                <i class="bi bi-arrow-left"></i></button>
+                <i class="bi bi-arrow-left "></i></button>
             <h2 class="mb-0">新增主題標籤</h2>
         </div>
         <div class="bg-grey p-3 mt-3">

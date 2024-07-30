@@ -48,7 +48,7 @@ function goToDetail(){
     <div class="">
         <div class="d-flex align-items-center gap-1">
             <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
-                <i class="bi bi-arrow-left fs-6 py-1 "></i></button>
+                <i class="bi bi-arrow-left  fs-6 py-1 "></i></button>
             <h2 class="mb-0"> 電子報測試寄發</h2>
         </div>
         <div class="bg-grey mt-3 filter p-3">

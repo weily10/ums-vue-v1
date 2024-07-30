@@ -16,6 +16,9 @@ function toMaintainAddPage() {
     router.push({ name: 'PersonalTagAdd' })
 }
 
+function goTobackTrace(){
+    router.push({name: 'Backtrace'})
+}
 
 </script>
 
@@ -24,7 +27,7 @@ function toMaintainAddPage() {
         <div class="d-flex justify-content-between align-items-end">
             <div class="d-flex align-items-center gap-1">
                 <button class="btn rounded-circle btn-sm" type="button" @click="router.go(-1)">
-                    <i class="bi bi-arrow-left"></i></button>
+                    <i class="bi bi-arrow-left "></i></button>
                 <h2> 個人化標籤維護 </h2>
             </div>
 
@@ -154,7 +157,7 @@ function toMaintainAddPage() {
                                     </div>
                                     <div>
                                         <button class=" btn w-100 d-flex gap-3 rounded-0" type="button"
-                                            data-bs-toggle="modal" onclick="showConfirmModal(this)"
+                                            data-bs-toggle="modal" 
                                             data-bs-target="#deleteModal">
                                             <i class="bi bi-trash"></i>刪除</button>
 
@@ -196,7 +199,7 @@ function toMaintainAddPage() {
 
             <!-- Delete Modal -->
 
-            <div class="modal fade" id="maintain-deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
+            <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false"
                 tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -209,7 +212,7 @@ function toMaintainAddPage() {
                         </div>
                         <div class="modal-footer border-0">
                             <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
-                            <button type="button" class="btn primary ">確定</button>
+                            <button type="button" class="btn primary" data-bs-dismiss="modal">確定</button>
                         </div>
                     </div>
                 </div>

@@ -31,7 +31,7 @@ import ViewArticle from '../pages/ViewArticle.vue'
 import ViewFullArticle from '../pages/ViewFullArticle.vue'
 import RFVconfirm from '../pages/RFVconfirm.vue'
 import  PersonalTagUpload from '../pages/PersonalTagUpload.vue'
-
+import Backtrace from '../pages/Backtrace.vue'
 
 
 
@@ -208,6 +208,12 @@ const routes = [
         name: "PersonalTagUpload",
         component: PersonalTagUpload
     },
+    {
+        path: "/backtrace",
+        name: "Backtrace",
+        component: Backtrace
+        
+    }
 ]
 
 

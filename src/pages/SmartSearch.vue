@@ -5,13 +5,13 @@
     <div>
         <div class="d-flex align-items-center gap-1">
             <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
-                <i class="bi bi-arrow-left"></i></button>
+                <i class="bi bi-arrow-left "></i></button>
             <h2 class="mb-0">智慧檢索</h2>
         </div>
         <div class=" bg-grey filter p-3 mt-3">
             <div>
-                <h3> 智慧檢索主題清單
-                </h3>
+                <h4> 智慧檢索主題清單
+                </h4>
                 <div class="d-flex justify-content-start align-items-bottom my-2 gap-2">
                     <div class="col">
                         <label for="input-topic-group" class="font-b4-me">主題名稱</label>
@@ -78,7 +78,7 @@
                                 <div class="d-flex justify-content-center gap-1 fs-6">
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                         <button class=" btn rounded-circle btn-sm" type="button" @click="">
-                                            <i class="icon-copy fs-6"
+                                            <i class="bi bi-copy "
                                                 style="padding-right: 2px; padding-left: 2px;"></i></button>
                                         <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
                                             style=" top: 100%;right: -50%;">
@@ -87,7 +87,7 @@
                                     </div>
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                         <button class=" btn rounded-circle btn-sm" type="button" @click="toAnalysisPage()">
-                                            <i class="icon-analysis fs-6"></i></button>
+                                            <i class="bi bi-graph-up "></i></button>
                                         <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
                                             style=" top: 100%;right: -50%;">
                                             檢視分析報告
@@ -96,7 +96,7 @@
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                         <button class=" btn rounded-circle btn-sm" type="button"
                                             @click="showConfirmModal(this)">
-                                            <i class="icon-delete fs-6"></i></button>
+                                            <i class="bi bi-trash  "></i></button>
                                         <span class="custom-tooltip-2 rounded position-absolute z-3 mt-1"
                                             style=" top: 100%;right: -50%;">
                                             刪除

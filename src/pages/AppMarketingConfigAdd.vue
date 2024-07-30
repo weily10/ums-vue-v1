@@ -5,7 +5,7 @@
     <div class="">
         <div class="d-flex align-items-center gap-1">
             <button class="btn rounded-circle btn-sm" type="button" @click="leaveSMSpage()">
-                <i class="icon-arrowback fs-6 py-1"></i></button>
+                <i class="bi bi-arrow-left fs-6 py-1"></i></button>
             <h2> APP推播基本設定
             </h2>
         </div>
@@ -17,7 +17,7 @@
                         <div class="col">
                             <label for="" class="font-b4-me"> APP_ID </label>
                             <select class="form-select " type="select" value="" id="appids-select"
-                                onchange="appidsSelect(this)">
+                                @change="appidsSelect(this)">
                                 <option value="20231101">經濟日報 APP </option>
                             </select>
                         </div>

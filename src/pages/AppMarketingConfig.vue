@@ -13,7 +13,7 @@ function toAppAddPage(){
     <div class="d-flex justify-content-between">
         <div class="d-flex align-items-center">
             <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
-                <i class="bi bi-arrow-left"></i></button>
+                <i class="bi bi-arrow-left "></i></button>
             <h2 class="mb-0"> App 行銷設定</h2>
         </div>
         <button class="btn secondary text-light" @click="toAppAddPage()">新增 <i class="bi bi-plus"></i></button>

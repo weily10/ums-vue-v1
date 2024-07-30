@@ -8,7 +8,7 @@ function goback(){
     <div>
         <div class="d-flex align-items-center gap-1">
             <button class="btn rounded-circle btn-sm" type="button">
-                <i class="icon-arrowback fs-6 py-1 " @click="goback()"></i></button>
+                <i class="bi bi-arrow-left fs-6 py-1 " @click="goback()"></i></button>
             <h2 class="mb-0"> 智慧檢索</h2>
         </div>
         <div class="bg-grey p-3 mt-3">

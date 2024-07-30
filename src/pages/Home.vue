@@ -1,9 +1,47 @@
 <script setup>
-import { watch, computed } from 'vue';
+import { ref } from 'vue';
 import customChart from '../components/Chart.vue'
 
  
+const option = ref({
+    legend: {
+        bottom: 0,
+        left: 'center',
 
+    },
+    tooltip: {
+        trigger: 'item',
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {},
+        }
+    },
+    title: {
+        text: '',
+        subtext: '',
+        left: 'center',
+    },
+    dataset: {
+        source: [
+            ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
+            ['2023年11月27日', 103010, 75000, 230654],
+            ['2023年11月28日', 810300, 730004, 230654],
+            ['2023年11月29日', 23864, 65214, 42145],
+            ['2023年11月30日', 633219, 74249, 421412],
+        ],
+    },
+    xAxis: {
+        type: 'category',
+
+    },
+    yAxis: {
+
+    },
+
+    series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+})
 
 
 </script>
@@ -163,7 +201,7 @@ import customChart from '../components/Chart.vue'
                             </div>
                             <div>
                                 <div id="daily-trend-bar-chart" class="charts" >
-                                     <custom-chart></custom-chart>
+                                     <custom-chart :option="option"></custom-chart>
                                 </div>
                             </div>
 
@@ -199,7 +237,7 @@ import customChart from '../components/Chart.vue'
                             <div>
 
                                 <div id="udn-member-points" class="charts"  >
-                                    <custom-chart></custom-chart>
+                                    <custom-chart :option="option"></custom-chart>
                                 </div>
                             </div>
 
@@ -241,7 +279,7 @@ import customChart from '../components/Chart.vue'
                         </div>
                         <div>
                             <div id="views" class="charts" >
-                                <custom-chart></custom-chart>
+                                <custom-chart :option="option"></custom-chart>
                             </div>
                         </div>
 

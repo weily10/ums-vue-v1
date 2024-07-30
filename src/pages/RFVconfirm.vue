@@ -8,7 +8,7 @@ import router from '../router/index.js'
     <div>
         <div class="d-flex align-items-center gap-1">
             <button class="btn rounded-circle btn-sm" type="button" @click="router.go(-1)">
-                <i class="bi bi-arrow-left"></i></button>
+                <i class="bi bi-arrow-left "></i></button>
             <h2 class="mb-0"> RFV條件確認</h2>
         </div>
         <div class="personal-tag-content mt-3" style="min-width: 350px;">

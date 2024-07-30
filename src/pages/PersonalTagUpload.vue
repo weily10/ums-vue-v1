@@ -5,7 +5,7 @@ import router from '../router/index'
     <div class="">
         <div class="d-flex align-items-center gap-1">
             <button class="btn rounded-circle btn-sm" type="button" @click="router.go(-1)">
-                <i class="bi bi-arrow-left"></i></button>
+                <i class="bi bi-arrow-left "></i></button>
             <h2> 上傳標籤
             </h2>
         </div>
