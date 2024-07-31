@@ -459,7 +459,7 @@ function toggleHighlight(item3) {
 								<div class="accordion-collapse collapse position-relative" data-bs-parent="#menu"
 									:id="'item' + index">
 									<div class="accordion-body group" style="padding-inline:0">
-										<div v-for="(item2, index2) in item.group" :index="index2">
+										<div v-for="(item2, index2) in item.group" :key="index2">
 
 											<div class="accordion" :id="'submenu' + index2">
 												<div class="accordion-item">
@@ -480,7 +480,7 @@ function toggleHighlight(item3) {
 															<div :id="'subbody' + index2" style="">
 																<div class="menu-accordion-item accordion-item"
 																	v-for="(item3, index3) in item2.subgroup"
-																	:index="'item' + index3">
+																	:key="'item' + index3">
 																	<div class="accordion-header py-1 ">
 																		<RouterLink :to="item3.route"
 																			style="text-decoration: none; color: inherit;">

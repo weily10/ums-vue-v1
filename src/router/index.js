@@ -30,16 +30,15 @@ import SmartAnalysisReport from '../pages/SmartAnalysisReport.vue'
 import ViewArticle from '../pages/ViewArticle.vue'
 import ViewFullArticle from '../pages/ViewFullArticle.vue'
 import RFVconfirm from '../pages/RFVconfirm.vue'
-import  PersonalTagUpload from '../pages/PersonalTagUpload.vue'
+import PersonalTagUpload from '../pages/PersonalTagUpload.vue'
 import Backtrace from '../pages/Backtrace.vue'
 import SMSMarketingConfig from '../pages/SMSMarketingConfig.vue'
-import  MarketingConfigView from '../pages/MarketingConfigView.vue'
-
-import  DailynewsTrrafficOverview from '../pages/DailynewsTrrafficOverview.vue'
-import  TransferOrderNews from '../pages/TransferOrderNews.vue'
- 
-
-
+import MarketingConfigView from '../pages/MarketingConfigView.vue'
+import DailynewsTrrafficOverview from '../pages/DailynewsTrrafficOverview.vue'
+import TransferOrderNews from '../pages/TransferOrderNews.vue'
+import MemberArrivalOverviewDay from '../pages/MemberArrivalOverviewDay.vue'
+import ListAnalysis from '../pages/ListAnalysis.vue'
+import ListAnalysisView from '../pages/ListAnalysisView.vue'
 const routes = [
     {
         path: "/",
@@ -185,7 +184,7 @@ const routes = [
         path: "/smart-analysis-report",
         name: "SmartAnalysisReport",
         component: SmartAnalysisReport
-        
+
     },
     {
         path: "/view-article",
@@ -216,32 +215,63 @@ const routes = [
         path: "/backtrace",
         name: "Backtrace",
         component: Backtrace
-        
+
     },
     {
         path: "/sms-marketing-config",
         name: "SMSMarketingConfig",
         component: SMSMarketingConfig
-        
+
     },
     {
         path: "/marketing-config-view",
         name: "MarketingConfigView",
         component: MarketingConfigView
-        
+
     },
     {
         path: "/dailynews-traffic-overview",
         name: "DailynewsTrrafficOverview",
         component: DailynewsTrrafficOverview
-        
+
     },
     {
         path: "/transfer-order-news",
         name: "TransferOrderNews",
         component: TransferOrderNews
-        
+
     },
+    {
+        path: "/member-arrival-overview-day",
+        name: "MemberArrivalOverviewDay",
+        component: MemberArrivalOverviewDay
+    },
+    {
+        path: "/member-arrival-overview-month",
+        name: "MemberArrivalOverviewMonth",
+        component: MemberArrivalOverviewDay
+
+    },
+    {
+        path: "/member-arrival-overview-week",
+        name: "MemberArrivalOverviewWeek",
+        component: MemberArrivalOverviewDay
+
+    },
+    {
+        path: "/list-analysis",
+        name: "ListAnalysis",
+        component: ListAnalysis
+
+    },
+    {
+        path: "/list-analysis-view",
+        name: "ListAnalysisView",
+        component: ListAnalysisView
+
+    }
+
+    
 
 ]
 
