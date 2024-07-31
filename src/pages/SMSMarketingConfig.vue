@@ -1,6 +1,5 @@
 <script setup>
 import { ref } from 'vue'
-import router from '../router'
 
 const items = ref([])
 
@@ -50,8 +49,7 @@ items.value = [{
         </div>
         <div>
 
-            <button class="btn txt-info text-light me-3" @click="gotoSechedulePage()">預約跨步電子報 </button>
-            <button class="btn secondary text-light" data-bs-toggle="modal" data-bs-target="#add-enews-modal">新增 <i
+             <button class="btn secondary text-light" data-bs-toggle="modal" data-bs-target="#add-enews-modal">新增 <i
                     class="bi bi-plus"></i></button>
         </div>
     </div>
@@ -168,8 +166,9 @@ items.value = [{
                             </td>
                             <td>
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle  " @click="router.push({name:'MarketingConfigView'})">
-                                        <i class="bi bi-eye-fill"></i></button>
+                                    <button class="iconbtn btn rounded-circle btn-sm " onclick="goToEletterView()"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem">
+                                        <i class="icon-view"></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                         style=" top: 100%;right: -50%;">
                                         檢視
@@ -177,10 +176,10 @@ items.value = [{
                                 </div>
 
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle  "
-                               
-                                        @click="goToemailAnalysisReport()">
-                                        <i class="bi bi-file-earmark-bar-graph"></i></button>
+                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem"
+                                        onclick="goToemailAnalysisReport()">
+                                        <i class="icon-layout fs-5"></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                         style=" top: 100%;right: -50%;">
                                         電子報發送回應分析報表
@@ -188,9 +187,9 @@ items.value = [{
                                 </div>
 
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle   "
-                                     @click="goToReviewPage()">
-                                        <i class="bi bi-clipboard-check"></i></button>
+                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem" onclick="goToReviewPage()">
+                                        <i class="icon-review fs-5"></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                         style=" top: 100%;right: -50%;">
                                         整檔/送審
@@ -198,9 +197,9 @@ items.value = [{
                                 </div>
 
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle btn-sm "
-                                       @click="">
-                                        <i class="bi bi-eye"></i></button>
+                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem" onclick="">
+                                        <i class="icon-preview fs-5"></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                         style=" top: 100%;right: -50%;">
                                         預覽
@@ -208,10 +207,10 @@ items.value = [{
                                 </div>
 
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle btn-sm  "
-                                     data-bs-toggle="modal"
+                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem" data-bs-toggle="modal"
                                         data-bs-target="#history-dialog">
-                                        <i class="bi bi-activity  "></i></button>
+                                        <i class="icon-timeline fs-5"></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                         style=" top: 100%;right: -50%;">
                                         歷程
@@ -219,9 +218,10 @@ items.value = [{
                                 </div>
 
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle   "
-                                        data-bs-target="#marketing-config-edit-dialog" data-bs-toggle="modal">
-                                        <i class="bi bi-pencil "></i></button>
+                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
+                                        data-bs-target="#marketing-config-edit-dialog" data-bs-toggle="modal"
+                                        style="padding-left:0.4rem ;padding-right:0.4rem">
+                                        <i class="icon-edit fs-5"></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                         style=" top: 100%;right: -50%;">
                                         編輯
@@ -231,10 +231,10 @@ items.value = [{
 
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                     <button class="iconbtn btn rounded-circle btn-sm py-0"
-                                 
+                                        style="padding-left:0.4rem ;padding-right:0.4rem"
                                         data-bs-target="#marketing-config-deleteModal" data-bs-toggle="modal"
-                                        @click="getMarketingConfigID(this)">
-                                        <i class="bi bi-trash "></i></button>
+                                        onclick="getMarketingConfigID(this)">
+                                        <i class="icon-delete fs-5"></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                         style=" top: 100%;right: -50%;">
                                         刪除

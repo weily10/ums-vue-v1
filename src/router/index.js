@@ -32,8 +32,12 @@ import ViewFullArticle from '../pages/ViewFullArticle.vue'
 import RFVconfirm from '../pages/RFVconfirm.vue'
 import  PersonalTagUpload from '../pages/PersonalTagUpload.vue'
 import Backtrace from '../pages/Backtrace.vue'
+import SMSMarketingConfig from '../pages/SMSMarketingConfig.vue'
+import  MarketingConfigView from '../pages/MarketingConfigView.vue'
 
-
+import  DailynewsTrrafficOverview from '../pages/DailynewsTrrafficOverview.vue'
+import  TransferOrderNews from '../pages/TransferOrderNews.vue'
+ 
 
 
 const routes = [
@@ -64,7 +68,7 @@ const routes = [
     },
     {
         path: "/add",
-        name: "add-theme",
+        name: "AddTheme",
         component: AddTheme,
     },
     {
@@ -213,7 +217,36 @@ const routes = [
         name: "Backtrace",
         component: Backtrace
         
-    }
+    },
+    {
+        path: "/sms-marketing-config",
+        name: "SMSMarketingConfig",
+        component: SMSMarketingConfig
+        
+    },
+    {
+        path: "/marketing-config-view",
+        name: "MarketingConfigView",
+        component: MarketingConfigView
+        
+    },
+    {
+        path: "/dailynews-traffic-overview",
+        name: "DailynewsTrrafficOverview",
+        component: DailynewsTrrafficOverview
+        
+    },
+    {
+        path: "/transfer-order-news",
+        name: "TransferOrderNews",
+        component: TransferOrderNews
+        
+    },
+
+    
+    
+    
+    
 ]
 
 

@@ -101,13 +101,18 @@ function removeInputs(index) {
     inputs.value.splice(index, 1)
 }
 
+
+function smartSearchsendSearchAdKeywordEdit(){
+    
+}
+
 </script>
 
 <template>
     <div class="">
         <form name="smarSearchForm">
             <div class="d-flex align-items-center gap-1">
-                <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
+                <button class="btn rounded-circle btn-sm" type="button" @click="router.go(-1)">
                     <i class="bi bi-arrow-left "></i></button>
                 <h2 class="mb-0">新增策展主題
                 </h2>

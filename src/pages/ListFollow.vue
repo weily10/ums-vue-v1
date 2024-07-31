@@ -93,8 +93,8 @@ array.value = [{ item1: '1', item2: '2', item3: '2023/10/12 17:50:53', item4: '2
                                 <td class="list-data" id="list-data">
 
                                     <div class="d-flex justify-content-center flex-wrap">
-                                        <button class="btn-secondary m-1" @click="goTobackTrace()">回溯</button>
-                                        <button class="btn-secondary btn-sm m-1" @click="goToComparePage()">比較</button>
+                                        <button class="btn-secondary m-1" @click="router.push({name:'Backtrace'})">回溯</button>
+                                        <button class="btn-secondary btn-sm m-1" @click="router.push({name:'Backtrace'})">比較</button>
                                         <button class="btn-secondary btn-sm m-1" data-bs-toggle="modal"
                                             data-bs-target="#confirmUpdateModal">更新</button>
 

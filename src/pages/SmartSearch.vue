@@ -1,5 +1,5 @@
 <script setup>
- 
+ import router from '../router'
 </script>
 <template>
     <div>
@@ -77,7 +77,7 @@
                             <td class="text-center">
                                 <div class="d-flex justify-content-center gap-1 fs-6">
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                        <button class=" btn rounded-circle btn-sm" type="button" @click="">
+                                        <button class=" btn rounded-circle btn-sm" type="button" @click="router.push({name:'AddTheme'})">
                                             <i class="bi bi-copy "
                                                 style="padding-right: 2px; padding-left: 2px;"></i></button>
                                         <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
@@ -86,7 +86,7 @@
                                         </span>
                                     </div>
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                        <button class=" btn rounded-circle btn-sm" type="button" @click="toAnalysisPage()">
+                                        <button class=" btn rounded-circle btn-sm" type="button" @click="router.push({name:'MatchmakingAnalysis'})">
                                             <i class="bi bi-graph-up "></i></button>
                                         <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
                                             style=" top: 100%;right: -50%;">

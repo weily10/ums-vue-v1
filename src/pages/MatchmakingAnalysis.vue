@@ -2,7 +2,7 @@
 import router from '../router';
 
 
-function back(){
+function back() {
     router.go(-1)
 }
 
@@ -10,11 +10,11 @@ function back(){
 <template>
     <div>
         <div class="d-flex gap-2">
-            <button class="btn rounded-circle btn-sm "   type="button" @click="back()">
+            <button class="btn rounded-circle btn-sm " type="button" @click="back()">
                 <i class="bi bi-arrow-left "></i>
             </button>
             <h2 class="mb-0"> 智慧檢索</h2>
-      
+
         </div>
         <div class="bg-grey mt-3 p-3">
             <div class="d-flex justify-content-between p-0 border-bottom">
@@ -79,7 +79,7 @@ function back(){
                             <td class="text-end">12</td>
                             <td class="text-end">20200</td>
                             <td class="text-center">
-                                <button class="btn primary btn-sm" @click="viewArticle()">檢視文章</button>
+                                <button class="btn primary btn-sm" @click="router.push({ name: 'ViewArticle' })">檢視文章</button>
                             </td>
                             <td class="text-start">標籤名稱</td>
                             <td class="text-center"><span class="badge primary"> 依文章標題</span></td>

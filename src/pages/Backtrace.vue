@@ -222,7 +222,7 @@ const linechart = ref({
                     </div>
 
                     <div class="row mt-3">
-                        <div class="hoverDiv col">
+                        <div class="col">
                             <div class="linechart card shadow-sm mb-3  border-0">
                                 <div id="memberdata-linechart" class="card-body ">
                                     <custom-chart :option="linechart"></custom-chart>
@@ -232,7 +232,7 @@ const linechart = ref({
                         </div>
                     </div>
                     <div class="d-flex flex-wrap column-gap-3 ">
-                        <div class="hoverDiv flex-fill">
+                        <div class="flex-fill">
                             <div class="card shadow-sm mb-3 border-0 ">
                                 <div id="memberdata-barchart-1" class="barchart card-body pt-0 px-2 pb-0  "
                                     style="width:75vh; height: 386px;">
@@ -241,7 +241,7 @@ const linechart = ref({
 
                             </div>
                         </div>
-                        <div class="hoverDiv flex-fill">
+                        <div class="flex-fill">
                             <div class="card shadow-sm mb-3 border-0 ">
                                 <div id="memberdata-barchart-2" class="barchart card-body pt-0 px-2 pb-0  "
                                     style="width: 75vh; height: 386px;">
@@ -249,11 +249,9 @@ const linechart = ref({
                                 </div>
                             </div>
                         </div>
-
-
                     </div>
-                    <div class="mt-2">
-                        <div class="d-flex justify-content-between align-items-bottom">
+                    <div class="mt-2 card border-0 shadow-sm">
+                        <div class="d-flex justify-content-between align-items-bottom ">
                             <div class="d-flex gap-1">
                                 <h3 class="col-4 ">會員資訊</h3>
                                 <div class="col-9">
