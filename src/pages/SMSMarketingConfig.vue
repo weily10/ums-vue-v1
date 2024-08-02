@@ -132,7 +132,7 @@ items.value = [{
                         </th>
                         <th scope="col" class="text-end align-text-top">預計發送數量
                         </th>
-                        <th scope="col" class="text-start align-text-top">名單整檔
+                        <th scope="col" class="text-center align-text-top">名單整檔
                         </th>
                         <th scope="col" class="text-center align-text-top">素材上傳
                         </th>
@@ -156,13 +156,13 @@ items.value = [{
                             <td>
                                 {{ item.createdPerson.text }}
                             </td>
-                            <td>
+                            <td class="text-end">
                                 {{ item.estimateSendQtd.text }}
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <span class="badge txt-success"> Y</span>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <span class="badge txt-success"> Y</span>
                             </td>
                             <td class="custom-td text-center">
@@ -173,7 +173,7 @@ items.value = [{
                                     </button>
                                     <ul class="dropdown-menu border-0 shadow-sm">
                                         <div>
-                                            <button class="btn  w-100 d-flex gap-3 rounded-0 " @click="goToEletterView()">
+                                            <button class="btn  w-100 d-flex gap-3 rounded-0 " @click="router.push({name:'MarketingConfigView'})">
                                                 <i class="bi bi-eye-fill"></i>檢視</button>
                                         </div>
                                         <div>

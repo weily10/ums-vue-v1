@@ -110,7 +110,43 @@ function toAppAddPage(){
                     </tr>
                 </thead>
                 <tbody id="app-marketing-settings-tbody">
-
+                    <tr><td class="text-start" onclick="">1</td><td class="text-start" onclick="">7601391</td><td class="text-start" onclick="">finalt...	</td><td class="text-center" onclick=""><span class="badge txt-success">正式</span></td><td class="text-center" onclick="">2023/12/14 13:29</td><td class="text-center" onclick="">2023/12/14 (周冠廷)</td><td class="text-center" onclick="">2023/12/14 (周冠廷)</td><td class="text-center" onclick="">2023/12/14 (周冠廷)</td><td class="text-center" onclick=""><span class="badge txt-info">排序中 </span></td><td class="text-center" onclick=""><div id="app-config-tablebtns-section" class="d-flex align-items-center justify-content-center">
+<div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+    <button class="iconbtn btn rounded-circle btn-sm  d-flex justify-content-center align-items-center" style="width:28px;height: 28px" onclick="gotoReviewDisplayPage()">
+        <i class="icon-view"></i></button>
+    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
+    檢視
+    </span>
+</div>
+<div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+<button class="iconbtn btn rounded-circle btn-sm d-flex justify-content-center align-items-center" onclick="goToOvwAnalysisPage()" style="width:28px;height: 28px">
+    <i class="icon-analysis fs-6"></i></button>
+<span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1 " style=" top: 100%;right: -50%;">
+    回應分析
+</span>
+</div>
+<div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+    <button class="iconbtn btn rounded-circle btn-sm d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#app-config-preview-dialog" style="width:28px;height: 28px">
+        <i class="icon-preview fs-5"></i></button>
+    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
+        預覽
+    </span>
+</div>
+<div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+    <button class="iconbtn btn rounded-circle btn-sm d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#history-dialog" style="width:28px;height: 28px">
+        <i class="icon-timeline fs-5"></i></button>
+    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
+        歷程
+    </span>
+</div>
+<div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+    <button class="iconbtn btn rounded-circle btn-sm d-flex justify-content-center align-items-center" data-bs-toggle="modal" data-bs-target="#app-config-delete-dialog" style="width:28px;height: 28px">
+        <i class="icon-delete fs-5"></i></button>
+    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
+        刪除
+    </span>
+</div>
+    </div></td></tr>
                 </tbody>
             </table>
             <div class="d-flex justify-content-between">

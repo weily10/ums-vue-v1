@@ -41,8 +41,9 @@ import ListAnalysis from '../pages/ListAnalysis.vue'
 import ListAnalysisView from '../pages/ListAnalysisView.vue'
 import SpecificListAnalysis from '../pages/SpecificListAnalysis.vue'
 import MarketingEmailResponseAnalysisReport from '../pages/MarketingEmailResponseAnalysisReport.vue'
-
-
+import AppMarketingReview from '../pages/AppMarketingReview.vue'
+import MarketingSenderConfig from '../pages/MarketingSenderConfig.vue'
+ 
 
 
 const routes = [
@@ -287,14 +288,23 @@ const routes = [
         name: "MarketingEmailResponseAnalysisReport",
         component: MarketingEmailResponseAnalysisReport
 
+    },
+    {
+        path: "/sms-marketing-review",
+        name: "SMSMarketingReview",
+        component: MarketingReview
+    },
+    {
+        path: "/app-marketing-review",
+        name: "AppMarketingReview",
+        component: AppMarketingReview
+    },
+    {
+        path: "/marketing-sender-config",
+        name: "MarketingSenderConfig",
+        component: MarketingSenderConfig
     }
-
-
     
-    
-
-    
-
 ]
 
 

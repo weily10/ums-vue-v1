@@ -1,11 +1,12 @@
 <script setup>
+import router from '../router';
 
 </script>
 
 <template>
     <div class="">
         <div class="d-flex align-items-center gap-1">
-            <button class="btn rounded-circle btn-sm" type="button" onclick="goback()">
+            <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
                 <i class="bi bi-arrow-left  fs-6 py-1 "></i></button>
             <h2 class="mb-0">電子報審核</h2>
         </div>
@@ -55,7 +56,7 @@
                     </div>
 
                     <div class="ms-auto list-icon position-relative d-inline-block fw-semibold  hover-label">
-                        <button class="btn primary" type="button" onclick="">
+                        <button class="btn primary" type="button" @click="">
                             查詢
                         </button>
                         <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
@@ -87,7 +88,53 @@
                         </tr>
                     </thead>
                     <tbody id="eletter-review-detail-tbody">
-
+                        <tr>
+                            <td class="text-center">2023/10/26</td>
+                            <td class="text-start">1</td>
+                            <td class="text-start">電子報名稱</td>
+                            <td class="text-end">2</td>
+                            <td class="text-center">2023/10/03 14:00:41</td>
+                            <td class="text-start">
+                                <div id="marketing-review-tablebtns-section"
+                                    class="d-flex align-items-center justify-content-center gap-2">
+                                    <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                        <button class="iconbtn btn rounded-circle "
+                                            @click="router.push({name:'MarketingConfigView'})">
+                                            <i class="bi bi-eye-fill"></i></button>
+                                        <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                            style=" top: 100%;right: -50%;">
+                                            檢視
+                                        </span>
+                                    </div>
+                                    <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                        <button
+                                            class="iconbtn btn rounded-circle  d-flex justify-content-center align-items-center"
+                                            @click=""  >
+                                            <i class="bi bi-eye"></i></button>
+                                        <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                            style=" top: 100%;right: -50%;">
+                                            預覽
+                                        </span>
+                                    </div>
+                                    <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                        <button class="iconbtn btn rounded-circle "
+                                             data-bs-toggle="modal"
+                                            data-bs-target="#marketing-review-approve-modal">
+                                            <i class="bi bi-check-circle"></i></button>
+                                        <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                            style=" top: 100%;right: -50%;">核可</span>
+                                    </div>
+                                    <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                        <button class="iconbtn btn rounded-circle btn-sm" style="" data-bs-toggle="modal"
+                                            data-bs-target="#marketing-review-reject-modal">
+                                            <i class="bi bi-arrow-return-left"></i></button>
+                                        <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
+                                            style=" top: 100%;right: -50%;">推件
+                                        </span>
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-between">
@@ -164,7 +211,7 @@
                     </div>
                     <div class="modal-footer border-0">
                         <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn primary" onclick="reviewRejectSuccess()">確定</button>
+                        <button type="button" class="btn primary" @click="reviewRejectSuccess()">確定</button>
                     </div>
                 </div>
             </div>
@@ -182,7 +229,7 @@
                     </div>
                     <div class="modal-footer border-0">
                         <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn primary" onclick="marketingReviewApprove()">確定</button>
+                        <button type="button" class="btn primary" @click="marketingReviewApprove()">確定</button>
                     </div>
                 </div>
             </div>
