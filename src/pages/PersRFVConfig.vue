@@ -22,12 +22,10 @@ function addModal(e) {
 
 
 function addRFV(e) {
-    console.log(activeId.value);
-
+ 
     const newdays = { days: rdays.value }
     activeId.value === 'addMainButton' ? cards.value.push({ days: rdays }) : cards2.value.push({ ...newdays })
-    console.log(cards2.value);
-    addItemModalMain.value.hide()
+     addItemModalMain.value.hide()
 
 }
 
@@ -43,8 +41,7 @@ function deleteItem(e) {
 
 
 function deleteOthers(index) {
-    console.log(index)
-    cards2.value.splice(index, 1)
+     cards2.value.splice(index, 1)
 
 }
 function toConfirmPage() {

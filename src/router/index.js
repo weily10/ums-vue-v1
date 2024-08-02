@@ -39,6 +39,12 @@ import TransferOrderNews from '../pages/TransferOrderNews.vue'
 import MemberArrivalOverviewDay from '../pages/MemberArrivalOverviewDay.vue'
 import ListAnalysis from '../pages/ListAnalysis.vue'
 import ListAnalysisView from '../pages/ListAnalysisView.vue'
+import SpecificListAnalysis from '../pages/SpecificListAnalysis.vue'
+import MarketingEmailResponseAnalysisReport from '../pages/MarketingEmailResponseAnalysisReport.vue'
+
+
+
+
 const routes = [
     {
         path: "/",
@@ -269,7 +275,23 @@ const routes = [
         name: "ListAnalysisView",
         component: ListAnalysisView
 
+    },
+    {
+        path: "/specific-list-analysis",
+        name: "SpecificListAnalysis",
+        component: SpecificListAnalysis
+
+    },
+    {
+        path: "/marketing-email-response-analysis-report",
+        name: "MarketingEmailResponseAnalysisReport",
+        component: MarketingEmailResponseAnalysisReport
+
     }
+
+
+    
+    
 
     
 

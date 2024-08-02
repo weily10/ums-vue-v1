@@ -25,8 +25,7 @@ function addCard() {
     cards.value.push({
         theme: keywordTextBox, badges: ['依文章標題']
     })
-    console.log(cards);
-    addNewCard.value.hide()
+     addNewCard.value.hide()
 }
 
 

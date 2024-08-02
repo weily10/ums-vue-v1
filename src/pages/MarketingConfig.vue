@@ -168,7 +168,8 @@ items.value = [{
                             </td>
                             <td>
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle  " @click="router.push({name:'MarketingConfigView'})">
+                                    <button class="iconbtn btn rounded-circle  "
+                                        @click="router.push({ name: 'MarketingConfigView' })">
                                         <i class="bi bi-eye-fill"></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                         style=" top: 100%;right: -50%;">
@@ -178,8 +179,7 @@ items.value = [{
 
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                     <button class="iconbtn btn rounded-circle  "
-                               
-                                        @click="goToemailAnalysisReport()">
+                                        @click="router.push({ name: 'MarketingEmailResponseAnalysisReport' })">
                                         <i class="bi bi-file-earmark-bar-graph"></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                         style=" top: 100%;right: -50%;">
@@ -188,8 +188,7 @@ items.value = [{
                                 </div>
 
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle   "
-                                     @click="goToReviewPage()">
+                                    <button class="iconbtn btn rounded-circle   " @click="goToReviewPage()">
                                         <i class="bi bi-clipboard-check"></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                         style=" top: 100%;right: -50%;">
@@ -198,8 +197,7 @@ items.value = [{
                                 </div>
 
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle btn-sm "
-                                       @click="">
+                                    <button class="iconbtn btn rounded-circle btn-sm " @click="">
                                         <i class="bi bi-eye"></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
                                         style=" top: 100%;right: -50%;">
@@ -208,8 +206,7 @@ items.value = [{
                                 </div>
 
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle btn-sm  "
-                                     data-bs-toggle="modal"
+                                    <button class="iconbtn btn rounded-circle btn-sm  " data-bs-toggle="modal"
                                         data-bs-target="#history-dialog">
                                         <i class="bi bi-activity  "></i></button>
                                     <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
@@ -231,7 +228,6 @@ items.value = [{
 
                                 <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                     <button class="iconbtn btn rounded-circle btn-sm py-0"
-                                 
                                         data-bs-target="#marketing-config-deleteModal" data-bs-toggle="modal"
                                         @click="getMarketingConfigID(this)">
                                         <i class="bi bi-trash "></i></button>
@@ -523,5 +519,6 @@ items.value = [{
                     <button type="button" class="btn primary" @click="confirmDeleteEnews()">確定</button>
                 </div>
             </div>
+        </div>
     </div>
-</div></template>
+</template>

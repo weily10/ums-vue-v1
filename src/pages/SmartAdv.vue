@@ -198,8 +198,8 @@ function viewAnalysisReport(){
                                             </span>
                                         </div>
                                         <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                            <button class="iconbtn btn rounded-circle btn-sm" type="button"
-                                                @click="showConfirmModal(this)">
+                                            <button class="iconbtn btn rounded-circle btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+>
                                                 <i class="bi bi-trash fs-6"></i></button>
                                             <span class="custom-tooltip-2 rounded position-absolute z-3 mt-1"
                                                 style=" top: 100%;right: -50%;">

@@ -1,5 +1,68 @@
 <script setup>
 import router from '../router';
+import customChart from '../components/Chart.vue'
+import { ref } from 'vue'
+
+
+const option = ref({
+    title: {
+        text: '碳費困境 ',
+        subtext: '填寫總人數: 4492',
+        left: 'center',
+        top: '1%'
+    },
+    tooltip: {
+        trigger: 'item',
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {},
+        }
+    },
+    legend: {
+        bottom: '10%',
+        left: 'center'
+    },
+    series: [
+        {
+            top: '1%',
+            name: '合計',
+            type: 'pie',
+            radius: ['42%', '52%'],
+            avoidLabelOverlap: true,
+            label: {
+                show: false,
+                position: 'center'
+            },
+            emphasis: {
+                label: {
+                    show: true,
+                    fontSize: 10,
+                    fontWeight: 'bold'
+                }
+            },
+            labelLine: {
+                show: false
+            },
+            data: [
+                {
+                    name: "未填寫",
+                    value: 8120
+                },
+                {
+                    name: "男",
+                    value: 3392
+                },
+                {
+                    name: "女",
+                    value: 1101
+                }
+            ],
+        }
+    ]
+})
+
 </script>
 <template>
     <div>
@@ -89,79 +152,181 @@ import router from '../router';
                                 aria-controls="collapseOne">
                                 2023-10-12
                             </button>
-                          
+
                         </h4>
                         <div id="list-analysis-demographics" class="accordion-collapse collapse show"
-                        data-bs-parent="#demographics-data-section">
-                        <div class=" d-flex gap-3 mt-3">
-                            <div class="shadow-sm p-4 w-100 text-center bg-white">
-                                <h4>
-                                    碳費困境會員數
-                                </h4>
-                                <h1 class="mt-2">
-                                    8,678
-                                </h1>
+                            data-bs-parent="#demographics-data-section">
+                            <div class=" d-flex gap-3 mt-3">
+                                <div class="shadow-sm p-4 w-100 text-center bg-white">
+                                    <h4>
+                                        碳費困境會員數
+                                    </h4>
+                                    <h1 class="mt-2">
+                                        8,678
+                                    </h1>
+                                </div>
+                                <div class=" card p-4  border-0 shadow-sm p-3 w-100 text-center">
+                                    <h4>
+                                        報系整體會員數(排除碳費困境)
+                                    </h4>
+                                    <h1 class="mt-2">
+                                        7,352,564
+                                    </h1>
+                                </div>
                             </div>
-                            <div class=" card p-4  border-0 shadow-sm p-3 w-100 text-center">
-                                <h4>
-                                    報系整體會員數(排除碳費困境)
-                                </h4>
-                                <h1 class="mt-2">
-                                    7,352,564
-                                </h1>
-                            </div>
-                        </div>
-                        <div class="d-flex flex-wrap gap-3 mt-3">
-                            <div class="flex-fill card border-0 shadow-sm p-3" style="width: 30vh">
+                            <div class="d-flex flex-wrap gap-3 mt-3">
+                                <div class="flex-fill card border-0 shadow-sm p-3" style="width: 30vh">
 
-                                <div id="subject-gender-piechart" class="pie-charts" style="width: 100%; height:420px;">
+                                    <div id="subject-gender-piechart" class="pie-charts" style="width: 100%; height:420px;">
+                                        <custom-chart :option="option"></custom-chart>
+                                    </div>
+                                </div>
+                                <div class="flex-fill  border-0 card shadow-sm" style="width: 70vh">
+                                    <h4 class="text-center">
+                                        有填寫總人數
+                                    </h4>
+                                    <div class="d-flex gap-3 border-bottom mt-2">
+                                        <div class=" w-100 text-center">
+                                            <div class="font-b4-me">
+                                                碳費困境
+                                            </div>
+                                            <h1>
+                                                10,879
+                                            </h1>
+                                        </div>
+                                        <div class="border-0 w-100 text-center">
+                                            <div class="font-b4-me">
+                                                報系整體(排除永續發展)
+                                            </div>
+                                            <h1>
+                                                4,253,602
+                                            </h1>
+                                        </div>
+                                    </div>
+                                    <div class="d-flex mt-3  h-100 ">
+                                        <table class="table table-striped table-borderless mt-3">
+                                            <thead>
+                                                <tr>
+                                                    <th class="col-4"></th>
+                                                    <th scope="col" class="text-end align-text-top">男 </th>
+                                                    <th scope="col" class="text-end align-text-top">女 </th>
+                                                    <th scope="col" class="text-end align-text-top">有填寫總人數</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="list-analysis-sex-table">
+
+                                            </tbody>
+                                        </table>
+
+                                    </div>
 
                                 </div>
                             </div>
-                            <div class="flex-fill  border-0 card shadow-sm" style="width: 70vh">
-                                <h4 class="text-center">
-                                    有填寫總人數
-                                </h4>
-                                <div class="d-flex gap-3 border-bottom mt-2">
-                                    <div class=" w-100 text-center">
-                                        <div class="font-b4-me">
-                                            碳費困境
+                            <!-- 年齡 -->
+                            <div class="d-flex flex-wrap gap-3 mt-3 ">
+                                <div class="flex-fill  border-0 card shadow-sm">
+                                    <h4 class="text-center">
+                                        有填寫總人數
+                                    </h4>
+                                    <div class="d-flex gap-3 border-bottom mt-2">
+                                        <div class=" w-100 text-center">
+                                            <div class="font-b4-me">
+                                                碳費困境
+                                            </div>
+                                            <h1>
+                                                4,043
+                                            </h1>
                                         </div>
-                                        <h1>
-                                            10,879
-                                        </h1>
-                                    </div>
-                                    <div class="border-0 w-100 text-center">
-                                        <div class="font-b4-me">
-                                            報系整體(排除永續發展)
+                                        <div class="border-0 w-100 text-center">
+                                            <div class="font-b4-me">
+                                                報系整體(排除永續發展)
+                                            </div>
+                                            <h1>
+                                                4,088,691
+                                            </h1>
                                         </div>
-                                        <h1>
-                                            4,253,602
-                                        </h1>
                                     </div>
-                                </div>
-                                <div class="d-flex mt-3  h-100 ">
-                                    <table class="table table-striped table-borderless mt-3">
+                                    <table class="table table-striped table-borderless h-100 mt-3">
                                         <thead>
                                             <tr>
-                                                <th class="col-4"></th>
-                                                <th scope="col" class="text-end align-text-top">男 </th>
-                                                <th scope="col" class="text-end align-text-top">女 </th>
-                                                <th scope="col" class="text-end align-text-top">有填寫總人數</th>
+                                                <th scope="col" class="text-start align-text-top">年齡 </th>
+                                                <th scope="col" class="text-end align-text-top">碳費困境 </th>
+                                                <th scope="col" class="text-end align-text-top">碳費困境比例 </th>
+                                                <th scope="col" class="text-end align-text-top">報系整體 <br>(排除碳費困境) </th>
+                                                <th scope="col" class="text-end align-text-top">報系整體比例 <br>(排除碳費困境)</th>
+                                                <th scope="col" class="text-end align-text-top">差異率</th>
+                                                <th scope="col" class="text-end align-text-top">TGI</th>
                                             </tr>
                                         </thead>
-                                        <tbody id="list-analysis-sex-table">
-
+                                        <tbody>
+                                            <tr>
+                                                <td class="text-start">14歲或以下</td>
+                                                <td class="text-end">8
+                                                </td>
+                                                <td class="text-end">0.2%</td>
+                                                <td class="text-end">14,704</td>
+                                                <td class="text-end">0.3%</td>
+                                                <td class="text-end">-43%</td>
+                                                <td class="text-end">57.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-start">15歲-24歲</td>
+                                                <td class="text-end">8
+                                                </td>
+                                                <td class="text-end">0.2%</td>
+                                                <td class="text-end">14,704</td>
+                                                <td class="text-end">0.3%</td>
+                                                <td class="text-end">-43%</td>
+                                                <td class="text-end">57.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-start">25歲-34歲</td>
+                                                <td class="text-end">8
+                                                </td>
+                                                <td class="text-end">0.2%</td>
+                                                <td class="text-end">14,704</td>
+                                                <td class="text-end">0.3%</td>
+                                                <td class="text-end">-43%</td>
+                                                <td class="text-end">57.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-start">45歲-54歲</td>
+                                                <td class="text-end">8
+                                                </td>
+                                                <td class="text-end">0.2%</td>
+                                                <td class="text-end">14,704</td>
+                                                <td class="text-end">0.3%</td>
+                                                <td class="text-end">-43%</td>
+                                                <td class="text-end">57.2</td>
+                                            </tr>
+                                            <tr>
+                                                <td class="text-start">55歲或以上</td>
+                                                <td class="text-end">8
+                                                </td>
+                                                <td class="text-end">0.2%</td>
+                                                <td class="text-end">14,704</td>
+                                                <td class="text-end">0.3%</td>
+                                                <td class="text-end">-43%</td>
+                                                <td class="text-end">57.2</td>
+                                            </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                                <div class="flex-fill  card shadow-sm   border-0 p-3 " style="width: 50vh">
+                                    <div id="subject-age-piechart" class=" pie-charts" style="width: 100%; height: 420px;">
+                                        <custom-chart :option="option"></custom-chart>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- 區域 -->
+                            <div class="hoverDiv flex-fill card border-0 shadow-sm  mt-3">
 
+                                <div id="subject-region-piechart" class="pie-charts" style="width: 100%; height: 420px;">
+                                    <custom-chart :option="option"></custom-chart>
                                 </div>
 
                             </div>
-                        </div>
-                        <!-- 年齡 -->
-                        <div class="d-flex flex-wrap gap-3 mt-3 ">
-                            <div class="flex-fill  border-0 card shadow-sm">
+                            <div class="flex-fill  border-0 card shadow-sm mt-3">
                                 <h4 class="text-center">
                                     有填寫總人數
                                 </h4>
@@ -179,14 +344,14 @@ import router from '../router';
                                             報系整體(排除永續發展)
                                         </div>
                                         <h1>
-                                            4,088,691
+                                            3,987,158
                                         </h1>
                                     </div>
                                 </div>
                                 <table class="table table-striped table-borderless h-100 mt-3">
                                     <thead>
                                         <tr>
-                                            <th scope="col" class="text-start align-text-top">年齡 </th>
+                                            <th scope="col" class="text-start align-text-top">區域 </th>
                                             <th scope="col" class="text-end align-text-top">碳費困境 </th>
                                             <th scope="col" class="text-end align-text-top">碳費困境比例 </th>
                                             <th scope="col" class="text-end align-text-top">報系整體 <br>(排除碳費困境) </th>
@@ -197,7 +362,17 @@ import router from '../router';
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <td class="text-start">14歲或以下</td>
+                                            <td class="text-start">台北市</td>
+                                            <td class="text-end">1,339
+                                            </td>
+                                            <td class="text-end">33.2%</td>
+                                            <td class="text-end">950,963</td>
+                                            <td class="text-end">23.9%</td>
+                                            <td class="text-end">-43%</td>
+                                            <td class="text-end">57.2</td>
+                                        </tr>
+                                        <tr>
+                                            <td class="text-start">新北市 </td>
                                             <td class="text-end">8
                                             </td>
                                             <td class="text-end">0.2%</td>
@@ -207,7 +382,7 @@ import router from '../router';
                                             <td class="text-end">57.2</td>
                                         </tr>
                                         <tr>
-                                            <td class="text-start">15歲-24歲</td>
+                                            <td class="text-start">台中市</td>
                                             <td class="text-end">8
                                             </td>
                                             <td class="text-end">0.2%</td>
@@ -217,7 +392,7 @@ import router from '../router';
                                             <td class="text-end">57.2</td>
                                         </tr>
                                         <tr>
-                                            <td class="text-start">25歲-34歲</td>
+                                            <td class="text-start">高雄市</td>
                                             <td class="text-end">8
                                             </td>
                                             <td class="text-end">0.2%</td>
@@ -227,17 +402,7 @@ import router from '../router';
                                             <td class="text-end">57.2</td>
                                         </tr>
                                         <tr>
-                                            <td class="text-start">45歲-54歲</td>
-                                            <td class="text-end">8
-                                            </td>
-                                            <td class="text-end">0.2%</td>
-                                            <td class="text-end">14,704</td>
-                                            <td class="text-end">0.3%</td>
-                                            <td class="text-end">-43%</td>
-                                            <td class="text-end">57.2</td>
-                                        </tr>
-                                        <tr>
-                                            <td class="text-start">55歲或以上</td>
+                                            <td class="text-start">桃園市</td>
                                             <td class="text-end">8
                                             </td>
                                             <td class="text-end">0.2%</td>
@@ -249,108 +414,9 @@ import router from '../router';
                                     </tbody>
                                 </table>
                             </div>
-                            <div class="flex-fill  card shadow-sm   border-0 p-3 " style="width: 50vh">
-                                <div id="subject-age-piechart" class=" pie-charts" style="width: 100%; height: 420px;">
-                                </div>
-                            </div>
-                        </div>
-                        <!-- 區域 -->
-                        <div class="hoverDiv flex-fill card border-0 shadow-sm  mt-3">
-
-                            <div id="subject-region-piechart" class="pie-charts" style="width: 100%; height: 420px;"></div>
-
-                        </div>
-                        <div class="flex-fill  border-0 card shadow-sm mt-3">
-                            <h4 class="text-center">
-                                有填寫總人數
-                            </h4>
-                            <div class="d-flex gap-3 border-bottom mt-2">
-                                <div class=" w-100 text-center">
-                                    <div class="font-b4-me">
-                                        碳費困境
-                                    </div>
-                                    <h1>
-                                        4,043
-                                    </h1>
-                                </div>
-                                <div class="border-0 w-100 text-center">
-                                    <div class="font-b4-me">
-                                        報系整體(排除永續發展)
-                                    </div>
-                                    <h1>
-                                        3,987,158
-                                    </h1>
-                                </div>
-                            </div>
-                            <table class="table table-striped table-borderless h-100 mt-3">
-                                <thead>
-                                    <tr>
-                                        <th scope="col" class="text-start align-text-top">區域 </th>
-                                        <th scope="col" class="text-end align-text-top">碳費困境 </th>
-                                        <th scope="col" class="text-end align-text-top">碳費困境比例 </th>
-                                        <th scope="col" class="text-end align-text-top">報系整體 <br>(排除碳費困境) </th>
-                                        <th scope="col" class="text-end align-text-top">報系整體比例 <br>(排除碳費困境)</th>
-                                        <th scope="col" class="text-end align-text-top">差異率</th>
-                                        <th scope="col" class="text-end align-text-top">TGI</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr>
-                                        <td class="text-start">台北市</td>
-                                        <td class="text-end">1,339
-                                        </td>
-                                        <td class="text-end">33.2%</td>
-                                        <td class="text-end">950,963</td>
-                                        <td class="text-end">23.9%</td>
-                                        <td class="text-end">-43%</td>
-                                        <td class="text-end">57.2</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-start">新北市 </td>
-                                        <td class="text-end">8
-                                        </td>
-                                        <td class="text-end">0.2%</td>
-                                        <td class="text-end">14,704</td>
-                                        <td class="text-end">0.3%</td>
-                                        <td class="text-end">-43%</td>
-                                        <td class="text-end">57.2</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-start">台中市</td>
-                                        <td class="text-end">8
-                                        </td>
-                                        <td class="text-end">0.2%</td>
-                                        <td class="text-end">14,704</td>
-                                        <td class="text-end">0.3%</td>
-                                        <td class="text-end">-43%</td>
-                                        <td class="text-end">57.2</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-start">高雄市</td>
-                                        <td class="text-end">8
-                                        </td>
-                                        <td class="text-end">0.2%</td>
-                                        <td class="text-end">14,704</td>
-                                        <td class="text-end">0.3%</td>
-                                        <td class="text-end">-43%</td>
-                                        <td class="text-end">57.2</td>
-                                    </tr>
-                                    <tr>
-                                        <td class="text-start">桃園市</td>
-                                        <td class="text-end">8
-                                        </td>
-                                        <td class="text-end">0.2%</td>
-                                        <td class="text-end">14,704</td>
-                                        <td class="text-end">0.3%</td>
-                                        <td class="text-end">-43%</td>
-                                        <td class="text-end">57.2</td>
-                                    </tr>
-                                </tbody>
-                            </table>
                         </div>
                     </div>
-                    </div>
-                  
+
                 </div>
 
             </div>
@@ -771,3 +837,6 @@ import router from '../router';
         </div>
     </div>
 </template>
+
+
+

@@ -2,7 +2,30 @@
 import { ref } from 'vue';
 import customChart from '../components/Chart.vue'
 
- 
+
+const articleTableData = ref([{
+    number: '1',
+    articleID: '7601391',
+    articleTitle: '「柯文哲走了最錯的一步！」 郭正亮揭硬傷：趙少康講對了',
+    website: '新聞網',
+    accessQtd: 455861,
+},
+{
+    number: '2',
+    articleID: '7602253',
+    articleTitle: '鄭文燦被控開房影片鑑定結果出爐...她揪刑事局1句話 網：豁然開朗',
+    website: '新聞網',
+    accessQtd: 355861,
+},
+{
+    number: '3',
+    articleID: '7602648',
+    articleTitle: 'Lulu癱倒後台畫面曝光！主持金馬前夕狂吐暴瘦',
+    website: '噓星聞',
+    accessQtd: 199941,
+}])
+
+
 const option = ref({
     legend: {
         bottom: 0,
@@ -42,6 +65,9 @@ const option = ref({
 
     series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
 })
+
+
+
 
 
 </script>
@@ -200,8 +226,8 @@ const option = ref({
 
                             </div>
                             <div>
-                                <div id="daily-trend-bar-chart" class="charts" >
-                                     <custom-chart :option="option"></custom-chart>
+                                <div id="daily-trend-bar-chart" class="charts">
+                                    <custom-chart :option="option"></custom-chart>
                                 </div>
                             </div>
 
@@ -236,7 +262,7 @@ const option = ref({
                             </div>
                             <div>
 
-                                <div id="udn-member-points" class="charts"  >
+                                <div id="udn-member-points" class="charts">
                                     <custom-chart :option="option"></custom-chart>
                                 </div>
                             </div>
@@ -278,7 +304,7 @@ const option = ref({
 
                         </div>
                         <div>
-                            <div id="views" class="charts" >
+                            <div id="views" class="charts">
                                 <custom-chart :option="option"></custom-chart>
                             </div>
                         </div>
@@ -458,7 +484,15 @@ const option = ref({
                                 </tr>
                             </thead>
                             <tbody id="article-rank-table-body">
-
+                                <template v-for="(item, index) in articleTableData" :key="index">
+                                    <tr>
+                                        <td> {{ item.number }}</td>
+                                        <td> {{ item.articleID }}</td>
+                                        <td>{{ item.articleTitle }}</td>
+                                        <td>{{ item.website }}</td>
+                                        <td class="text-end">{{ item.accessQtd }}</td>
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-between flex-wrap mt-2">
@@ -545,7 +579,15 @@ const option = ref({
                                 </tr>
                             </thead>
                             <tbody id="member-article-rank-table-body">
-
+                                <template v-for="(item, index) in articleTableData" :key="index">
+                                    <tr>
+                                        <td> {{ item.number }}</td>
+                                        <td> {{ item.articleID }}</td>
+                                        <td>{{ item.articleTitle }}</td>
+                                        <td>{{ item.website }}</td>
+                                        <td class="text-end">{{ item.accessQtd }}</td>
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-between">
@@ -624,7 +666,17 @@ const option = ref({
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody id="subs-article-rank-table-body">
+                            <tbody>
+
+                                <template v-for="(item, index) in articleTableData" :key="index">
+                                    <tr>
+                                        <td> {{ item.number }}</td>
+                                        <td> {{ item.articleID }}</td>
+                                        <td>{{ item.articleTitle }}</td>
+                                        <td>{{ item.website }}</td>
+                                        <td class="text-end">{{ item.accessQtd }}</td>
+                                    </tr>
+                                </template>
 
                             </tbody>
                         </table>
