@@ -43,8 +43,14 @@ import SpecificListAnalysis from '../pages/SpecificListAnalysis.vue'
 import MarketingEmailResponseAnalysisReport from '../pages/MarketingEmailResponseAnalysisReport.vue'
 import AppMarketingReview from '../pages/AppMarketingReview.vue'
 import MarketingSenderConfig from '../pages/MarketingSenderConfig.vue'
- 
-
+import GamVolumeQuery from '../pages/GamVolumeQuery.vue'
+import GamListUploadQuery from '../pages/GamListUploadQuery.vue'
+import GamLineItemManagement from '../pages/GamLineItemManagement.vue'
+import GamLineItemPerformance from '../pages/GamLineItemPerformance.vue'
+import AdvertisingListGeneration from '../pages/AdvertisingListGeneration.vue'
+import MemberTrendOverview from '../pages/MemberTrendOverview.vue'
+import MembershipMonthlyOverview from '../pages/MembershipMonthlyOverview.vue'
+import MaterialAnalysis from '../pages/MaterialAnalysis.vue'
 
 const routes = [
     {
@@ -303,7 +309,50 @@ const routes = [
         path: "/marketing-sender-config",
         name: "MarketingSenderConfig",
         component: MarketingSenderConfig
+    },
+    {
+        path: "/gam-volume-query",
+        name: "GamVolumeQuery",
+        component: GamVolumeQuery
+    },
+
+    {
+        path: "/gam-list-upload-query",
+        name: "GamListUploadQuery",
+        component: GamListUploadQuery
+    },
+    {
+        path: "/gam-line-item-management",
+        name: "GamLineItemManagement",
+        component: GamLineItemManagement
+    },
+    {
+        path: "/gam-line-item-performance",
+        name: "GamLineItemPerformance",
+        component: GamLineItemPerformance
+    },
+    {
+        path: "/advertising-list-generation",
+        name: "AdvertisingListGeneration",
+        component: AdvertisingListGeneration
+    },
+    {
+        path: "/member-trend-overview",
+        name: "MemberTrendOverview",
+        component: MemberTrendOverview
+    },
+    {
+        path: "/membership-monthly-overview",
+        name: "MembershipMonthlyOverview",
+        component: MembershipMonthlyOverview
+    },
+    {
+        path: "/material-analysis",
+        name: "MaterialAnalysis",
+        component: MaterialAnalysis
     }
+     
+ 
     
 ]
 

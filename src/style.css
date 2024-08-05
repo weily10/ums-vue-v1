@@ -1234,3 +1234,12 @@ td>a {
 .linechart {
   height: 60vh
 }
+
+.dropstart>.dropdown-toggle::after {
+  content: none !important;
+  margin-left: 0 !important
+}
+
+.dropstart>.dropdown-toggle::before {
+  content: none !important;
+}

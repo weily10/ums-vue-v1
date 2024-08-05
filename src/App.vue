@@ -336,18 +336,6 @@ menuItems.value = [{
 
 
 	]
-},
-{
-	text: "404",
-	icon: "icon-iconsvg20",
-	group: [
-		{
-			text: "404",
-			subgroup: [{
-				text: "404",
-				route: "/404"
-			}]
-		}]
 }]
 
 

@@ -379,12 +379,5 @@ array.value = [{ item1: '1', item2: '2', item3: '2023/10/12 17:50:53', item4: '2
 
 
 <style scoped>
-.dropstart>.dropdown-toggle::after {
-    content: none !important;
-    margin-left: 0 !important
-}
 
-.dropstart>.dropdown-toggle::before {
-    content: none !important;
-}
 </style>

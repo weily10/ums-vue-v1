@@ -133,7 +133,7 @@ items.value = [{
                         </th>
                         <th scope="col" class="text-end align-text-top">預計發送數量
                         </th>
-                        <th scope="col" class="text-start align-text-top">名單整檔
+                        <th scope="col" class="text-center align-text-top">名單整檔
                         </th>
                         <th scope="col" class="text-center align-text-top">素材上傳
                         </th>
@@ -157,91 +157,64 @@ items.value = [{
                             <td>
                                 {{ item.createdPerson.text }}
                             </td>
-                            <td>
+                            <td class="text-end">
                                 {{ item.estimateSendQtd.text }}
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <span class="badge txt-success"> Y</span>
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <span class="badge txt-success"> Y</span>
                             </td>
-                            <td>
-                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle  "
-                                        @click="router.push({ name: 'MarketingConfigView' })">
-                                        <i class="bi bi-eye-fill"></i></button>
-                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
-                                        style=" top: 100%;right: -50%;">
-                                        檢視
-                                    </span>
-                                </div>
+                            <td class="text-center">
+                                <div class="btn-group dropstart">
+                                    <button type="button" class="bg-transparent fs-6 custom-dropdown dropdown-toggle"
+                                        data-bs-toggle="dropdown" aria-expanded="false">
+                                        <i class="bi bi-three-dots-vertical"></i>
+                                    </button>
+                                    <ul class="dropdown-menu border-0 shadow-sm">
+                                        <div>
+                                            <button class=" btn  w-100 d-flex gap-3 rounded-0"
+                                                @click="router.push({ name: 'MarketingConfigView' })">
+                                                <i class="bi bi-eye-fill"></i> 檢視</button>
+                                        </div>
+                                        <div>
+                                            <button class="btn w-100 d-flex gap-3 rounded-0" data-bs-toggle="modal"
+                                                data-bs-target="#marketing-config-edit-dialog">
+                                                <i class="bi bi-pencil "></i> 編輯</button>
+                                        </div>
+                                        <div>
+                                            <button class="btn w-100 d-flex gap-3 rounded-0  " data-bs-toggle="modal"
+                                                data-bs-target="#history-dialog">
+                                                <i class="bi bi-activity"></i>歷程</button>
+                                        </div>
+                                        <div>
+                                            <button class=" btn  w-100 d-flex gap-3 rounded-0">
+                                                <i class="bi bi-eye"></i>預覽</button>
+                                        </div>
+                                        <div>
+                                            <button class=" btn w-100 d-flex gap-3 rounded-0" @click="router.push({name:'MarketingConfigView'})">
+                                                <i class="bi bi-clipboard-check"></i>整檔/送審</button>
 
-                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle  "
-                                        @click="router.push({ name: 'MarketingEmailResponseAnalysisReport' })">
-                                        <i class="bi bi-file-earmark-bar-graph"></i></button>
-                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
-                                        style=" top: 100%;right: -50%;">
-                                        電子報發送回應分析報表
-                                    </span>
-                                </div>
+                                        </div>
+                                        <div>
+                                            <button class=" btn w-100 d-flex gap-3 rounded-0" data-bs-toggle="modal"
+                                                data-bs-target="#edmModal"
+                                                @click="router.push({ name: 'MarketingEmailResponseAnalysisReport' })">
+                                                <i class="bi bi-file-earmark-bar-graph"></i> 分析報表</button>
 
-                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle   " @click="goToReviewPage()">
-                                        <i class="bi bi-clipboard-check"></i></button>
-                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
-                                        style=" top: 100%;right: -50%;">
-                                        整檔/送審
-                                    </span>
-                                </div>
-
-                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle btn-sm " @click="">
-                                        <i class="bi bi-eye"></i></button>
-                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
-                                        style=" top: 100%;right: -50%;">
-                                        預覽
-                                    </span>
-                                </div>
-
-                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle btn-sm  " data-bs-toggle="modal"
-                                        data-bs-target="#history-dialog">
-                                        <i class="bi bi-activity  "></i></button>
-                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
-                                        style=" top: 100%;right: -50%;">
-                                        歷程
-                                    </span>
-                                </div>
-
-                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle   "
-                                        data-bs-target="#marketing-config-edit-dialog" data-bs-toggle="modal">
-                                        <i class="bi bi-pencil "></i></button>
-                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
-                                        style=" top: 100%;right: -50%;">
-                                        編輯
-                                    </span>
-                                </div>
-
-
-                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle btn-sm py-0"
-                                        data-bs-target="#marketing-config-deleteModal" data-bs-toggle="modal"
-                                        @click="getMarketingConfigID(this)">
-                                        <i class="bi bi-trash "></i></button>
-                                    <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1"
-                                        style=" top: 100%;right: -50%;">
-                                        刪除
-                                    </span>
+                                        </div>
+                                        <div>
+                                            <button class=" btn w-100 d-flex gap-3 rounded-0" type="button"
+                                                data-bs-toggle="modal" @click="showConfirmModal(this)"
+                                                data-bs-target="#deleteModal">
+                                                <i class="bi bi-trash "></i>刪除</button>
+                                        </div>
+                                    </ul>
                                 </div>
                             </td>
                         </tr>
-
                     </template>
-
-
                 </tbody>
             </table>
             <div class="d-flex justify-content-between">
@@ -264,7 +237,6 @@ items.value = [{
                     </div>
                     <div class="btn-group me-2" role="group" aria-label="Second group">
                         <button type="button" class="pagination-btn btn fs-5 p-0"><i class="icon-right"></i></button>
-
                     </div>
                 </div>
                 <div>
