@@ -1,5 +1,112 @@
 <script setup>
 import router from '../router';
+import { ref } from 'vue'
+
+
+const data = ref[{
+    item1: {
+        text: '寄送成功',
+        align: 'text-start'
+    },
+    item2: {
+        text: 123412,
+        align: 'text-end'
+    },
+    item3: {
+        text: 31233,
+        align: 'text-end'
+    },
+    item4: {
+        text: 1233,
+        align: 'text-end'
+    },
+    item5: {
+        text: 133,
+        align: 'text-end'
+    },
+    item6: {
+        text: 353,
+        align: 'text-end'
+    },
+    item7: {
+        text: 3245,
+        align: 'text-end'
+    }
+
+},
+{
+    item1: {
+        text: '開信	',
+        align: 'text-start'
+    },
+    item2: {
+        text: 1212,
+        align: 'text-end'
+    },
+    item3: {
+        text: 1243,
+        align: 'text-end'
+    },
+    item4: {
+        text: 3123,
+        align: 'text-end'
+    },
+    item4: {
+        text: 1233,
+        align: 'text-end'
+    },
+    item5: {
+        text: 133,
+        align: 'text-end'
+    },
+    item6: {
+        text: 353,
+        align: 'text-end'
+    },
+    item7: {
+        text: 3245,
+        align: 'text-end'
+    }
+
+},
+{
+    item1: {
+        text: '點開',
+        align: 'text-start'
+    },
+    item2: {
+        text: 12314,
+        align: 'text-end'
+    },
+    item3: {
+        text: 3123,
+        align: 'text-end'
+    },
+    item4: {
+        text: 3123,
+        align: 'text-end'
+    },
+    item4: {
+        text: 1233,
+        align: 'text-end'
+    },
+    item5: {
+        text: 133,
+        align: 'text-end'
+    },
+    item6: {
+        text: 353,
+        align: 'text-end'
+    },
+    item7: {
+        text: 3245,
+        align: 'text-end'
+    },
+
+}]
+
+
+
 </script>
 
 <template>
@@ -223,7 +330,20 @@ import router from '../router';
                                     </tr>
                                 </thead>
                                 <tbody id="marketing-enewsletter-age-table">
-
+                                    <template v-for="(item, index) in data" :key="index">
+                                        <tr>
+                                            <td>
+                                                {{ item.text }}
+                                            </td> 
+                                            <td>
+                                                
+                                            </td> 
+                                            <td>
+                                                
+                                            </td> 
+                                        </tr>
+                                    </template>
+                                    
                                 </tbody>
                             </table>
                         </div>

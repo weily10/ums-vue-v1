@@ -51,6 +51,10 @@ import AdvertisingListGeneration from '../pages/AdvertisingListGeneration.vue'
 import MemberTrendOverview from '../pages/MemberTrendOverview.vue'
 import MembershipMonthlyOverview from '../pages/MembershipMonthlyOverview.vue'
 import MaterialAnalysis from '../pages/MaterialAnalysis.vue'
+import SmartContentDashboardEconomicDailyVip from '../pages/SmartContentDashboardEconomicDailyVip.vue'
+import UnitedNewsNetwork from '../pages/UnitedNewsNetwork.vue'
+import SmartSearchNumber from '../pages/SmartSearchNumber.vue'
+
 
 const routes = [
     {
@@ -350,10 +354,43 @@ const routes = [
         path: "/material-analysis",
         name: "MaterialAnalysis",
         component: MaterialAnalysis
+    },
+    {
+        path: "/smart-content-dashboard-economic-daily-vip",
+        name: "SmartContentDashboardEconomicDailyVip",
+        component: SmartContentDashboardEconomicDailyVip
+    },
+    {
+        path: "/smart-content-dashboard-united-daily-news-digital-version",
+        name: "SmartContentDashboardUnitedDailyNewsDigitalVersion",
+        component: SmartContentDashboardEconomicDailyVip
+    },
+    {
+        path: "/united-news-network",
+        name: "UnitedNewsNetwork",
+        component: UnitedNewsNetwork
+    },
+    {
+        path: "/economic-daily-network",
+        name: "economic-daily-network",
+        component: UnitedNewsNetwork
+    },
+    {
+        path: "/united-daily",
+        name: "united-daily",
+        component: UnitedNewsNetwork
+    },
+    {
+        path: "/model-evaluation",
+        name: "model-evaluation",
+        component: UnitedNewsNetwork
+    },
+    {
+        path: "/smart-search-number",
+        name: "SmartSearchNumber",
+        component: SmartSearchNumber
     }
-     
- 
-    
+
 ]
 
 

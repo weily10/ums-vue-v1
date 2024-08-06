@@ -184,7 +184,7 @@ menuItems.value = [{
 				},
 				{
 					text: "模型評估",
-					route: "/model-evaluation.html"
+					route: "/model-evaluation"
 				}
 			]
 

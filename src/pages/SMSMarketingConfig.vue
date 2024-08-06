@@ -173,18 +173,9 @@ items.value = [{
                                     </button>
                                     <ul class="dropdown-menu border-0 shadow-sm">
                                         <div>
-                                            <button class="btn  w-100 d-flex gap-3 rounded-0 " @click="router.push({name:'MarketingConfigView'})">
-                                                <i class="bi bi-eye-fill"></i>檢視</button>
-                                        </div>
-                                        <div>
-                                            <button class="btn  w-100 d-flex gap-3 rounded-0"
-                                                @click="router.push({name:'MarketingEmailResponseAnalysisReport'})">
-                                                <i class="bi bi-file-earmark-spreadsheet "></i>電子報分析報表</button>
-
-                                        </div>
-                                        <div>
-                                            <button class="btn w-100 d-flex gap-3 rounded-0" @click="goToReviewPage()">
-                                                <i class="bi bi-send"></i>整檔/送審</button>
+                                            <button class=" btn w-100 d-flex gap-3 rounded-0"
+                                                @click="router.push({ name: 'AppMarketingConfigAdd' })">
+                                                <i class="bi bi-pencil"></i>編輯</button>
                                         </div>
 
                                         <div>
@@ -192,15 +183,17 @@ items.value = [{
                                                 <i class="bi bi-eye"></i>預覽</button>
                                         </div>
                                         <div>
+                                            <button class="btn  w-100 d-flex gap-3 rounded-0"
+                                                @click="router.push({ name: 'MarketingEmailResponseAnalysisReport' })">
+                                                <i class="bi bi-file-earmark-spreadsheet "></i>回應分析</button>
+
+                                        </div>
+                                        <div>
                                             <button class=" btn  w-100 d-flex gap-3 rounded-0" data-bs-toggle="modal"
                                                 data-bs-target="#history-dialog">
                                                 <i class="bi bi-clock-history "></i>歷程</button>
                                         </div>
-                                        <div>
-                                            <button class=" btn w-100 d-flex gap-3 rounded-0"
-                                                data-bs-target="#marketing-config-edit-dialog" data-bs-toggle="modal">
-                                                <i class="bi bi-pencil"></i>編輯</button>
-                                        </div>
+
                                         <div>
                                             <button class=" btn w-100 d-flex gap-3 rounded-0" type="button"
                                                 data-bs-toggle="modal" data-bs-target="#marketing-config-deleteModal">
@@ -211,7 +204,7 @@ items.value = [{
                                     </ul>
                                 </div>
                             </td>
-                         
+
                         </tr>
 
                     </template>
