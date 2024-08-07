@@ -1,8 +1,52 @@
 <script setup>
 import customChart from '../components/Chart.vue'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 
+onMounted(() => {
 
+})
+
+const stackedline = ref({
+    title: {
+        text: 'data.title',
+        subtext: '',
+        left: 'center',
+    },
+    legend: {
+        show: true,
+        top: 'bottom'
+    },
+    tooltip: {
+        show: true
+    },
+    toolbox: {
+        feature: {
+            saveAsImage: {}
+        }
+    },
+    xAxis: {
+        type: 'category',
+        data: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14'],
+    },
+
+    yAxis: {
+        type: 'value',
+    },
+    series: [
+        {
+            name: "首次數據(2023-11-16)",
+            type: 'line',
+            stack: 'Total',
+            data: [0, 3800, 3900, 3890, 1083, 2140, 5170, 10165, 7124, 7597, 8000, 9000, 10000, 7023, 6230],
+        },
+        {
+            name: "追蹤數據(2023-11-16)",
+            type: 'line',
+            stack: 'Total',
+            data: [0, 11234, 35344, 3321, 12345, 324, 5533, 333, 111, 6767, 2344, 4355, 3344, 2323, 323],
+        },
+    ]
+})
 
 const option = ref({
     title: {
@@ -63,6 +107,47 @@ const option = ref({
 })
 
 
+const barchart = ref({
+    legend: {
+        bottom: 0,
+        left: 'center',
+
+    },
+    tooltip: {
+        trigger: 'item',
+    },
+    toolbox: {
+        show: true,
+        feature: {
+            saveAsImage: {},
+        }
+    },
+    title: {
+        text: '',
+        subtext: '',
+        left: 'center',
+    },
+    dataset: {
+        source: [
+            ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
+            ['2023年11月27日', 103010, 75000, 230654],
+            ['2023年11月28日', 810300, 730004, 230654],
+            ['2023年11月29日', 23864, 65214, 42145],
+            ['2023年11月30日', 633219, 74249, 421412],
+        ],
+    },
+    xAxis: {
+        type: 'category',
+
+    },
+    yAxis: {
+
+    },
+
+    series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+})
+
+
 
 const linechart = ref({
     title: {
@@ -88,6 +173,274 @@ const linechart = ref({
         }
     ]
 })
+
+
+const items = ref([
+    {
+        accno: '00556834	',
+        name: '藍*仁',
+        email: '***************@noauth',
+        auth: 'N',
+        phone: '092345678',
+        phonestatus: 'N',
+        accstatus: '已啟用',
+        sex: '男',
+        age: '42',
+        profession: '製造/供應商',
+        date: '2017年08月08日',
+        marketing: 'Y',
+        subs: 'Y'
+
+    }
+])
+
+function generateAccData() {
+    option.value = {
+        title: {
+            text: '性別分布  (資料區間14天)',
+            subtext: '性別分布  (資料區間14天)',
+            left: 'center',
+            top: '1%'
+        },
+        tooltip: {
+            trigger: 'item',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {},
+            }
+        },
+        legend: {
+            bottom: '10%',
+            left: 'center'
+        },
+        series: [
+            {
+                top: '1%',
+                name: '合計',
+                type: 'pie',
+                radius: ['42%', '52%'],
+                avoidLabelOverlap: true,
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: 10,
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: [{
+                    name: "未填寫",
+                    value: 8120
+                },
+                {
+                    name: "男",
+                    value: 3392
+                },
+                {
+                    name: "女",
+                    value: 1101
+                }
+                ],
+            }
+        ]
+    }
+}
+
+function generateReadingData() {
+    barchart.value = {
+        legend: {
+            bottom: 0,
+            left: 'center',
+
+        },
+        tooltip: {
+            trigger: 'item',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {},
+            }
+        },
+        title: {
+            text: '',
+            subtext: '',
+            left: 'center',
+        },
+        dataset: {
+            source: [
+                ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
+                ['2023年11月27日', 212, 313, 122],
+                ['2023年11月28日', 810300, 730004, 230654],
+                ['2023年11月29日', 23864, 65214, 42145],
+                ['2023年11月30日', 633219, 74249, 421412],
+            ],
+        },
+        xAxis: {
+            type: 'category',
+
+        },
+        yAxis: {
+
+        },
+
+        series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+    }
+
+    stackedline.value = {
+        title: {
+            text: 'AAA',
+            subtext: '',
+            left: 'center',
+        },
+        legend: {
+            show: true,
+            top: 'bottom'
+        },
+        tooltip: {
+            show: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            data: ['00', '01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14'],
+        },
+
+        yAxis: {
+            type: 'value',
+        },
+        series: [
+            {
+                name: "首次數據(2023-11-16)",
+                type: 'line',
+                stack: 'Total',
+                data: [0, 3800, 3900, 3890, 1083, 2140, 5170, 10165, 7124, 7597, 8000, 9000, 10000, 7023, 6230],
+            },
+            {
+                name: "追蹤數據(2023-11-16)",
+                type: 'line',
+                stack: 'Total',
+                data: [0, 11234, 35344, 3321, 12345, 324, 5533, 333, 111, 6767, 2344, 4355, 3344, 2323, 323],
+            },
+        ]
+    }
+}
+
+function generateSubsPieChart() {
+    option.value = {
+        title: {
+            text: '性別分布',
+            subtext: '性別分布  (資料區間14天)',
+            left: 'center',
+            top: '1%'
+        },
+        tooltip: {
+            trigger: 'item',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {},
+            }
+        },
+        legend: {
+            bottom: '10%',
+            left: 'center'
+        },
+        series: [
+            {
+                top: '1%',
+                name: '合計',
+                type: 'pie',
+                radius: ['42%', '52%'],
+                avoidLabelOverlap: true,
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: 10,
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: [{
+                    name: "未填寫",
+                    value: 8120
+                },
+                {
+                    name: "男",
+                    value: 3392
+                },
+                {
+                    name: "女",
+                    value: 1101
+                }
+                ],
+            }
+        ]
+    }
+
+
+    barchart.value = {
+        legend: {
+            bottom: 0,
+            left: 'center',
+
+        },
+        tooltip: {
+            trigger: 'item',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {},
+            }
+        },
+        title: {
+            text: '',
+            subtext: '',
+            left: 'center',
+        },
+        dataset: {
+            source: [
+                ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
+                ['2023年11月27日', 103010, 75000, 230654],
+                ['2023年11月28日', 810300, 730004, 230654],
+                ['2023年11月29日', 23864, 65214, 42145],
+                ['2023年11月30日', 633219, 74249, 421412],
+            ],
+        },
+        xAxis: {
+            type: 'category',
+
+        },
+        yAxis: {
+
+        },
+
+        series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+    }
+
+
+}
+
 
 
 
@@ -116,7 +469,8 @@ const linechart = ref({
                             <li class="nav-item" role="presentation">
 
                                 <a class="tab-button-1 active rounded-1" data-bs-toggle="pill" data-bs-target="#memberdata"
-                                    type="button" role="tab" aria-controls="pills-home" aria-selected="true">
+                                    type="button" role="tab" aria-controls="pills-home" aria-selected="true"
+                                    @click="generateAccData()">
                                     <span>會員數據</span>
                                 </a>
                             </li>
@@ -129,7 +483,7 @@ const linechart = ref({
                             </li>
                             <li class="nav-item" role="presentation">
                                 <a class="tab-button-1 rounded-1" aria-selected="false" data-bs-target="#readingdata"
-                                    data-bs-toggle="pill" role="tab" @click="">
+                                    data-bs-toggle="pill" role="tab" @click="generateReadingData()">
                                     <span>閱讀行為</span>
                                 </a>
                             </li>
@@ -224,7 +578,7 @@ const linechart = ref({
                     <div class="row mt-3">
                         <div class="col">
                             <div class="linechart card shadow-sm mb-3  border-0">
-                                <div id="memberdata-linechart" class="card-body ">
+                                <div id="memberdata-linechart" class="card-body " style="min-width:75vh; height: 386px;">
                                     <custom-chart :option="linechart"></custom-chart>
 
                                 </div>
@@ -232,21 +586,17 @@ const linechart = ref({
                         </div>
                     </div>
                     <div class="d-flex flex-wrap column-gap-3 ">
-                        <div class="flex-fill">
-                            <div class="card shadow-sm mb-3 border-0 ">
-                                <div id="memberdata-barchart-1" class="barchart card-body pt-0 px-2 pb-0  "
-                                    style="width:75vh; height: 386px;">
-                                    <custom-chart :option="linechart"></custom-chart>
-                                </div>
-
+                        <div class="card shadow-sm mb-3 border-0 flex-fill" style="width:560px">
+                            <div id="memberdata-barchart-1" class="barchart card-body pt-0 px-2 pb-0  "
+                                style="width: 100%; min-width:350px;height: 386px;">
+                                <custom-chart :option="barchart"></custom-chart>
                             </div>
+
                         </div>
-                        <div class="flex-fill">
-                            <div class="card shadow-sm mb-3 border-0 ">
-                                <div id="memberdata-barchart-2" class="barchart card-body pt-0 px-2 pb-0  "
-                                    style="width: 75vh; height: 386px;">
-                                    <custom-chart :option="linechart"></custom-chart>
-                                </div>
+                        <div class="card shadow-sm mb-3 border-0 flex-fill" style="width:560px">
+                            <div id="memberdata-barchart-2" class="barchart card-body pt-0 px-2 pb-0  "
+                                style="width: 100%; min-width:350px; height: 386px;">
+                                <custom-chart :option="barchart"></custom-chart>
                             </div>
                         </div>
                     </div>
@@ -280,20 +630,26 @@ const linechart = ref({
                         <table class="table table-striped">
                             <thead>
                                 <tr>
-                                    <th scope="col">會員帳號
+                                    <th scope="col" class="text-start">會員帳號
                                         <button class="bg-transparent rounded-circle p-0 text-white"><i
                                                 class="icon-sequence" @click=""></i></button>
                                     </th>
-                                    <th scope="col">姓名 <button class="bg-transparent rounded-circle p-0 text-white"><i
-                                                class="icon-sequence" @click=""></i></button></th>
-                                    <th scope="col">信箱 <button class="bg-transparent rounded-circle p-0 text-white"><i
-                                                class="icon-sequence" @click=""></i></button></th>
-                                    <th scope="col">信箱驗證<button class="bg-transparent rounded-circle p-0 text-white"><i
-                                                class="icon-sequence" @click=""></i></button> </th>
-                                    <th scope="col">手機<button class="bg-transparent rounded-circle p-0 text-white"><i
-                                                class="icon-sequence" @click=""></i></button> </th>
-                                    <th scope="col">手機驗證<button class="bg-transparent rounded-circle p-0 text-white"><i
-                                                class="icon-sequence" @click=""></i></button> </th>
+                                    <th scope="col" class="text-start">姓名 <button
+                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
+                                                @click=""></i></button></th>
+                                    <th scope="col" class="text-start">信箱 <button
+                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
+                                                @click=""></i></button></th>
+                                    <th scope="col" class="text-center">信箱驗證<button
+                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
+                                                @click=""></i></button> </th>
+                                    <th scope="col" class="text-center">手機驗證<button
+                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
+                                                @click=""></i></button> </th>
+                                    <th scope="col" class="text-start">手機<button
+                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
+                                                @click=""></i></button> </th>
+
                                     <th scope="col">會員狀態<button class="bg-transparent rounded-circle p-0 text-white"><i
                                                 class="icon-sequence" @click=""></i></button> </th>
                                     <th scope="col">性別<button class="bg-transparent rounded-circle p-0 text-white"><i
@@ -311,7 +667,23 @@ const linechart = ref({
                                 </tr>
                             </thead>
                             <tbody id="member-data-table">
-
+                                <template v-for="(item, index) in items" :key="index">
+                                    <tr>
+                                        <td class="text-start">{{ item.accno }}</td>
+                                        <td>{{ item.name }} </td>
+                                        <td>{{ item.email }} </td>
+                                        <td class="text-center">{{ item.phonestatus }}</td>
+                                        <td class="text-center">{{ item.auth }} </td>
+                                        <td>{{ item.phone }} </td>
+                                        <td class="text-center">{{ item.accstatus }} </td>
+                                        <td class="text-center">{{ item.sex }} </td>
+                                        <td class="text-center">{{ item.age }} </td>
+                                        <td class="text-start">{{ item.profession }} </td>
+                                        <td class="text-center">{{ item.date }} </td>
+                                        <td class="text-center">{{ item.marketing }} </td>
+                                        <td class="text-center">{{ item.subs }} </td>
+                                    </tr>
+                                </template>
                             </tbody>
                         </table>
                         <div class="d-flex justify-content-between">
@@ -339,25 +711,32 @@ const linechart = ref({
 
                                 </div>
                             </div>
-                            <div>
 
-                            </div>
                         </div>
                     </div>
                 </div>
                 <!-- 訂戶數據 -->
                 <div class="tab-pane fade mt-3" id="subsdata" role="tabpanel" tabindex="0">
                     <div id="subsdata-piechart" class="row">
+                        <template v-for="(item, index) in 4" :key="index">
+                            <div class="col-xl-6 col lg-5 px-2">
+                                <div class="subsdata-piechart card shadow-sm mb-3 border-0">
+                                    <div class="card-body  ">
+                                        <custom-chart :option="option"></custom-chart>
+                                    </div>
+                                </div>
+                            </div>
+                        </template>
                     </div>
 
                     <div class="mt-2">
                         <h3 class="col-4 "> 訂單方案</h3>
 
                         <div class="card shadow-sm border-0">
-                            <div id="plan1-barchart" class="m-auto barchart">
-
+                            <div class="card-body">
+                                <custom-chart :option="barchart"></custom-chart>
                             </div>
-                            <div class="d-flex gap-3 justify-content-center">
+                            <div class="d-flex gap-3 justify-content-center mt-3">
 
                                 <div class="btn-group button-checkbox d-flex " role="group" id="plans-choice-options"
                                     data-bs-toggle="buttons">
@@ -463,9 +842,6 @@ const linechart = ref({
 
                                 </div>
                             </div>
-                            <div>
-
-                            </div>
                         </div>
                     </div>
                     <!-- 歷史訂單資訊 -->
@@ -563,36 +939,35 @@ const linechart = ref({
                 <!-- 閱讀行為 -->
                 <div class="tab-pane fade mt-3 " id="readingdata" role="tabpanel" tabindex="0">
                     <div class="mb-3 d-flex flex-wrap gap-3">
-                        <div class="hoverDiv flex-grow-1 card shadow-sm  px-0 pb-0 pt-0 border-0 ">
-                            <div class="hide d-flex gap-2 justify-content-end px-3 pt-2 w-100">
-                                <button class="rounded-circle p-0"><span class="btnspanclass"><i
-                                            class="fs-4 icon-savefile"></i></span></button>
-                                <button class="rounded-circle p-0"><span class="btnspanclass"><i
-                                            class="fs-4 icon-csv"></i></span></button>
-                            </div>
-                            <div id="readingdata-barchart" class="card-chart card-body  m-auto">
+                        <div class="card shadow-sm  border-0 flex-fill" style="width:600px">
+
+                            <div id="readingdata-barchart" class="card-body">
+                                <custom-chart :option="barchart"> </custom-chart>
                             </div>
                         </div>
-                        <div class="hoverDiv  flex-grow-1 card shadow-sm px-0 pb-0 pt-0 border-0">
+                        <div class="hoverDiv  flex-grow-1 card shadow-sm px-0 pb-0 pt-0 border-0" style="width:600px">
                             <div class="hide d-flex gap-2 justify-content-end px-3 pt-2">
                                 <button class="rounded-circle p-0"><span class="btnspanclass"><i
                                             class="fs-4 icon-savefile"></i></span></button>
                                 <button class="rounded-circle p-0"><span class="btnspanclass"><i
                                             class="fs-4 icon-csv"></i></span></button>
                             </div>
-                            <div id="readingdata-barchart-1" class="card-chart card-body  m-auto">
+                            <div id="readingdata-barchart-1" class=" card-body  ">
+                                <custom-chart :option="barchart"> </custom-chart>
                             </div>
                         </div>
                     </div>
                     <div class="hoverDiv">
-                        <div class="card shadow-sm mb-3 px-0 pb-0 pt-0 border-0 ">
+                        <div class="card shadow-sm mb-3   border-0  "  >
                             <div class="hide d-flex gap-2 justify-content-end px-3 pt-2">
                                 <button class="rounded-circle p-0"><span class="btnspanclass"><i
                                             class="fs-4 icon-savefile"></i></span></button>
                                 <button class="rounded-circle p-0"><span class="btnspanclass"><i
                                             class="fs-4 icon-csv"></i></span></button>
                             </div>
-                            <div id="readingdata-linechart" class="barchart card-body pt-0 px-2 pb-0 m-auto"></div>
+                            <div id="readingdata-linechart" class=" card-body " >
+                                <custom-chart :option="stackedline"> </custom-chart>
+                            </div>
 
                         </div>
                     </div>
@@ -1131,3 +1506,10 @@ const linechart = ref({
         </div>
     </div>
 </template>
+
+
+<style scoped>
+#plan1-barchart {
+    min-width: 350px;
+}
+</style>

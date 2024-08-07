@@ -235,10 +235,8 @@ const option = ref({
                         <div class="d-flex gap-3 mt-3 card border-0 shadow-sm flex-fill" style="width:450px">
                             <div class="flex-fill pb-4 d-flex flex-column  border-bottom">
                                 <div class="text-center">
-
                                     <h4>
                                         UDN 到站會員數
-
                                     </h4>
                                     <h1 class="mb-0">
                                         11.8萬
@@ -258,13 +256,10 @@ const option = ref({
 
                                     </div>
                                 </div>
-
                             </div>
-                            <div>
 
-                                <div id="udn-member-points" class="charts">
-                                    <custom-chart :option="option"></custom-chart>
-                                </div>
+                            <div>
+                                <custom-chart :option="option"></custom-chart>
                             </div>
 
                         </div>
@@ -304,9 +299,7 @@ const option = ref({
 
                         </div>
                         <div>
-                            <div id="views" class="charts">
-                                <custom-chart :option="option"></custom-chart>
-                            </div>
+                            <custom-chart :option="option"></custom-chart>
                         </div>
 
                     </div>

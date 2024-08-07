@@ -10,10 +10,16 @@ const props = defineProps({
 
 const option = computed(() => (props.option));
 
+let drawChart
 function initChart() {
     if (!customRef.value) return;
 
-    const drawChart = echarts.init(customRef.value);
+   if (drawChart != null && drawChart != "" && drawChart != undefined) {
+        drawChart.dispose()
+    }
+    drawChart = echarts.init(customRef.value);
+
+    console.log('drawChart', drawChart);
     drawChart.setOption(option.value);
 
     window.addEventListener('resize', () => {
@@ -31,7 +37,7 @@ watchEffect(() => {
 </script>
 
 <template>
-    <div ref="customRef" class="chart-container" ></div>
+    <div ref="customRef" class="chart-container"></div>
 </template>
 
 <style scoped>
