@@ -54,7 +54,7 @@ import MaterialAnalysis from '../pages/MaterialAnalysis.vue'
 import SmartContentDashboardEconomicDailyVip from '../pages/SmartContentDashboardEconomicDailyVip.vue'
 import UnitedNewsNetwork from '../pages/UnitedNewsNetwork.vue'
 import SmartSearchNumber from '../pages/SmartSearchNumber.vue'
-
+import BigQueryOverview from '../pages/BigQueryOverview.vue'
 
 const routes = [
     {
@@ -389,6 +389,11 @@ const routes = [
         path: "/smart-search-number",
         name: "SmartSearchNumber",
         component: SmartSearchNumber
+    },
+    {
+        path: "/bigquery-overview",
+        name: "BigQueryOverview",
+        component: BigQueryOverview
     }
 
 ]
