@@ -74,8 +74,6 @@ import router from '../router';
                             </th>
                             <th scope="col" class="text-start align-text-top">功能
                             </th>
-
-
                         </tr>
                     </thead>
                     <tbody id="adv-management-gam-line-item-keyword-detail-tbody">

@@ -372,10 +372,6 @@ function toggleHighlight(item3) {
 
 }
 
-
-
-
-
 </script>
 
  
@@ -413,12 +409,13 @@ function toggleHighlight(item3) {
 
 
 		<div class="d-flex position-fixed" style="z-index: 2">
+			
 			<button class="btn rounded-circle  m-3 text-light" type="button" data-bs-toggle="offcanvas"
 				data-bs-target="#mainmenu" aria-controls="offcanvasExample">
-				<i class="icon-openMenu"></i>
+				<i class="bi bi-list"></i>
 			</button>
-			<div class="" id="mainmenu" data-bs-backdrop="false">
-				<div class="dashboard-nav position-fixed d-flex flex-column z-5 px-2 border-end">
+			<div class="" id="mainmenu" data-bs-backdrop="false"  data-bs-scroll="true"  >
+				<div class="dashboard-nav position-fixed d-flex flex-column z-5 px-2 border-end" >
 					<header>
 						<div class="d-flex justify-content-between">
 							<div>
@@ -432,6 +429,7 @@ function toggleHighlight(item3) {
 							</div>
 						</div>
 					</header>
+					
 					<nav id="navmenu" class="dashboard-nav-list ">
 						<div class="accordion" id="menu">
 							<div class="accordion-item" v-for="(item, index) in updatedMenuItems">

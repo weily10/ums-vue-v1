@@ -1129,9 +1129,7 @@ button:disabled {
     right: 1%;
   }
 
-  #app {
-    padding-top: 4rem
-  }
+ 
 
   footer {
     padding-left: 0;
@@ -1159,7 +1157,7 @@ button:disabled {
 
   .close-btn {
     display: block;
-    left: 40px;
+    left: 80px;
     top: -10px;
   }
 

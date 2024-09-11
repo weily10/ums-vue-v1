@@ -55,6 +55,10 @@ import SmartContentDashboardEconomicDailyVip from '../pages/SmartContentDashboar
 import UnitedNewsNetwork from '../pages/UnitedNewsNetwork.vue'
 import SmartSearchNumber from '../pages/SmartSearchNumber.vue'
 import BigQueryOverview from '../pages/BigQueryOverview.vue'
+import UsageTracking from '../pages/UsageTracking.vue'
+import DataPipelineStatus from '../pages/DataPipelineStatus.vue'
+
+
 
 const routes = [
     {
@@ -394,7 +398,18 @@ const routes = [
         path: "/bigquery-overview",
         name: "BigQueryOverview",
         component: BigQueryOverview
+    },
+    {
+        path: "/usage-tracking",
+        name: "UsageTracking",
+        component: UsageTracking
+    },
+    {
+        path: "/datapipeline",
+        name: "DataPipelineStatus",
+        component: DataPipelineStatus
     }
+    
 
 ]
 
