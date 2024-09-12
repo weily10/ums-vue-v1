@@ -1,6 +1,222 @@
-<script setup>
+<script setup >
+import customChart from "../components/Chart.vue";
+import { ref, onMounted } from "vue";
 
-</script>
+const option = ref({})
+const option1 = ref({})
+const option3 = ref({})
+const option4 = ref({})
+
+
+function generateAccData() {
+    let chartdata = {
+        divId: "dailynews-chart",
+        title: "",
+        subtitle: "",
+        yAxis: [2029, 2162, 2271, 40],
+        xAxis: ['2023年12月11日', '2023年12月12日', '2023年12月13日', '2023年12月14日'],
+        series: [{ type: 'bar' }, { type: 'bar' }]
+    }
+
+    let chartdata1 = {
+        divId: 'day-trend-chart',
+        title: '類別標籤數量',
+        subtext: '',
+        source: [
+            ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
+            ['2023年12月11日', 977, 33, 234],
+            ['2023年12月12日', 360, 733, 213],
+            ['2023年12月13日', 360, 73, 1500],
+            ['2023年12月14日', 360, 73, 1540],
+        ],
+        xAxis: { type: 'category' },
+        series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+    }
+
+    let percentagedata = {
+        subtext: "",
+        title: "瀏覽量占比",
+        data: [
+            {
+                name: "WEB",
+                value: 88.6
+            },
+            {
+                name: "APP(IOS)",
+                value: 7.9
+            },
+            {
+                name: "APP(ANDROID)",
+                value: 3.5
+            },
+        ],
+    }
+
+
+    let browserData = {
+        divId: 'browsers-chart',
+        title: '瀏覽器偏好',
+        yAxis: ['Chrome', 'Safari', 'Safari (in-app)', 'Android Webview', 'Edge', 'Samsung Internet', 'Firefox', 'Opera', 'Internet Explorer', '未定義'],
+        bardata: [210, 129, 98, 35, 34, 24, 20, 15, 10, 9, 8, 5, 3]
+    }
+
+    option.value = {
+        legend: {
+            bottom: 3,
+            left: 'center',
+        },
+        tooltip: {
+            trigger: 'item',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {},
+            }
+        },
+        title: {
+            text: chartdata.title,
+            subtext: chartdata.subtext,
+            left: 'center',
+        },
+        xAxis: {
+            type: 'category',
+            data: chartdata.xAxis
+
+        },
+        yAxis: {
+        },
+
+        series: [
+            {
+                data: chartdata.yAxis,
+                type: 'bar',
+            }
+        ]
+    }
+
+    option1.value = {
+        legend: {
+            bottom: 0,
+            left: 'center',
+
+        },
+        tooltip: {
+            trigger: 'item',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {},
+            }
+        },
+        title: {
+            text: chartdata1.title,
+            subtext: chartdata1.subtext,
+            left: 'center',
+        },
+        dataset: {
+            source: chartdata1.source
+        },
+        xAxis: {
+            type: 'category',
+
+        },
+        yAxis: {
+
+        },
+        // Declare several bar series, each will be mapped
+        // to a column of dataset.source by default.
+        series: chartdata1.series
+    }
+
+    option3.value = {
+        title: {
+            text: percentagedata.title,
+            subtext: percentagedata.subtext,
+            left: 'center',
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: {
+            bottom: 0,
+            left: 'center'
+        },
+        series: [
+            {
+                top: '1%',
+                name: '合計',
+                type: 'pie',
+                radius: ['45%', '60%'],
+                avoidLabelOverlap: false,
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: 10,
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: percentagedata.data
+            }
+        ]
+    }
+
+
+    option4.value = {
+        title: {
+            text: browserData.title,
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            show: false,
+            top: 'bottom'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'value',
+            boundaryGap: [0, 0.01]
+        },
+        yAxis: {
+            type: 'category',
+            data: browserData.yAxis
+        },
+        series: [
+            {
+                name: browserData.title,
+                type: 'bar',
+                data: browserData.bardata
+            }
+        ]
+    }
+}
+
+onMounted(() => {
+    generateAccData()
+})
+
+</script> 
+ 
+ 
 <template>
     <div>
         <div class="d-flex justify-content-between align-items-end">
@@ -133,8 +349,7 @@
                         </div>
                     </div>
                     <div class="card shadow-sm border-0  flex-fill " style="width: 70vh;">
-                        <div id="dailynews-chart" class="charts mx-auto" style="width: 100%; height: 35dvh;">
-                        </div>
+                        <custom-chart :option="option"></custom-chart>
                     </div>
                 </div>
             </div>
@@ -145,8 +360,7 @@
                 </h3>
                 <div class="d-flex flex-wrap mt-3 gap-3 ">
                     <div class="card shadow-sm border-0  flex-fill " style="width: 70dvh;">
-                        <div id="event-chart" class="charts" style="width: 100%; height: 35dvh;">
-                        </div>
+                        <custom-chart :option="option"></custom-chart>
                     </div>
                     <div class="d-flex  gap-3 flex-wrap flex-fill " style="width: 60dvh;">
                         <div class="bg-white shadow-sm ps-3 pe-3 pb-2 pt-3 d-flex flex-column  flex-fill "
@@ -199,7 +413,6 @@
                                             對比上個時段
                                         </span>
                                     </div>
-
                                 </div>
                                 <h4 class="mt-2">
                                     類別頁瀏覽量
@@ -226,7 +439,6 @@
                                             對比上個時段
                                         </span>
                                     </div>
-
                                 </div>
                                 <h4 class="mt-2">
                                     文章瀏覽量
@@ -290,22 +502,18 @@
                         事件日趨勢
                     </h3>
                     <div class="card shadow-sm border-0  flex-fill " style="width: 100%;">
-                        <div id="day-trend-chart" class="charts" style="width: 100%; height:40dvh;">
-                        </div>
+                        <custom-chart :option="option1"></custom-chart>
                     </div>
                 </div>
                 <div class="d-flex gap-3 mt-3 flex-wrap">
                     <div class="card shadow-sm border-0  flex-fill " style="width: 40dvh; ">
-                        <div id="percentage-views-chart" class="charts" style="width: 100%; height: 35dvh;">
-                        </div>
+                        <custom-chart :option="option3"></custom-chart>
                     </div>
                     <div class="card shadow-sm border-0  flex-fill " style="width: 40dvh; ">
-                        <div id="share-views-chart" class="charts" style="width: 100%; height: 35dvh;">
-                        </div>
+                        <custom-chart :option="option3"></custom-chart>
                     </div>
                     <div class="card shadow-sm border-0  flex-fill " style="width: 40dvh; ">
-                        <div id="proportion-events-chart" class="charts" style="width: 100%; height: 35dvh;">
-                        </div>
+                        <custom-chart :option="option3"></custom-chart>
                     </div>
                 </div>
                 <div class="d-flex gap-3 mt-3 flex-wrap">
@@ -317,8 +525,7 @@
                                 <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
                             </ul>
                         </div>
-                        <div id="browsers-chart" class="charts" style="width: 100%; height: 35dvh;">
-                        </div>
+                        <custom-chart :option="option4"></custom-chart>
                     </div>
                     <div class="card shadow-sm border-0  flex-fill pt-3 pe-3" style="width: 40dvh;">
                         <div class="d-flex justify-content-end">
@@ -328,8 +535,7 @@
                                 <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
                             </ul>
                         </div>
-                        <div id="android-device-chart" class="charts" style="width: 100%; height: 35dvh;">
-                        </div>
+                        <custom-chart :option="option4"></custom-chart>
                     </div>
                     <div class="card shadow-sm border-0  flex-fill pt-3 pe-3" style="width: 40dvh;">
                         <div class="d-flex justify-content-end">
@@ -339,8 +545,7 @@
                                 <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
                             </ul>
                         </div>
-                        <div id="apple-device-chart" class="charts" style="width: 100%; height: 35dvh;">
-                        </div>
+                        <custom-chart :option="option4"></custom-chart>
                     </div>
                 </div>
             </div>
@@ -377,7 +582,14 @@
                             </tr>
                         </thead>
                         <tbody id="category-browsing-table-body">
+                            <tr>
+                                <td>1</td>
+                                <td> 要聞</td>
+                                <td>新聞網 </td>
+                                <td class="text-end">3379442
+                                </td>
 
+                            </tr>
                         </tbody>
                     </table>
                     <div class="d-flex justify-content-between">
@@ -433,6 +645,13 @@
                             </tr>
                         </thead>
                         <tbody id="article-access-table-body">
+                            <tr>
+                                <td>12321 </td>
+                                <td> 岩波新書的突破：擺脫「東亞史 / 內亞史」二分框架，重新審視遊牧王朝 </td>
+                                <td>聯經思想空間 </td>
+                                <td class="text-end">3
+                                </td>
+                            </tr>
 
                         </tbody>
                     </table>
@@ -489,7 +708,13 @@
                             </tr>
                         </thead>
                         <tbody id="overview-article-rank-table-body">
-
+                            <tr>
+                                <td>12321 </td>
+                                <td> 岩波新書的突破：擺脫「東亞史 / 內亞史」二分框架，重新審視遊牧王朝 </td>
+                                <td>聯經思想空間 </td>
+                                <td class="text-end">3
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
 
@@ -547,7 +772,13 @@
                             </tr>
                         </thead>
                         <tbody id="overview-subs-article-rank-table-body">
-
+                            <tr>
+                                <td>12321 </td>
+                                <td> 岩波新書的突破：擺脫「東亞史 / 內亞史」二分框架，重新審視遊牧王朝 </td>
+                                <td>聯經思想空間 </td>
+                                <td class="text-end">3
+                                </td>
+                            </tr>
                         </tbody>
                     </table>
 
