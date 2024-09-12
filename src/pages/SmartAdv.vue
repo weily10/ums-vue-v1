@@ -1,6 +1,12 @@
 <script setup>
+import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import router from '../router/index.js'
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import ConfirmModal from '../components/ConfirmModal.vue'
+
+let deleteModal = ref(false)
+let id = 'deleteModal'
+
 
 const items = ref([
     {
@@ -27,9 +33,22 @@ function toSmartAdKeywordAdvAddPage() {
 }
 
 
-function viewAnalysisReport(){
+function viewAnalysisReport() {
     router.push({ name: "SmartAnalysisReport" })
 }
+
+onMounted(() => {
+    deleteModal.value = new Modal(document.getElementById(id))
+})
+
+function showConfirmModal1() {
+    deleteModal.value.show()
+}
+
+function closeModal() {
+     deleteModal.value.hide()
+}
+ 
 
 
 
@@ -177,10 +196,10 @@ function viewAnalysisReport(){
                                     <td>
                                         {{ item.createdate }}
                                     </td>
-                                    <td>
-                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                            <button class="iconbtn btn rounded-circle btn-sm" type="button"
-                                                @click="gotoCopyPage()">
+                                    <td class="">
+                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label ">
+                                            <button class=" btn rounded-circle btn-sm" type="button"
+                                                @click="router.push({ name: 'SmartAdThemeAdvertisingAdd' })">
                                                 <i class="bi bi-copy fs-6"
                                                     style="padding-right: 2px; padding-left: 2px;"></i></button>
                                             <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
@@ -189,7 +208,7 @@ function viewAnalysisReport(){
                                             </span>
                                         </div>
                                         <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                            <button class="iconbtn btn rounded-circle btn-sm" type="button"
+                                            <button class="btn rounded-circle btn-sm" type="button"
                                                 @click="viewAnalysisReport()">
                                                 <i class="bi bi-graph-up fs-6"></i></button>
                                             <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
@@ -198,8 +217,8 @@ function viewAnalysisReport(){
                                             </span>
                                         </div>
                                         <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                            <button class="iconbtn btn rounded-circle btn-sm" type="button" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
->
+                                            <button class=" btn rounded-circle btn-sm" type="button"
+                                                @click="showConfirmModal1">
                                                 <i class="bi bi-trash fs-6"></i></button>
                                             <span class="custom-tooltip-2 rounded position-absolute z-3 mt-1"
                                                 style=" top: 100%;right: -50%;">
@@ -232,47 +251,12 @@ function viewAnalysisReport(){
                         </div>
                         <div class="btn-group me-2" role="group" aria-label="Second group">
                             <button type="button" class="pagination-btn btn fs-5 p-0"><i class="icon-right"></i></button>
-
                         </div>
                     </div>
-                    <div>
-
-                    </div>
                 </div>
-
             </div>
         </div>
-
-
-        <!-- smart-search-number-modal -->
-
-        <div class="modal fade" id="smart-search-modal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header border-0 pb-0">
-                        <h3> 智慧檢索編號</h3>
-                    </div>
-                    <div class="modal-body">
-                        <div class=" bg-grey filter p-3">
-                            <div class="font-b4-me">
-                                請輸入客製化名稱
-                            </div>
-                            <div class="mt-1">
-                                <input type="text" class="form-control  " id="custom-name-input" placeholder="請勿包含特殊符號">
-                            </div>
-                            <div class="font-b4-me mt-3">
-                                請輸入智慧檢索編號
-                            </div>
-                            <div class="mt-1">
-                                <input type="text" class="form-control  " id="smart-search-number-input" placeholder="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer border-0">
-                        <button type="button" class="btn " data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn primary ">建立</button>
-                    </div>
-                </div>
-        </div>
+        <ConfirmModal :id="id" @confirmClose="closeModal"></ConfirmModal>
+      
     </div>
-</div></template>
+</template>

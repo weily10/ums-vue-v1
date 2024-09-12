@@ -1,6 +1,11 @@
 <script setup>
 import router from '../router/index.js'
-import { ref } from 'vue'
+import { ref,onMounted  } from 'vue'
+import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import ConfirmModal from '../components/ConfirmModal.vue'
+
+
+
 
 const items = ref([
     {
@@ -10,7 +15,7 @@ const items = ref([
         themeTag: '美妝_綜合美妝	',
         analysis: '執行完成',
         actionanalysis: '未執行',
-         desktopmobile: 0,
+        desktopmobile: 0,
         list: ' N/ A',
         status: 'N / A	',
         phonelist: 'N / A',
@@ -20,6 +25,8 @@ const items = ref([
     }
 ])
 
+const deleteModal = ref(false)
+let id = 'deleteModal'
 
 
 function toAdKeywordAddPage() {
@@ -31,15 +38,30 @@ function toSmartAdKeywordAdvAddPage() {
 }
 
 
-function viewAnalysisReport(){
+function viewAnalysisReport() {
     router.push({ name: "SmartAnalysisReport" })
 }
 
 
 
-function goback() {
-
+function gotoCopyPage() {
+    router.push({ name: "AddTheme" })
 }
+
+function showConfirmModal() {
+    deleteModal.value.show()
+}
+
+function closeModal() {
+    deleteModal.value.hide()
+}
+
+
+
+onMounted(() => {
+    deleteModal.value = new Modal(document.getElementById(id))
+})
+
 </script>
 
 <template >
@@ -131,75 +153,75 @@ function goback() {
                     </thead>
                     <tbody id="smart-ad-keyword-detail-tbody">
                         <template v-for="(item, index) in items" :key="index">
-                                <tr>
-                                    <td>
-                                        {{ item.no }}
-                                    </td>
-                                    <td>
-                                        {{ item.no2 }}
-                                    </td>
-                          
-                                    <td>
-                                        {{ item.themeTag }}
-                                    </td>
-                                    <td>
-                                        {{ item.analysis }}
-                                    </td>
-                                    <td>
-                                        {{ item.actionanalysis }}
-                                    </td>
-                           
-                                    <td>
-                                        {{ item.desktopmobile }}
-                                    </td>
-                                    <td>
-                                        {{ item.list }}
-                                    </td>
-                          
-                                    <td>
-                                        {{ item.phonelist }}
-                                    </td>
-                                    <td>
-                                        {{ item.phonestatus }}
-                                    </td>
-                                    <td>
-                                        {{ item.creatorname }}
-                                    </td>
-                                    <td>
-                                        {{ item.createdate }}
-                                    </td>
-                                    <td>
-                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                            <button class="iconbtn btn rounded-circle btn-sm" type="button"
-                                                @click="gotoCopyPage()">
-                                                <i class="bi bi-copy fs-6"
-                                                    style="padding-right: 2px; padding-left: 2px;"></i></button>
-                                            <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
-                                                style=" top: 100%;right: -50%;">
-                                                複製
-                                            </span>
-                                        </div>
-                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                            <button class="iconbtn btn rounded-circle btn-sm" type="button"
-                                                @click="viewAnalysisReport()">
-                                                <i class="bi bi-graph-up fs-6"></i></button>
-                                            <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
-                                                style=" top: 100%;right: -50%;">
-                                                檢視分析報告
-                                            </span>
-                                        </div>
-                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                            <button class="iconbtn btn rounded-circle btn-sm" type="button"
-                                                @click="showConfirmModal(this)">
-                                                <i class="bi bi-trash fs-6"></i></button>
-                                            <span class="custom-tooltip-2 rounded position-absolute z-3 mt-1"
-                                                style=" top: 100%;right: -50%;">
-                                                刪除
-                                            </span>
-                                        </div>
-                                    </td>
-                                </tr>
-                            </template>
+                            <tr>
+                                <td>
+                                    {{ item.no }}
+                                </td>
+                                <td>
+                                    {{ item.no2 }}
+                                </td>
+
+                                <td>
+                                    {{ item.themeTag }}
+                                </td>
+                                <td>
+                                    {{ item.analysis }}
+                                </td>
+                                <td>
+                                    {{ item.actionanalysis }}
+                                </td>
+
+                                <td>
+                                    {{ item.desktopmobile }}
+                                </td>
+                                <td>
+                                    {{ item.list }}
+                                </td>
+
+                                <td>
+                                    {{ item.phonelist }}
+                                </td>
+                                <td>
+                                    {{ item.phonestatus }}
+                                </td>
+                                <td>
+                                    {{ item.creatorname }}
+                                </td>
+                                <td>
+                                    {{ item.createdate }}
+                                </td>
+                                <td>
+                                    <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                        <button class="iconbtn btn rounded-circle btn-sm" type="button"
+                                            @click="gotoCopyPage()">
+                                            <i class="bi bi-copy fs-6"
+                                                style="padding-right: 2px; padding-left: 2px;"></i></button>
+                                        <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
+                                            style=" top: 100%;right: -50%;">
+                                            複製
+                                        </span>
+                                    </div>
+                                    <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                        <button class="iconbtn btn rounded-circle btn-sm" type="button"
+                                            @click="viewAnalysisReport()">
+                                            <i class="bi bi-graph-up fs-6"></i></button>
+                                        <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
+                                            style=" top: 100%;right: -50%;">
+                                            檢視分析報告
+                                        </span>
+                                    </div>
+                                    <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                        <button class="iconbtn btn rounded-circle btn-sm" type="button"
+                                            @click="showConfirmModal()">
+                                            <i class="bi bi-trash fs-6"></i></button>
+                                        <span class="custom-tooltip-2 rounded position-absolute z-3 mt-1"
+                                            style=" top: 100%;right: -50%;">
+                                            刪除
+                                        </span>
+                                    </div>
+                                </td>
+                            </tr>
+                        </template>
                     </tbody>
                 </table>
                 <div class="d-flex justify-content-between">
@@ -266,23 +288,6 @@ function goback() {
         </div>
 
         <!-- remove-modal -->
-        <div class="modal" id="modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header border-0 pb-0">
-                        <h3> 確認通知</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body fs-6 fw-medium pb-2">
-                        確定刪除該筆資料?
-                    </div>
-                    <div class="modal-footer border-0">
-                        <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn primary ">確定</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <ConfirmModal :id="id" @confirmClose="closeModal"></ConfirmModal>
     </div>
 </template>

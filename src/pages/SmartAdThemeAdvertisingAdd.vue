@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import router from '../router'
 const badges = ref([])
 const smallTheme = ref('')
 const bigTheme = ref('')
