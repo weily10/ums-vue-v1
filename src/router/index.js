@@ -57,6 +57,7 @@ import SmartSearchNumber from '../pages/SmartSearchNumber.vue'
 import BigQueryOverview from '../pages/BigQueryOverview.vue'
 import UsageTracking from '../pages/UsageTracking.vue'
 import DataPipelineStatus from '../pages/DataPipelineStatus.vue'
+import TopicInsightAnalysis from '../pages/TopicInsightAnalysis.vue'
 
 
 
@@ -408,9 +409,12 @@ const routes = [
         path: "/datapipeline",
         name: "DataPipelineStatus",
         component: DataPipelineStatus
+    },
+    {
+        path: "/topic-insight-analysis",
+        name: "TopicInsightAnalysis",
+        component: TopicInsightAnalysis
     }
-    
-
 ]
 
 
