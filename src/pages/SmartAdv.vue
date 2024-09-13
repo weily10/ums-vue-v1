@@ -256,7 +256,7 @@ function closeModal() {
                 </div>
             </div>
         </div>
-        <ConfirmModal :id="id" @confirmClose="closeModal"></ConfirmModal>
+        <ConfirmModal :id="id" @confirmClose="closeModal" :message="'確定刪除該筆資料?'"></ConfirmModal>
       
     </div>
 </template>

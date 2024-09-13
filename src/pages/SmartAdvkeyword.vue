@@ -288,6 +288,6 @@ onMounted(() => {
         </div>
 
         <!-- remove-modal -->
-        <ConfirmModal :id="id" @confirmClose="closeModal"></ConfirmModal>
+        <ConfirmModal :id="id" @confirmClose="closeModal" :message="'確定刪除該筆資料?'"></ConfirmModal>
     </div>
 </template>

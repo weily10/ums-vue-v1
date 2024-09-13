@@ -368,8 +368,7 @@ function toggleHighlight(item3) {
 		});
 	});
 	item3.highlighted = true
-	console.log(item3);
-
+ 
 }
 
 </script>

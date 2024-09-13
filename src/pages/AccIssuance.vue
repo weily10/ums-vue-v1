@@ -1,8 +1,15 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import router from '../router';
+import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import ConfirmModal from '../components/ConfirmModal.vue'
+
 
 const array = ref([])
+const deleteModal = ref(false)
+const deleteModal1 = ref(false)
+const id = ref('user-acc-dialog')
+const message = ref('確定要寄送OTP認證信至該帳號？')
 
 
 array.value = [{
@@ -12,9 +19,35 @@ array.value = [{
     status: '正常'
 }]
 
+
+onMounted(() => {
+    deleteModal.value = new Modal(document.getElementById('user-acc-dialog'))
+})
+
+
+
+
 function gotoUserDetail() {
     router.push({ name: 'AccInssuanceAdd' })
 }
+
+
+function closeModal() {
+    deleteModal.value.hide()
+}
+
+function openStopAccConf() {
+    message.value = '確定要將此帳號停權？'
+    deleteModal.value.show()
+}
+
+
+function openStopAccConf1() {
+    message.value = '確定要寄送OTP認證信至該帳號？'
+    deleteModal.value.show()
+}
+
+
 
 </script>
 
@@ -96,13 +129,13 @@ function gotoUserDetail() {
                                 </td>
                                 <td class="text-center">
                                     <button class="iconbtn btn rounded-circle btn-sm" type="button"
-                                        onclick="gotoCopyPage()">
+                                        @click="router.push({ name: 'AccInssuanceAdd' })">
                                         <i class="bi bi-pencil-fill fs-6"></i></button>
                                     <button class="iconbtn btn rounded-circle btn-sm" type="button"
-                                        onclick="gotoCopyPage()">
+                                        @click="openStopAccConf()">
                                         <i class="bi bi-person-fill-x fs-6"></i></button>
                                     <button class="iconbtn btn rounded-circle btn-sm" type="button"
-                                        onclick="gotoCopyPage()">
+                                        @click="openStopAccConf1()">
                                         <i class="bi bi-chat-right-dots fs-6"></i></button>
                                 </td>
                             </tr>
@@ -112,43 +145,9 @@ function gotoUserDetail() {
                 </table>
             </div>
         </div>
-        <div class="modal fade" id="user-acc-dialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header border-0 pb-0">
-                        <h3> 確認通知</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body fs-6 fw-medium pb-2">
-                        確定要將此帳號停權？
-                    </div>
-                    <div class="modal-footer border-0">
-                        <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn primary ">確定</button>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <ConfirmModal :id="id" @confirmClose="closeModal" :message="message"></ConfirmModal>
+        <ConfirmModal :id="id" @confirmClose="closeModal" :message="message"></ConfirmModal>
 
-        <div class="modal fade" id="user-acc-otp-dialog" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-            aria-labelledby="modalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header border-0 pb-0">
-                        <h3> 確認通知</h3>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body fs-6 fw-medium pb-2">
-                        確定要寄送OTP認證信至該帳號？
-                    </div>
-                    <div class="modal-footer border-0">
-                        <button type="button" class="btn" data-bs-dismiss="modal">取消</button>
-                        <button type="button" class="btn primary ">確定</button>
-                    </div>
-                </div>
-            </div>
-        </div>
 
     </div>
 </template>
