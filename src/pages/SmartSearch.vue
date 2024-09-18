@@ -1,5 +1,21 @@
 <script setup>
- import router from '../router'
+import router from '../router'
+import { ref,onMounted  } from 'vue'
+import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
+import ConfirmModal from '../components/ConfirmModal.vue'
+
+const deleteModal = ref(false)
+let id = 'deleteModal'
+
+
+function showConfirmModal() {
+    deleteModal.value.show()
+}
+
+onMounted(() => {
+    deleteModal.value = new Modal(document.getElementById(id))
+})
+
 </script>
 <template>
     <div>
@@ -77,7 +93,8 @@
                             <td class="text-center">
                                 <div class="d-flex justify-content-center gap-1 fs-6">
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                        <button class=" btn rounded-circle btn-sm" type="button" @click="router.push({name:'AddTheme'})">
+                                        <button class=" btn rounded-circle btn-sm" type="button"
+                                            @click="router.push({ name: 'AddTheme' })">
                                             <i class="bi bi-copy "
                                                 style="padding-right: 2px; padding-left: 2px;"></i></button>
                                         <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
@@ -86,7 +103,8 @@
                                         </span>
                                     </div>
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                        <button class=" btn rounded-circle btn-sm" type="button" @click="router.push({name:'MatchmakingAnalysis'})">
+                                        <button class=" btn rounded-circle btn-sm" type="button"
+                                            @click="router.push({ name: 'MatchmakingAnalysis' })">
                                             <i class="bi bi-graph-up "></i></button>
                                         <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
                                             style=" top: 100%;right: -50%;">
@@ -95,7 +113,7 @@
                                     </div>
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                         <button class=" btn rounded-circle btn-sm" type="button"
-                                            @click="showConfirmModal(this)">
+                                            @click="showConfirmModal()">
                                             <i class="bi bi-trash  "></i></button>
                                         <span class="custom-tooltip-2 rounded position-absolute z-3 mt-1"
                                             style=" top: 100%;right: -50%;">
@@ -137,6 +155,6 @@
             </div>
         </div>
 
-
+        <ConfirmModal :id="id" @confirmClose="closeModal" :message="'確定刪除該筆資料?'"></ConfirmModal>
     </div>
 </template>
