@@ -1,6 +1,8 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, watch, onUnmounted } from 'vue';
+
 let menuItems = ref([])
+const innerwidth = ref(window.innerWidth)
 
 menuItems.value = [{
 	text: "使用者中心",
@@ -338,6 +340,18 @@ menuItems.value = [{
 	]
 }]
 
+onMounted(() => {
+	window.addEventListener('resize', updateWidth)
+})
+
+onUnmounted(() => {
+	window.removeEventListener('resize', updateWidth);
+});
+
+function updateWidth() {
+	innerwidth.value = window.innerWidth;
+
+}
 
 function topFunction() {
 	document.body.scrollTop = 0;
@@ -368,16 +382,15 @@ function toggleHighlight(item3) {
 		});
 	});
 	item3.highlighted = true
- 
+
 }
 
+watch((innerwidth) => {
+	innerwidth.value = window.innerWidth
+	console.log(innerwidth);
+})
+
 </script>
-
- 
-
-
-
-   
 
 <template>
 	<div class="modal fade" id="confirm-modal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
@@ -408,13 +421,14 @@ function toggleHighlight(item3) {
 
 
 		<div class="d-flex position-fixed" style="z-index: 2">
-			
+
 			<button class="btn rounded-circle  m-3 text-light" type="button" data-bs-toggle="offcanvas"
-				data-bs-target="#mainmenu" aria-controls="offcanvasExample">
+				data-bs-target="#mainmenu" aria-controls="offcanvas">
 				<i class="bi bi-list"></i>
 			</button>
-			<div class="" id="mainmenu" data-bs-backdrop="false"  data-bs-scroll="true"  >
-				<div class="dashboard-nav position-fixed d-flex flex-column z-5 px-2 border-end" >
+ 			<div :class="innerwidth <= 734 ? 'offcanvas offcanvas-start' : ''" id="mainmenu"
+				data-bs-backdrop="false" data-bs-scroll="true">
+				<div class="dashboard-nav position-fixed d-flex flex-column z-5 px-2 border-end">
 					<header>
 						<div class="d-flex justify-content-between">
 							<div>
@@ -428,7 +442,7 @@ function toggleHighlight(item3) {
 							</div>
 						</div>
 					</header>
-					
+
 					<nav id="navmenu" class="dashboard-nav-list ">
 						<div class="accordion" id="menu">
 							<div class="accordion-item" v-for="(item, index) in updatedMenuItems">
@@ -568,7 +582,7 @@ function toggleHighlight(item3) {
 			</div>
 
 			<button id="controlBtn"
-				class="btn rounded-circle primary bg-custom-grey shadow-sm d-flex position-absolute offcanvas-btn "
+				class="btn rounded-circle  bg-custom-grey shadow-sm d-flex position-absolute offcanvas-btn "
 				type="button" data-bs-toggle="offcanvas" data-bs-target="#searchbar" aria-controls="offcanvasScrolling"><i
 					class="bi bi-list"></i></button>
 
@@ -631,13 +645,13 @@ function toggleHighlight(item3) {
 
 			<div class="bottom-fixed z-2">
 				<button class="rounded-circle btn primary shadow-sm text-light" onclick="topFunction()">
-					<i class="icon-top"></i>
+					<i class="bi bi-arrow-up-short"></i>
 				</button>
 			</div>
 			<div id="controlBtn1">
 				<button class="rounded-circle btn bg-light shadow btn-lg" data-bs-toggle="offcanvas"
 					data-bs-target="#offcanvasRight">
-					<i class="icon-filter"></i>
+					<i class="bi bi-sliders"></i>
 				</button>
 			</div>
 			<div class="offcanvas offcanvas-end" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
@@ -736,7 +750,7 @@ function toggleHighlight(item3) {
 <style scoped>
 .highlighted {
 	background-color: #DDEDF3;
- 
+
 }
 
 .logo {
