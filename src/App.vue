@@ -517,7 +517,7 @@ watch((innerwidth) => {
 				</div>
 			</div>
 
-			<div id="searchbar" class="offcanvas offcanvas-start px-2" style="width: 250px;" data-bs-scroll="true"
+			<div id="searchbar" class="offcanvas offcanvas-start px-2" :class="innerwidth <= 734 ? 'offcanvas offcanvas-start':''" style="width: 250px;" data-bs-scroll="true"
 				data-bs-backdrop="false" tabindex="-1" aria-labelledby="offcanvasScrollingLabel">
 				<div class="offcanvas-body">
 					<div class="font-b4-me">平台</div>
