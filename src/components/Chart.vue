@@ -19,8 +19,7 @@ function initChart() {
     }
     drawChart = echarts.init(customRef.value);
 
-    console.log('drawChart', drawChart);
-    drawChart.setOption(option.value);
+     drawChart.setOption(option.value);
 
     window.addEventListener('resize', () => {
         drawChart.resize();

@@ -1,8 +1,11 @@
 <script setup>
-import { ref, onMounted, watch, onUnmounted } from 'vue';
+import { ref, onMounted, watch, onUnmounted, computed } from 'vue';
+import { useRoute } from 'vue-router';
 
 let menuItems = ref([])
 const innerwidth = ref(window.innerWidth)
+const routePath = useRoute()
+const activeItem = ref(null)
 
 menuItems.value = [{
 	text: "使用者中心",
@@ -340,8 +343,42 @@ menuItems.value = [{
 	]
 }]
 
+const updatedMenuItems = menuItems.value.map(menuItem => ({
+	...menuItem,
+	group: menuItem.group.map(subgroup => ({
+		...subgroup,
+		subgroup: subgroup.subgroup.map(item => ({
+			...item,
+			highlight: false
+		}))
+	}))
+}));
+
+function getActiveItem() {
+ 	for (let i = 0; i < updatedMenuItems.length; i++) {
+  		for (let j = 0; j < updatedMenuItems[i].group.length; j++) {
+			const currentItem =  updatedMenuItems[i].group[j].subgroup.find(item => item.route === routePath)
+			console.log(currentItem);
+			if (currentItem) {
+				activeItem.value = currentItem
+				console.log('sadasdas',activeItem.value);
+ 			}
+		}
+		// const currentItem = item.group[i].subgroup.find(item2 => item2.route === routePath)
+		// console.log('porra', currentItem);
+		// if (currentItem) {
+
+		// 	activeItem.value = currentItem
+		// 	console.log(activeItem.value);
+		// }
+	}
+}
+
+
+
 onMounted(() => {
 	window.addEventListener('resize', updateWidth)
+	getActiveItem()
 })
 
 onUnmounted(() => {
@@ -359,20 +396,6 @@ function topFunction() {
 }
 
 
-const updatedMenuItems = menuItems.value.map(menuItem => ({
-	...menuItem,
-	group: menuItem.group.map(subgroup => ({
-		...subgroup,
-		subgroup: subgroup.subgroup.map(item => ({
-			...item,
-			highlight: false
-		}))
-	}))
-}));
-
-
-
-
 function toggleHighlight(item3) {
 	updatedMenuItems.forEach(menuItem => {
 		menuItem.group.forEach(subgroup => {
@@ -384,6 +407,8 @@ function toggleHighlight(item3) {
 	item3.highlighted = true
 
 }
+
+
 
 watch((innerwidth) => {
 	innerwidth.value = window.innerWidth
@@ -426,18 +451,18 @@ watch((innerwidth) => {
 				data-bs-target="#mainmenu" aria-controls="offcanvas">
 				<i class="bi bi-list"></i>
 			</button>
- 			<div :class="innerwidth <= 734 ? 'offcanvas offcanvas-start' : ''" id="mainmenu"
-				data-bs-backdrop="false" data-bs-scroll="true">
+			<div :class="innerwidth <= 734 ? 'offcanvas offcanvas-start' : ''" id="mainmenu" data-bs-backdrop="false"
+				data-bs-scroll="true">
 				<div class="dashboard-nav position-fixed d-flex flex-column z-5 px-2 border-end">
 					<header>
 						<div class="d-flex justify-content-between align-items-center">
 							<div>
 								<RouterLink to="/">
-									<img src="../public/logo.svg" alt=""> 
+									<img src="../public/logo.svg" alt="">
 								</RouterLink>
-								
+
 							</div>
-							<span class="ps-1 fs-2 fw-bolder " style="color:#0055AF">UMS</span> 
+							<span class="ps-1 fs-2 fw-bolder " style="color:#0055AF">UMS</span>
 							<div class="close-btn position-relative">
 								<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
 									aria-label="Close"></button>
@@ -449,6 +474,7 @@ watch((innerwidth) => {
 						<div class="accordion" id="menu">
 							<div class="accordion-item" v-for="(item, index) in updatedMenuItems">
 								<div class="accordion-header">
+
 									<button class="dashboard-nav-item accordion-button collapsed" type="button"
 										data-bs-toggle="collapse" :data-bs-target="'#item' + index" aria-expanded="true"
 										:aria-controls="'item' + index">
@@ -457,8 +483,9 @@ watch((innerwidth) => {
 										</span>
 									</button>
 								</div>
-								<div class="accordion-collapse collapse position-relative" data-bs-parent="#menu"
-									:id="'item' + index">
+								<div :class="activeItem === routePath ? 'accordion-collapse collapse position-relative show' : 'accordion-collapse collapse position-relative'"
+									data-bs-parent="#menu" :id="'item' + index">
+
 									<div class="accordion-body group" style="padding-inline:0">
 										<div v-for="(item2, index2) in item.group" :key="index2">
 
@@ -517,7 +544,8 @@ watch((innerwidth) => {
 				</div>
 			</div>
 
-			<div id="searchbar" class="offcanvas offcanvas-start px-2" :class="innerwidth <= 734 ? 'offcanvas offcanvas-start':''" style="width: 250px;" data-bs-scroll="true"
+			<div id="searchbar" class="offcanvas offcanvas-start px-2"
+				:class="innerwidth <= 734 ? 'offcanvas offcanvas-start' : ''" style="width: 250px;" data-bs-scroll="true"
 				data-bs-backdrop="false" tabindex="-1" aria-labelledby="offcanvasScrollingLabel">
 				<div class="offcanvas-body">
 					<div class="font-b4-me">平台</div>
@@ -584,8 +612,8 @@ watch((innerwidth) => {
 			</div>
 
 			<button id="controlBtn"
-				class="btn rounded-circle  bg-custom-grey shadow-sm d-flex position-absolute offcanvas-btn "
-				type="button" data-bs-toggle="offcanvas" data-bs-target="#searchbar" aria-controls="offcanvasScrolling"><i
+				class="btn rounded-circle  bg-custom-grey shadow-sm d-flex position-absolute offcanvas-btn " type="button"
+				data-bs-toggle="offcanvas" data-bs-target="#searchbar" aria-controls="offcanvasScrolling"><i
 					class="bi bi-list"></i></button>
 
 		</div>
