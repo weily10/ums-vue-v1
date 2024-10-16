@@ -644,7 +644,7 @@ watch((innerwidth) => {
 
 
 			<div class="bottom-fixed z-2">
-				<button class="rounded-circle btn primary shadow-sm text-light" onclick="topFunction()">
+				<button class="rounded-circle btn primary shadow-sm text-light" @click="topFunction()">
 					<i class="bi bi-arrow-up-short"></i>
 				</button>
 			</div>
