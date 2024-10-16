@@ -430,12 +430,14 @@ watch((innerwidth) => {
 				data-bs-backdrop="false" data-bs-scroll="true">
 				<div class="dashboard-nav position-fixed d-flex flex-column z-5 px-2 border-end">
 					<header>
-						<div class="d-flex justify-content-between">
+						<div class="d-flex justify-content-between align-items-center">
 							<div>
 								<RouterLink to="/">
-									<img src="../public/logo.svg" alt="">
+									<img src="../public/logo.svg" alt=""> 
 								</RouterLink>
+								
 							</div>
+							<span class="ps-1 fs-2 fw-bolder " style="color:#0055AF">UMS</span> 
 							<div class="close-btn position-relative">
 								<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
 									aria-label="Close"></button>
