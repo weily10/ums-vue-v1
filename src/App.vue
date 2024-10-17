@@ -354,31 +354,33 @@ const updatedMenuItems = menuItems.value.map(menuItem => ({
 	}))
 }));
 
-function getActiveItem() {
-	for (let i = 0; i < updatedMenuItems.length; i++) {
-		for (let j = 0; j < updatedMenuItems[i].group.length; j++) {
-			const currentItem = updatedMenuItems[i].group[j].subgroup.find(item => item.route === routePath)
-			console.log(currentItem);
-			if (currentItem) {
-				activeItem.value = currentItem
-				console.log('sadasdas', activeItem.value);
-			}
-		}
-		// const currentItem = item.group[i].subgroup.find(item2 => item2.route === routePath)
-		// console.log('porra', currentItem);
-		// if (currentItem) {
+function getActiveItem(item) {
 
-		// 	activeItem.value = currentItem
-		// 	console.log(activeItem.value);
-		// }
+	for (let i of item.group) {
+		const currentItem = i.subgroup.find(item2 => item2.route === routePath.path)
+		if (currentItem) {
+			return currentItem.route
+		}
 	}
+}
+
+function getActiveItem2(item2) {
+	const currentItem = item2.subgroup.find(i => i.route === routePath.path)
+	if (currentItem) {
+		console.log(currentItem);
+		return currentItem.route
+	}
+}
+
+function isActivePage(item) {
+ 	return item.route === routePath.path ? true : false
 }
 
 
 
 onMounted(() => {
 	window.addEventListener('resize', updateWidth)
-	getActiveItem()
+	// getActiveItem()
 })
 
 onUnmounted(() => {
@@ -395,21 +397,7 @@ function topFunction() {
 	document.documentElement.scrollTop = 0;
 }
 
-
-function toggleHighlight(item3) {
-	updatedMenuItems.forEach(menuItem => {
-		menuItem.group.forEach(subgroup => {
-			subgroup.subgroup.forEach(item => {
-				item.highlighted = false;
-			});
-		});
-	});
-	item3.highlighted = true
-
-}
-
-
-
+ 
 watch((innerwidth) => {
 	innerwidth.value = window.innerWidth
 	console.log(innerwidth);
@@ -475,7 +463,8 @@ watch((innerwidth) => {
 							<div class="accordion-item" v-for="(item, index) in updatedMenuItems">
 								<div class="accordion-header">
 
-									<button class="dashboard-nav-item accordion-button collapsed" type="button"
+									<button class="dashboard-nav-item accordion-button"
+										:class="getActiveItem(item) === routePath.path ? '' : 'collapsed'" type="button"
 										data-bs-toggle="collapse" :data-bs-target="'#item' + index" aria-expanded="true"
 										:aria-controls="'item' + index">
 										<span class="nav-link-icon"><i :class="item.icon" alt=""></i></span> <span
@@ -483,8 +472,9 @@ watch((innerwidth) => {
 										</span>
 									</button>
 								</div>
-								<div :class="activeItem === routePath ? 'accordion-collapse collapse position-relative show' : 'accordion-collapse collapse position-relative'"
-									data-bs-parent="#menu" :id="'item' + index">
+								<div class="accordion-collapse collapse position-relative"
+									:class="getActiveItem(item) === routePath.path ? ' show' : ''" data-bs-parent="#menu"
+									:id="'item' + index">
 
 									<div class="accordion-body group" style="padding-inline:0">
 										<div v-for="(item2, index2) in item.group" :key="index2">
@@ -493,7 +483,8 @@ watch((innerwidth) => {
 												<div class="accordion-item">
 													<div class="accordion-header">
 														<button
-															class="dashboard-nav-item accordion-button collapsed  position-relative"
+															class="dashboard-nav-item accordion-button   position-relative"
+															:class="getActiveItem2(item2) === routePath.path ? '' : 'collapsed'"
 															style="padding-left:60px" type="button"
 															data-bs-toggle="collapse" :data-bs-target="'#subitem' + index2"
 															aria-expanded="true" :aria-controls="'#subitem' + index2">
@@ -503,9 +494,10 @@ watch((innerwidth) => {
 													</div>
 													<div :id="'subitem' + index2"
 														class="accordion-collapse collapse subgroup"
+														:class="getActiveItem2(item2) === routePath.path ? 'show' : ''"
 														:data-bs-parent="'#submenu' + index2" style="position:relative">
-														<div class="accordion-body subgroup " style="padding-inline:0">
-															<div :id="'subbody' + index2" style="">
+														<div class="accordion-body subgroup" style="padding-inline:0">
+															<div :id="'subbody' + index2">
 																<div class="menu-accordion-item accordion-item"
 																	v-for="(item3, index3) in item2.subgroup"
 																	:key="'item' + index3">
@@ -515,10 +507,9 @@ watch((innerwidth) => {
 
 																			<button
 																				class="dashboard-nav-item btn-last-child subchild"
-																				style="padding-left:65px"
-																				:class="{ 'highlighted': item3.highlighted }"
-																				type="button"
-																				@click="toggleHighlight(item3)">
+																				:class="{ 'highlighted': isActivePage(item3) }"
+																				style="padding-left:65px" type="button"
+																				 >
 																				<span class="subgroupLineSpan"></span>
 																				{{ item3.text }}
 																			</button>
