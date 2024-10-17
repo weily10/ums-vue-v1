@@ -742,7 +742,6 @@ a {
 body {
   min-height: 100vh;
   margin: 0;
-  place-items: center;
   overflow-y: scroll;
   overflow-x: hidden;
 }
@@ -1112,6 +1111,9 @@ button:disabled {
 }
 
 @media screen and (max-width: 734px) {
+  .left {
+    margin-left:0;
+  }
 
   #searchbar.offcanvas.offcanvas-start {
     left: 0 !important;
@@ -1129,15 +1131,12 @@ button:disabled {
     right: 1%;
   }
 
- 
+
 
   footer {
     padding-left: 0;
   }
 
-  .left {
-    margin-left: 0;
-  }
 
   #mainmenu {
     width: 250px;

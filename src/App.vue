@@ -355,14 +355,14 @@ const updatedMenuItems = menuItems.value.map(menuItem => ({
 }));
 
 function getActiveItem() {
- 	for (let i = 0; i < updatedMenuItems.length; i++) {
-  		for (let j = 0; j < updatedMenuItems[i].group.length; j++) {
-			const currentItem =  updatedMenuItems[i].group[j].subgroup.find(item => item.route === routePath)
+	for (let i = 0; i < updatedMenuItems.length; i++) {
+		for (let j = 0; j < updatedMenuItems[i].group.length; j++) {
+			const currentItem = updatedMenuItems[i].group[j].subgroup.find(item => item.route === routePath)
 			console.log(currentItem);
 			if (currentItem) {
 				activeItem.value = currentItem
-				console.log('sadasdas',activeItem.value);
- 			}
+				console.log('sadasdas', activeItem.value);
+			}
 		}
 		// const currentItem = item.group[i].subgroup.find(item2 => item2.route === routePath)
 		// console.log('porra', currentItem);
@@ -646,7 +646,6 @@ watch((innerwidth) => {
 			</div>
 		</header>
 		<div class="container-fluid mb-5">
-
 			<div class="position-fixed bottom-0 p-3 start-50" style="z-index: 11">
 				<div id="success-toast" class="toast hide bg-white border-0" role="alert" aria-live="assertive"
 					aria-atomic="true">
