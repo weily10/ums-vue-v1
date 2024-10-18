@@ -1,5 +1,228 @@
 <script setup>
- 
+import { ref, onMounted } from 'vue'
+import CustomChart from '../components/Chart.vue'
+
+
+
+const option = ref({})
+const option2 = ref({})
+const option3 = ref({})
+const option4 = ref({})
+const brandColors = ref(['#fc8452', '#3DA4D0', '#ee6666', '#005FC3', '#8CD7DA', '#CDF2C8', '#3ba272', '#9a60b4', '#ea7ccc'])
+
+function loadOrderStatus() {
+
+    let salesplandata = {
+        title: '',
+        yAxis: ['數位訂閱 - 月訂方案', '數位訂閱 - 年訂方案', '月訂方案', '年訂方案', '季訂方案'],
+        bardata: [8, 4, 8, 7, 2]
+    }
+
+    option.value = {
+        color: brandColors.value,
+        title: {
+            text: salesplandata.title,
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            show: false,
+            top: 'bottom'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'value',
+            boundaryGap: [0, 0.01]
+        },
+        yAxis: {
+            type: 'category',
+            data: salesplandata.yAxis
+        },
+        series: [
+            {
+                name: salesplandata.title,
+                type: 'bar',
+                data: salesplandata.bardata
+            }
+        ]
+    }
+    const data = {
+        title: 'Android 裝置偏好',
+        yAxis: ['數位訂閱 - 月訂方案', '數位訂閱 - 年訂方案', '月訂方案', '年訂方案', '季訂方案'],
+        bardata: [210, 129, 98, 35, 34, 24, 20, 15, 10, 9, 8, 5, 3]
+    }
+    const color = ['#3DA4D0', '#005FC3', '#ee6666', '#8CD7DA', '#CDF2C8', '#3ba272', '#9a60b4', '#ea7ccc']
+    option2.value = {
+        color: color,
+        title: {
+            text: data.title,
+            left: 'center'
+        },
+        tooltip: {
+            trigger: 'axis',
+            axisPointer: {
+                type: 'shadow'
+            }
+        },
+        legend: {
+            show: false,
+            top: 'bottom'
+        },
+        grid: {
+            left: '3%',
+            right: '4%',
+            bottom: '3%',
+            containLabel: true
+        },
+        xAxis: {
+            type: 'value',
+            boundaryGap: [0, 0.01]
+        },
+        yAxis: {
+            type: 'category',
+            data: data.yAxis
+        },
+        series: [
+            {
+                name: data.title,
+                type: 'bar',
+                data: data.bardata
+            }
+        ]
+    }
+
+    let color2 = ['#3DA4D0', '#8CD7DA', '#CDF2C8', , '#ee6666', '#005FC3', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'];
+    let ordersourcedata = {
+        title: "新訂閱人數 / 訂單來源",
+        subtext: "",
+        yAxis: [1, 1],
+        xAxis: ['GooglePlay', 'AppleStore'],
+        series: [{ type: 'bar' }, { type: 'bar' }]
+    }
+
+    option3.value = {
+        legend: {
+            bottom: 0,
+            left: 'center',
+        },
+        tooltip: {
+            trigger: 'item',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {},
+            }
+        },
+        title: {
+            text: ordersourcedata.title,
+            subtext: ordersourcedata.subtext,
+            left: 'center',
+        },
+        xAxis: {
+            type: 'category',
+            data: ordersourcedata.xAxis
+
+        },
+        yAxis: {
+
+        },
+        series: [
+            {
+                data: ordersourcedata.yAxis,
+                type: 'bar',
+            }
+        ]
+    }
+
+    let color3 = ['#3DA4D0', '#8CD7DA', '#CDF2C8', , '#ee6666', '#005FC3', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'];
+    let data2 = {
+        title: "新訂閱人數 / 時段",
+        subtitle: "",
+        yAxis: [1, 1],
+        xAxis: ['12月12日'],
+        series: [{
+            name: '自動續定',
+            type: 'line',
+            stack: 'total',
+            data: [12],
+            triggerLineEvent: true
+        },
+        {
+            name: '新訂閱',
+            type: 'line',
+            stack: 'total',
+            data: [2]
+        }]
+    }
+
+    option4.value = {
+        color: color3,
+        title: {
+            text: data2.title,
+            subtext: data2.subtext,
+            left: 'center',
+        },
+        legend: {
+            show: true,
+            top: 'bottom'
+        },
+        tooltip: {
+            show: true
+        },
+        toolbox: {
+            feature: {
+                saveAsImage: {}
+            }
+        },
+        xAxis: {
+            type: 'category',
+            data: data2.xAxis
+        },
+
+        yAxis: {
+            type: 'value',
+        },
+        series: data2.series
+    }
+
+
+
+
+
+}
+
+function loadDemographData() {
+
+}
+// let data3 = {
+// 	divId: 'encodechart-3',
+// 	title: 'Apple 裝置偏好',
+// 	yAxis: ['iPhone', 'iPhone 11', 'iPhone 13', 'iPhone 14 Pro', 'iPhone 12', 'iPhone 14 Pro Max', 'iPhone 13 Pro Max', 'iPhone 13 Pro'],
+// 	bardata: [210, 129, 98, 35, 34, 24, 20, 15, 10, 9, 8, 5, 3]
+// }
+
+
+
+
+
+onMounted(() => {
+    loadOrderStatus()
+})
+
+
+
+
 </script>
 
 <template>
@@ -7,7 +230,7 @@
         <div class="d-flex gap-1">
             <div class="">
                 <button class="btn rounded-circle btn-sm" type="button">
-                    <i class="icon-arrowback fs-6 py-1 " onclick="goback()"></i></button>
+                    <i class="icon-arrowback fs-6 py-1 " @click="goback()"></i></button>
                 <span class="custom-tooltip-2 rounded p-1 position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
                     返回
                 </span>
@@ -24,25 +247,25 @@
 
                 <li class="nav-item">
                     <a class="tab-button-1 active rounded-1" aria-current="page" data-bs-target="#order-status-section"
-                        data-bs-toggle="pill" aria-controls="news-bill-data-section" role="tab" onclick="loadOrderStatus()">
+                        data-bs-toggle="pill" aria-controls="news-bill-data-section" role="tab" @click="loadOrderStatus()">
                         <span>訂單狀態</span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="tab-button-1 rounded-1 px-1" data-bs-target="#demograph-section" data-bs-toggle="pill"
-                        aria-controls="news-bill-data-section" role="tab" onclick="loadDemographData()">
+                        aria-controls="news-bill-data-section" role="tab" @click="loadDemographData()">
                         <span>人口變項 </span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="tab-button-1 rounded-1 px-1" data-bs-target="#article-data-section" data-bs-toggle="pill"
-                        aria-controls="news-bill-data-section" role="tab" onclick="loadArticleData()">
+                        aria-controls="news-bill-data-section" role="tab" @click="loadArticleData()">
                         <span>文章分析 </span>
                     </a>
                 </li>
                 <li class="nav-item">
                     <a class="tab-button-1 rounded-1 px-1" data-bs-target="#doc-manual-section" data-bs-toggle="pill"
-                        aria-controls="news-bill-data-section" role="tab" onclick="loadDocManual()">
+                        aria-controls="news-bill-data-section" role="tab" @click="loadDocManual()">
                         <span>說明文件 </span>
                     </a>
                 </li>
@@ -60,11 +283,11 @@
                             <div class="shadow-sm ps-4 pe-4 pb-5 pt-3 flex-fill bg-white">
                                 <div class="d-flex justify-content-end">
                                     <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                            class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                            class="bi bi-list"></i></button>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                        <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                        <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                        <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                        <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                        <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                     </ul>
                                 </div>
                                 <div class=" d-flex flex-column justify-content-center  border-bottom flex-fill">
@@ -82,8 +305,8 @@
 
                                 </div>
 
-                                <div id="sales-plan-chart-1" class="mx-auto" style="width: 60vh; height: 40vh;">
-                                    
+                                <div id="sales-plan-chart-1" class="mx-auto" style="width: 60vh;  ">
+                                    <custom-chart :option="option"></custom-chart>
                                 </div>
 
                             </div>
@@ -93,11 +316,11 @@
                                 <div class="shadow-sm ps-4 pe-4 pb-5 pt-3 flex-fill bg-white">
                                     <div class="d-flex justify-content-end">
                                         <button class="lh-1 bg-transparent text-secondary p-0 m-0 "
-                                            data-bs-toggle="dropdown"><i class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                            data-bs-toggle="dropdown"><i class="bi bi-list"></i></button>
                                         <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                            <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                            <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                            <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                            <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                            <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                         </ul>
                                     </div>
                                     <div class="  d-flex flex-column justify-content-center  border-bottom flex-fill">
@@ -111,18 +334,19 @@
                                         </div>
                                     </div>
 
-                                    <div id="sales-plan-chart-2" class="mx-auto" style="width: 35vh; height: 40vh;">
+                                    <div id="sales-plan-chart-2" class="mx-auto mt-3" style="width: 35vh;  ">
+                                        <custom-chart :option="option2"></custom-chart>
                                     </div>
 
                                 </div>
                                 <div class="shadow-sm ps-4 pe-4 pb-5 pt-3 flex-fill bg-white">
                                     <div class="d-flex justify-content-end">
                                         <button class="lh-1 bg-transparent text-secondary p-0 m-0 "
-                                            data-bs-toggle="dropdown"><i class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                            data-bs-toggle="dropdown"><i class="bi bi-list"></i></button>
                                         <ul class="dropdown-menu dropdown-menu-end">
-                                            <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                            <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                            <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                            <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                            <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                            <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                         </ul>
                                     </div>
                                     <div class="  d-flex flex-column justify-content-center  border-bottom flex-fill">
@@ -136,36 +360,39 @@
                                         </div>
                                     </div>
 
-                                    <div id="sales-plan-chart-3" class="mx-auto" style="width: 35vh; height: 40vh;">
+                                    <div id="sales-plan-chart-3" class="mx-auto mt-3" style="width: 35vh;  ">
+                                        <custom-chart :option="option2"></custom-chart>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="flex-fill d-flex flex-column gap-3 flex-wrap">
-                            <div class="shadow-sm ps-4 pe-4 pb-5 pt-3 flex-fill bg-white">
+                            <div class="shadow-sm ps-4 pe-4  pt-3 flex-fill bg-white">
                                 <div class="d-flex justify-content-end">
                                     <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                            class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                            class="bi bi-list"></i></button>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                        <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                        <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                        <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                        <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                        <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                     </ul>
                                 </div>
-                                <div id="order-source-barchart" class="mx-auto" style="width: 35vh; height: 50vh;">
+                                <div id="order-source-barchart" class="mx-auto" style="width: 35vh">
+                                    <custom-chart :option="option3"></custom-chart>
                                 </div>
                             </div>
-                            <div class="shadow-sm ps-4 pe-4 pb-5 pt-3 flex-fill bg-white">
+                            <div class="shadow-sm ps-4 pe-4  pt-3 flex-fill bg-white">
                                 <div class="d-flex justify-content-end">
                                     <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                            class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                            class="bi bi-list"></i></button>
                                     <ul class="dropdown-menu dropdown-menu-end">
-                                        <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                        <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                        <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                        <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                        <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                        <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                     </ul>
                                 </div>
-                                <div id="time-barchart" class="mx-auto" style="width: 35vh; height: 50vh;">
+                                <div id="time-barchart" class="mx-auto p-0  " style="width: 35vh">
+                                    <custom-chart :option="option3"></custom-chart>
                                 </div>
                             </div>
                         </div>
@@ -174,15 +401,17 @@
                     <div class="shadow-sm p-3 bg-white">
                         <div class="d-flex justify-content-end ">
                             <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                    class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                    class="bi bi-list"></i></button>
                             <ul class="dropdown-menu dropdown-menu-end">
-                                <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                             </ul>
                         </div>
 
-                        <div id="subs-trend-chart" class="mx-auto" style="width: 100vh; height: 50vh;"></div>
+                        <div id="subs-trend-chart" class="mx-auto" style="width: 100vh">
+                            <custom-chart :option="option4"></custom-chart>
+                        </div>
                     </div>
                 </div>
                 <!-- 人口變項 -->
@@ -194,11 +423,11 @@
                         <div class="shadow-sm p-3 col bg-white">
                             <div class="d-flex justify-content-end ">
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                        class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                        class="bi bi-list"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                 </ul>
                             </div>
 
@@ -207,11 +436,11 @@
                         <div class="shadow-sm p-3 col bg-white">
                             <div class="d-flex justify-content-end ">
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                        class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                        class="bi bi-list"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                 </ul>
                             </div>
 
@@ -220,11 +449,11 @@
                         <div class="shadow-sm p-3 col bg-white">
                             <div class="d-flex justify-content-end ">
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                        class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                        class="bi bi-list"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                 </ul>
                             </div>
 
@@ -233,11 +462,11 @@
                         <div class="shadow-sm p-3 col bg-white">
                             <div class="d-flex justify-content-end ">
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                        class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                        class="bi bi-list"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                 </ul>
                             </div>
 
@@ -246,11 +475,11 @@
                         <div class="shadow-sm p-3 col bg-white">
                             <div class="d-flex justify-content-end ">
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                        class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                        class="bi bi-list"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                 </ul>
                             </div>
 
@@ -259,11 +488,11 @@
                         <div class="shadow-sm p-3 col bg-white">
                             <div class="d-flex justify-content-end ">
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                        class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                        class="bi bi-list"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                 </ul>
                             </div>
 
@@ -332,11 +561,11 @@
                         <div class="shadow-sm p-3 flex-fill bg-white">
                             <div class="d-flex justify-content-end ">
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                        class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                        class="bi bi-list"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                 </ul>
                             </div>
 
@@ -347,11 +576,11 @@
                         <div class="shadow-sm p-3 flex-fill bg-white">
                             <div class="d-flex justify-content-end ">
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                        class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                        class="bi bi-list"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                 </ul>
                             </div>
 
@@ -362,11 +591,11 @@
                         <div class="shadow-sm p-3 flex-fill bg-white">
                             <div class="d-flex justify-content-end flex-wrap">
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                        class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                        class="bi bi-list"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">排序</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">重設</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">排序</button></li>
                                 </ul>
                             </div>
 
@@ -379,10 +608,10 @@
                         <div class=" mb-2 d-flex justify-content-end">
                             <div class="d-flex align-items-end">
                                 <button class="lh-1 bg-transparent text-secondary p-0 m-0 " data-bs-toggle="dropdown"><i
-                                        class="lh-1 ifont icon-openMenu p-0"></i></button>
+                                        class="bi bi-list"></i></button>
                                 <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><button class="dropdown-item" type="button" onclick="">匯出</button></li>
-                                    <li><button class="dropdown-item" type="button" onclick="">重設</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">匯出</button></li>
+                                    <li><button class="dropdown-item" type="button" @click="">重設</button></li>
                                 </ul>
                             </div>
                         </div>
@@ -392,35 +621,35 @@
 
                                     <th scope="col" class="text-start">熱門文章標題 <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button></th>
+                                                @click=""></i></button></th>
                                     <th scope="col" class="text-start">文章 ID <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button></th>
+                                                @click=""></i></button></th>
                                     <th scope="col" class="text-start">文章類別 <button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button></th>
+                                                @click=""></i></button></th>
                                     <th scope="col" class="text-start">文章標籤<button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button> </th>
+                                                @click=""></i></button> </th>
                                     <th scope="col" class="text-start">文章類型<button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button> </th>
+                                                @click=""></i></button> </th>
                                     <th scope="col" class="text-start">作者<button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button> </th>
+                                                @click=""></i></button> </th>
 
                                     <th scope="col" class="text-center">轉單日期<button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button> </th>
+                                                @click=""></i></button> </th>
                                     <th scope="col" class="text-end">當日 PV 總數<button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button> </th>
+                                                @click=""></i></button> </th>
                                     <th scope="col" class="text-end">當日 PV 排行<button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button> </th>
+                                                @click=""></i></button> </th>
                                     <th scope="col" class="text-end">轉單 PV 數<button
                                             class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                onclick=""></i></button> </th>
+                                                @click=""></i></button> </th>
                                 </tr>
                             </thead>
                             <tbody id="article-analysis-table-body">

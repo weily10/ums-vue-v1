@@ -367,8 +367,7 @@ function getActiveItem(item) {
 function getActiveItem2(item2) {
 	const currentItem = item2.subgroup.find(i => i.route === routePath.path)
 	if (currentItem) {
-		console.log(currentItem);
-		return currentItem.route
+ 		return currentItem.route
 	}
 }
 
@@ -400,8 +399,7 @@ function topFunction() {
  
 watch((innerwidth) => {
 	innerwidth.value = window.innerWidth
-	console.log(innerwidth);
-})
+ })
 
 </script>
 
@@ -446,11 +444,11 @@ watch((innerwidth) => {
 						<div class="d-flex justify-content-between align-items-center">
 							<div>
 								<RouterLink to="/">
-									<img src="../public/logo.svg" alt="">
+									<img src="../public/logo.svg" style="vertical-align:text-bottom!important;" alt=""><span class="ps-1 fs-2 fw-bolder  mt-3 " style="color:#0055AF">UMS</span>
 								</RouterLink>
 
 							</div>
-							<span class="ps-1 fs-2 fw-bolder " style="color:#0055AF">UMS</span>
+							
 							<div class="close-btn position-relative">
 								<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
 									aria-label="Close"></button>
@@ -596,7 +594,7 @@ watch((innerwidth) => {
 
 					</div>
 					<div class="mt-4  row px-2">
-						<button class="btn primary text-light btn-block" onclick="">重設條件</button>
+						<button class="btn primary text-light btn-block" @click="">重設條件</button>
 					</div>
 				</div>
 

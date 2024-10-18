@@ -14,12 +14,12 @@ let drawChart
 function initChart() {
     if (!customRef.value) return;
 
-   if (drawChart != null && drawChart != "" && drawChart != undefined) {
+    if (drawChart != null && drawChart != "" && drawChart != undefined) {
         drawChart.dispose()
     }
     drawChart = echarts.init(customRef.value);
 
-     drawChart.setOption(option.value);
+    drawChart.setOption(option.value);
 
     window.addEventListener('resize', () => {
         drawChart.resize();

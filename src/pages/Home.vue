@@ -66,6 +66,160 @@ const option = ref({
     series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
 })
 
+const option2 = ref({})
+const option3 = ref({})
+
+
+function loadPlot() {
+    const chartdata = {
+        title: '事件日趨勢',
+        subtext: '',
+        source: [
+            ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
+            ['2023年11月27日', 103010, 75000, 230654],
+            ['2023年11月28日', 810300, 730004, 230654],
+            ['2023年11月29日', 23864, 65214, 42145],
+            ['2023年11月30日', 633219, 74249, 421412],
+        ],
+        xAxis: { type: 'category' },
+        series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
+    }
+    let brandColors = ['#CDF2C8', '#8CD7DA', '#3DA4D0', '#ee6666', '#005FC3', '#3ba272', '#fc8452', '#9a60b4', '#ea7ccc'];
+    let pieChartData1 = {
+        divId: "piechart1",
+        subtext: "",
+        title: "瀏覽量佔比",
+        data: [
+            {
+                name: "WEB",
+                value: 88.6
+            },
+            {
+                name: "APP(IOS)",
+                value: 7.9
+            },
+            {
+                name: "APP(ANDROID)",
+                value: 3.5
+            },
+        ],
+    }
+    let pieChartData2 = {
+        divId: "piechart2",
+        subtext: "",
+        title: "文章瀏覽量占比",
+        data: [
+            {
+                name: "WEB",
+                value: 88.6
+            },
+            {
+                name: "APP(IOS)",
+                value: 7.9
+            },
+            {
+                name: "APP(ANDROID)",
+                value: 3.5
+            },
+        ],
+    }
+    let pieChartData3 = {
+        divId: "piechart3",
+        subtext: "",
+        title: "互動事件占比",
+        data: [
+            {
+                name: "WEB",
+                value: 88.6
+            },
+            {
+                name: "APP(IOS)",
+                value: 7.9
+            },
+            {
+                name: "APP(ANDROID)",
+                value: 3.5
+            },
+        ],
+    }
+
+    option2.value = {
+        legend: {
+            bottom: 0,
+            left: 'center',
+        },
+        tooltip: {
+            trigger: 'item',
+        },
+        toolbox: {
+            show: true,
+            feature: {
+                saveAsImage: {},
+            }
+        },
+        title: {
+            text: chartdata.title,
+            subtext: chartdata.subtext,
+            left: 'center',
+        },
+        dataset: {
+            source: chartdata.source
+        },
+        xAxis: {
+            type: 'category',
+
+        },
+        yAxis: {
+
+        },
+
+        series: chartdata.series
+    }
+
+
+    option3.value = {
+     
+        color: brandColors,
+        title: {
+            text: pieChartData1.title,
+            subtext: pieChartData1.subtext,
+            left: 'center',
+        },
+        tooltip: {
+            trigger: 'item',
+            formatter: '{a} <br/>{b} : {c} ({d}%)'
+        },
+        legend: {
+            bottom: 0,
+            left: 'center'
+        },
+        series: [
+            {
+                top: 0,
+                name: '合計',
+                type: 'pie',
+                radius: ['45%', '60%'],
+                avoidLabelOverlap: true,
+                label: {
+                    show: false,
+                    position: 'center'
+                },
+                emphasis: {
+                    label: {
+                        show: true,
+                        fontSize: 10,
+                        fontWeight: 'bold'
+                    }
+                },
+                labelLine: {
+                    show: false
+                },
+                data: pieChartData1.data
+            }
+        ]
+    }
+
+}
 
 
 
@@ -85,7 +239,7 @@ const option = ref({
                     </li>
                     <li class="nav-item" role="presentation">
                         <a class="tab-button-1 rounded-1 px-1 " data-bs-target="#events-details" data-bs-toggle="pill"
-                            aria-selected="true" role="tab">
+                            aria-selected="true" role="tab" @click="loadPlot">
                             <span>​事件詳情</span>
                         </a>
                     </li>
@@ -394,35 +548,41 @@ const option = ref({
 
                 <div class="bg-grey p-3">
                     <div class="card border-0 shadow-sm w-100">
-                        <div class="charts" id="event-day-trends-barchart" style="width: 100%; height: 35dvh;">
-
+                        <div class="charts" id="event-day-trends-barchart">
+                            <custom-chart :option="option2"></custom-chart>
                         </div>
                     </div>
                     <div class="d-flex gap-3 flex-wrap mt-3">
                         <div class="card shadow-sm border-0  flex-fill " style="width: 300px;">
-                            <div id="piechart1" class="charts" style="width: 100%; height: 35dvh;">
+                            <div id="piechart1" class="charts" style="width: 100% ">
+                                <custom-chart :option="option3"></custom-chart>
                             </div>
                         </div>
                         <div class="card shadow-sm border-0  flex-fill " style="width: 300px;">
-                            <div id="piechart2" class="charts" style="width: 100%; height: 35dvh;">
+                            <div id="piechart2" class="charts" style="width: 100%">
+                                <custom-chart :option="option3"></custom-chart>
                             </div>
                         </div>
                         <div class="card shadow-sm border-0  flex-fill " style="width: 300px;">
-                            <div id="piechart3" class="charts" style="width:100%; height: 35dvh;">
+                            <div id="piechart3" class="charts" style="width:100%">
+                                <custom-chart :option="option3"></custom-chart>
                             </div>
                         </div>
                     </div>
                     <div class="d-flex gap-3 flex-wrap mt-3">
                         <div class="card shadow-sm border-0  flex-fill " style="width: 300px;">
-                            <div id="encodechart-1" class="charts" style="width: 100%; height: 35dvh;">
+                            <div id="encodechart-1" class="charts" style="width: 100%">
+                                <custom-chart :option="option3"></custom-chart>
                             </div>
                         </div>
                         <div class="card shadow-sm border-0  flex-fill " style="width: 300px;">
-                            <div id="encodechart-2" class="charts" style="width: 100%; height: 35dvh;">
+                            <div id="encodechart-2" class="charts" style="width: 100%">
+                                <custom-chart :option="option3"></custom-chart>
                             </div>
                         </div>
                         <div class="card shadow-sm border-0  flex-fill " style="width: 300px;">
-                            <div id="encodechart-3" class="charts" style="width:100%; height: 35dvh;">
+                            <div id="encodechart-3" class="charts" style="width:100%">
+                                <custom-chart :option="option3"></custom-chart>
                             </div>
                         </div>
                     </div>
