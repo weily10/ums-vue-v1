@@ -30,7 +30,7 @@ let id = 'deleteModal'
 
 
 function toAdKeywordAddPage() {
-    router.push({ name: "add-theme" })
+    router.push({ name: "AddTheme" })
 }
 
 function toSmartAdKeywordAdvAddPage() {
@@ -68,7 +68,7 @@ onMounted(() => {
     <div class="">
         <div class="d-flex justify-content-between gap-1">
             <div class="d-flex align-items-center gap-1">
-                <button class="btn rounded-circle btn-sm" type="button" @click="goback()">
+                <button class="btn rounded-circle btn-sm" type="button" @click="router.go(-1)">
                     <i class="bi bi-arrow-left   fs-6 py-1 "></i></button>
                 <h2 class="mb-0"> 關鍵字廣告</h2>
             </div>
