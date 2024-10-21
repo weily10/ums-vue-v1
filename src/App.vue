@@ -1,11 +1,12 @@
 <script setup>
-import { ref, onMounted, watch, onUnmounted, computed } from 'vue';
+import { ref, onMounted, watch, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
 
 let menuItems = ref([])
 const innerwidth = ref(window.innerWidth)
 const routePath = useRoute()
 const activeItem = ref(null)
+const subitemAcc = ref([])
 
 menuItems.value = [{
 	text: "使用者中心",
@@ -367,12 +368,12 @@ function getActiveItem(item) {
 function getActiveItem2(item2) {
 	const currentItem = item2.subgroup.find(i => i.route === routePath.path)
 	if (currentItem) {
- 		return currentItem.route
+		return currentItem.route
 	}
 }
 
 function isActivePage(item) {
- 	return item.route === routePath.path ? true : false
+	return item.route === routePath.path ? true : false
 }
 
 
@@ -396,10 +397,17 @@ function topFunction() {
 	document.documentElement.scrollTop = 0;
 }
 
- 
+
 watch((innerwidth) => {
 	innerwidth.value = window.innerWidth
- })
+})
+
+ 
+
+ const setSubitemAcc = (index) => (el) =>{
+	subitemAcc.value[index] = el;
+ }
+ 
 
 </script>
 
@@ -444,11 +452,12 @@ watch((innerwidth) => {
 						<div class="d-flex justify-content-between align-items-center">
 							<div>
 								<RouterLink to="/">
-									<img src="../public/logo.svg" style="vertical-align:text-bottom!important;" alt=""><span class="ps-1 fs-2 fw-bolder  mt-3 " style="color:#0055AF">UMS</span>
+									<img src="../public/logo.svg" style="vertical-align:text-bottom!important;" alt=""><span
+										class="ps-1 fs-2 fw-bolder  mt-3 " style="color:#0055AF">UMS</span>
 								</RouterLink>
 
 							</div>
-							
+
 							<div class="close-btn position-relative">
 								<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
 									aria-label="Close"></button>
@@ -463,7 +472,8 @@ watch((innerwidth) => {
 
 									<button class="dashboard-nav-item accordion-button"
 										:class="getActiveItem(item) === routePath.path ? '' : 'collapsed'" type="button"
-										data-bs-toggle="collapse" :data-bs-target="'#item' + index" aria-expanded="true"
+										data-bs-toggle="collapse" :data-bs-target="'#item' + index"
+										:aria-expanded="getActiveItem(item) === routePath.path ? 'true' : 'false'"
 										:aria-controls="'item' + index">
 										<span class="nav-link-icon"><i :class="item.icon" alt=""></i></span> <span
 											style="padding-left:30px">{{ item.text }}
@@ -480,19 +490,19 @@ watch((innerwidth) => {
 											<div class="accordion" :id="'submenu' + index2">
 												<div class="accordion-item">
 													<div class="accordion-header">
-														<button
-															class="dashboard-nav-item accordion-button   position-relative"
+														<button class="dashboard-nav-item accordion-button position-relative"
 															:class="getActiveItem2(item2) === routePath.path ? '' : 'collapsed'"
 															style="padding-left:60px" type="button"
-															data-bs-toggle="collapse" :data-bs-target="'#subitem' + index2"
-															aria-expanded="true" :aria-controls="'#subitem' + index2">
+															data-bs-toggle="collapse" :data-bs-target="'#subitem' + index2 + index"
+															:aria-expanded="getActiveItem2(item2) === routePath.path ? true : false"
+															:aria-controls="'subitem' + index2 + index" >
+
 															<span class="linespan"></span><span>
 																{{ item2.text }}</span>
 														</button>
 													</div>
-													<div :id="'subitem' + index2"
-														class="accordion-collapse collapse subgroup"
-														:class="getActiveItem2(item2) === routePath.path ? 'show' : ''"
+													<div :ref="setSubitemAcc(index2)" :id="'subitem' + index2 + index"
+														:class="getActiveItem2(item2) === routePath.path ? ' collapse subgroup show' : 'collapse subgroup'"
 														:data-bs-parent="'#submenu' + index2" style="position:relative">
 														<div class="accordion-body subgroup" style="padding-inline:0">
 															<div :id="'subbody' + index2">
@@ -506,8 +516,7 @@ watch((innerwidth) => {
 																			<button
 																				class="dashboard-nav-item btn-last-child subchild"
 																				:class="{ 'highlighted': isActivePage(item3) }"
-																				style="padding-left:65px" type="button"
-																				 >
+																				style="padding-left:65px" type="button">
 																				<span class="subgroupLineSpan"></span>
 																				{{ item3.text }}
 																			</button>
