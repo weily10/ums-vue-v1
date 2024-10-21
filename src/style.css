@@ -417,7 +417,7 @@ h4 {
 
 }
 
-.highlight>.subgroupLineSpan::before {
+.highlighted>.subgroupLineSpan::before {
   display: block;
   content: '';
   height: 100%;

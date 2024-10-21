@@ -517,7 +517,7 @@ watch((innerwidth) => {
 																				class="dashboard-nav-item btn-last-child subchild"
 																				:class="{ 'highlighted': isActivePage(item3) }"
 																				style="padding-left:65px" type="button">
-																				<span class="subgroupLineSpan"></span>
+																				<span  :class="getActiveItem2(item2) === routePath.path ?'subgroupLineSpan':''"></span>
 																				{{ item3.text }}
 																			</button>
 																		</RouterLink>
