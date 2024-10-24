@@ -777,8 +777,35 @@ watch((innerwidth) => {
 <style scoped>
 .highlighted {
 	background-color: #DDEDF3;
+}
+
+.dashboard-nav-item:hover>.subgroupLineSpan::before {
+  display: block;
+  content: '';
+  height: 100%;
+  background-color: #0055AF;
+  position: absolute;
+  z-index: 50;
+  left: 50px;
+  width: 1px;
+  top: 0;
 
 }
+
+
+
+.highlighted>.subgroupLineSpan::before {
+  display: block;
+  content: '';
+  height: 100%;
+  background-color: #0055AF;
+  position: absolute;
+  z-index: 50;
+  left: 50px;
+  width: 1px;
+  top: 0;
+}
+
 
 .logo {
 	height: 6em;
