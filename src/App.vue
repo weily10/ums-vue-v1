@@ -452,8 +452,7 @@ watch((innerwidth) => {
 						<div class="d-flex justify-content-between align-items-center">
 							<div>
 								<RouterLink to="/">
-									<img src="../public/logo.svg" style="vertical-align:text-bottom!important;" alt=""><span
-										class="ps-1 fs-2 fw-bolder  mt-3 " style="color:#0055AF">UMS</span>
+									<span class="fs-3 fw-bolder" style="color:#0055AF">DEMO </span>
 								</RouterLink>
 
 							</div>
