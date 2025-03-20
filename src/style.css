@@ -13,6 +13,8 @@
   -webkit-text-size-adjust: 100%;
 }
 
+
+
 a {
   text-decoration: none !important;
 }
@@ -398,15 +400,6 @@ h4 {
 
 
 
-/* 
-.dashboard-nav-item:hover .linespan::before {
- 
-
-} */
-
-
-
-
 .dashboard-nav-list {
   font-size: 14px;
   display: -webkit-box;
@@ -500,9 +493,7 @@ h4 {
 }
 
 footer {
-
   width: 100%;
-  margin-top: 15px;
   z-index: 0;
   position: absolute;
   background-color: #FAFAFA;
@@ -1088,7 +1079,7 @@ button:disabled {
 
 @media screen and (max-width: 734px) {
   .left {
-    margin-left:0;
+    margin-left: 0;
   }
 
   #searchbar.offcanvas.offcanvas-start {

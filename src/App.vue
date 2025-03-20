@@ -430,7 +430,7 @@ watch((innerwidth) => {
 			</div>
 		</div>
 	</div>
-	<div class="page-content">
+	<div class="page-content  ">
 		<div id="spinner" class="position-fixed z-start-50 z-3  overlay d-flex justify-content-center align-items-center "
 			style="width: 100%; height: 100%;">
 			<div class="spinner-border text-white" role="status">
@@ -661,8 +661,8 @@ watch((innerwidth) => {
 					</div>
 				</div>
 			</div>
-			<div class="left pt-3">
-				<div id="app">
+			<div class="left pt-3" >
+				<div id="app" >
 					<router-view>
 					</router-view>
 				</div>
