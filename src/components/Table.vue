@@ -21,30 +21,6 @@ defineProps({
                                 {{ item }}
                             </th>
                         </template>
-                        <!-- <th scope="col" class="text-start align-text-top">項次
-                        </th>
-                        <th scope="col" class="text-start align-text-top">編號
-                        </th>
-                        <th scope="col" class="text-start align-text-top">主題名稱
-                        </th>
-                        <th scope="col" class="text-start align-text-top">媒合分析
-                        </th>
-                        <th scope="col" class="text-center align-text-top">行為分析
-                        </th>
-                        <th scope="col" class="text-start align-text-top"> 可投遞曝光數 (Desktop / Mobile)
-                        </th>
-                        <th scope="col" class="text-start align-text-top">桌機名單
-                        </th>
-                        <th scope="col" class="text-start align-text-top">手機名單
-                        </th>
-                        <th scope="col" class="text-start align-text-top">手機名單狀態
-                        </th>
-                        <th scope="col" class="text-start align-text-top">建檔人
-                        </th>
-                        <th scope="col" class="text-center align-text-top">建檔日期
-                        </th>
-                        <th scope="col" class="text-center align-text-top">功能
-                        </th> -->
                     </tr>
                 </thead>
                 <tbody id="smart-ad-keyword-detail-tbody">

@@ -448,8 +448,7 @@ watch((innerwidth) => {
 			<div :class="innerwidth <= 734 ? 'offcanvas offcanvas-start' : ''" id="mainmenu" data-bs-backdrop="false"
 				data-bs-scroll="true">
 				<div class="dashboard-nav position-fixed d-flex flex-column z-5 px-2 border-end">
-					<header>
-						<div class="d-flex justify-content-between align-items-center">
+ 						<div class="d-flex justify-content-between align-items-center">
 							<div>
 								<RouterLink to="/">
 									<span class="fs-3 fw-bolder" style="color:#0055AF">DEMO </span>
@@ -462,8 +461,7 @@ watch((innerwidth) => {
 									aria-label="Close"></button>
 							</div>
 						</div>
-					</header>
-
+ 
 					<nav id="navmenu" class="dashboard-nav-list ">
 						<div class="accordion" id="menu">
 							<div class="accordion-item" v-for="(item, index) in updatedMenuItems">
@@ -614,8 +612,8 @@ watch((innerwidth) => {
 					class="bi bi-list"></i></button>
 
 		</div>
-		<header id="main-header" class="dashboard-toolbar">
-			<div class="header-align-center me-auto ">
+		<header id="main-header mt-5" class="dashboard-toolbar d-flex justify-content-end">
+			<div class="header-align-center me-auto " style="margin-left: 220px;">
 				<i class="icon-advert" style="margin: 0 6px 0 6px;"></i><span
 					class="align-text-top ps-2">2023/5/24，凌晨00:00進行系統優化更新</span>
 			</div>
@@ -631,11 +629,8 @@ watch((innerwidth) => {
 						DPMP：2023.04.17 12:56:36
 					</div>
 				</div>
-
-
 			</div>
-			<div class="avatar-place position-relative d-inline-block fw-semibold  hover-label">
-
+			<div class="avatar-place position-relative d-inline-block fw-semibold  hover-label ">
 				<img src="" alt="" class="avatar">
 				<span class="custom-tooltip-2 tooltip-avatar" style=" top:106%;right: -10%;">
 					黃小明
@@ -661,7 +656,7 @@ watch((innerwidth) => {
 					</div>
 				</div>
 			</div>
-			<div class="left pt-3" >
+			<div class="content pt-3" >
 				<div id="app" >
 					<router-view>
 					</router-view>

@@ -1008,7 +1008,7 @@ button:disabled {
   left: 0;
 }
 
-.left {
+.content {
   margin-left: 17.5rem;
 }
 
@@ -1078,7 +1078,7 @@ button:disabled {
 }
 
 @media screen and (max-width: 734px) {
-  .left {
+  .content {
     margin-left: 0;
   }
 
