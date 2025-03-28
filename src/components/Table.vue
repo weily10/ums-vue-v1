@@ -2,7 +2,7 @@
 defineProps({
     tableData: Array,
     item: Array,
-    headers:Array
+    headers: Array
 })
 
 </script>
@@ -15,91 +15,30 @@ defineProps({
 
             <table class="table table-striped">
                 <thead>
-                    <tr class="">
-                        <template v-for="(item, index) in headers" :key="'header' + index">
-                            <th class="text-start align-text-top" >
-                                {{ item }}
-                            </th>
-                        </template>
+                    <tr>
+                        <th v-for="(item, index) in headers" :key="'header' + index">
+                            <slot name="header" :item="item">{{ item }}</slot>
+                        </th>
                     </tr>
                 </thead>
-                <tbody id="smart-ad-keyword-detail-tbody">
-                    <template v-for="(item, index) in tableData" :key="index">
-                        <tr>
-                            <td>
-                                {{ item.no }}
-                            </td>
-                            <td>
-                                {{ item.no2 }}
-                            </td>
-
-                            <td>
-                                {{ item.themeTag }}
-                            </td>
-                            <td>
-                                {{ item.analysis }}
-                            </td>
-                            <td>
-                                {{ item.actionanalysis }}
-                            </td>
-
-                            <td>
-                                {{ item.desktopmobile }}
-                            </td>
-                            <td>
-                                {{ item.list }}
-                            </td>
-
-                            <td>
-                                {{ item.phonelist }}
-                            </td>
-                            <td>
-                                {{ item.phonestatus }}
-                            </td>
-                            <td>
-                                {{ item.creatorname }}
-                            </td>
-                            <td>
-                                {{ item.createdate }}
-                            </td>
-                            <td>
-                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle btn-sm" type="button"
-                                        @click="gotoCopyPage(item)">
-                                        <i class="bi bi-copy fs-6"
-                                            style="padding-right: 2px; padding-left: 2px;"></i></button>
-                                    <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
-                                        style=" top: 100%;right: -50%;">
-                                        複製
-                                    </span>
-                                </div>
-                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle btn-sm" type="button"
-                                        @click="viewAnalysisReport(item)">
-                                        <i class="bi bi-graph-up fs-6"></i></button>
-                                    <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
-                                        style=" top: 100%;right: -50%;">
-                                        檢視分析報告
-                                    </span>
-                                </div>
-                                <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                    <button class="iconbtn btn rounded-circle btn-sm" type="button"
-                                        @click="showConfirmModal(item)">
-                                        <i class="bi bi-trash fs-6"></i></button>
-                                    <span class="custom-tooltip-2 rounded position-absolute z-3 mt-1"
-                                        style=" top: 100%;right: -50%;">
-                                        刪除
-                                    </span>
-                                </div>
-                            </td>
-                        </tr>
-                    </template>
+                <tbody>
+                    <tr v-for="(item, index) in tableData" :key="index">
+                        <td v-for="(value, index2) in item" :key="'cell' + index2">
+                            <slot name="content" :value="value" :index2="index2">{{ value }}</slot>
+                        </td>
+                        <td>
+                            <slot name="actions" :item="item" :index="index"> </slot>
+                        </td>
+                        <td>
+                            <slot name="actions2" :item="item" :index="index"> </slot>
+                        </td>
+                    </tr>
                 </tbody>
             </table>
         </div>
         <div class="d-flex justify-content-between">
             <div class="font-support align-text-top">
-                共 <span id="">{{ tableData.length }}</span> 筆資料
+                共 <span id="">{{ tableData ? tableData.length : 0 }}</span> 筆資料
             </div>
             <div class="d-flex justify-content-center align-items-center">
 
@@ -126,5 +65,5 @@ defineProps({
 <style scoped>
 th {
     min-width: 120px;
- }
+}
 </style>

@@ -12,20 +12,31 @@ const items = ref([
         no: '1',
         no2: '4124',
         themename: 'wayneTest',
-        themeTag: '美妝_綜合美妝	',
         analysis: '執行完成',
         actionanalysis: '未執行',
         desktopmobile: 0,
-        list: ' N/ A',
-        status: 'N / A	',
+        desktop: ' N/ A',
         phonelist: 'N / A',
-        phonestatus: ' N / A	',
+        phonestatus: ' N / A',
         creatorname: '周冠廷',
         createdate: ' 2023 / 10 / 20 11:04: 34'
     }
 ])
 
-const headers = ref(['項次', '編號', '主題名稱', '媒合分析', '行為分析', '可投遞曝光數 (Desktop / Mobile)', '桌機名單', '手機名單', '手機名單狀態', '建檔人', '建檔日期', '功能'])
+const headers = ref([
+    '項次',
+    '編號',
+    '主題名稱',
+    '媒合分析',
+    '行為分析',
+    '可投遞曝光數 (Desktop / Mobile)',
+    '桌機名單',
+    '手機名單',
+    '手機名單狀態',
+    '建檔人',
+    '建檔日期',
+    '功能'
+])
 
 
 const deleteModal = ref(false)
@@ -122,7 +133,36 @@ onMounted(() => {
                 </div>
             </div>
 
-            <Table :tableData='items' :headers="headers"></Table>
+            <Table :tableData='items' :headers="headers">
+                <template v-slot:header="{item}">
+                    <div v-if="item === '功能'" class="text-center ">{{ item }}</div>
+                </template>
+                <template v-slot:content >
+                 </template>
+                <template v-slot:actions>
+                    <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                        <button class="iconbtn btn rounded-circle btn-sm" type="button" @click="gotoCopyPage(item)">
+                            <i class="bi bi-copy fs-6" style="padding-right: 2px; padding-left: 2px;"></i></button>
+                        <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
+                            複製
+                        </span>
+                    </div>
+                    <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                        <button class="iconbtn btn rounded-circle btn-sm" type="button" @click="viewAnalysisReport(item)">
+                            <i class="bi bi-graph-up fs-6"></i></button>
+                        <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
+                            檢視分析報告
+                        </span>
+                    </div>
+                    <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                        <button class="iconbtn btn rounded-circle btn-sm" type="button" @click="showConfirmModal(item)">
+                            <i class="bi bi-trash fs-6"></i></button>
+                        <span class="custom-tooltip-2 rounded position-absolute z-3 mt-1" style=" top: 100%;right: -50%;">
+                            刪除
+                        </span>
+                    </div>
+                </template>
+            </Table>
         </div>
 
 

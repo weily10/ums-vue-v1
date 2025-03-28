@@ -1,9 +1,28 @@
 <script setup>
+import { ref, onMounted } from 'vue';
 import router from '../router/index.js'
+import Table from '../components/Table.vue'
+
+const tableData = ref([])
+const headers = ref([])
 
 function addRFV() {
     router.push({ name: 'PersRFVConfig' })
 }
+
+onMounted(() => {
+
+    tableData.value = [{
+        item1: '138',
+        item2: 'xxxx',
+        item3: 'xxxx',
+        item6: 12,
+        item4: '2018/12/12',
+        item5: '2018/12/12	'
+        
+    }]
+    headers.value = ['編號', '名稱', '備註', '用戶數量','建立日期', '更新日期', '用戶 RFV', '操作']
+})
 
 
 </script>
@@ -65,142 +84,109 @@ function addRFV() {
             <div class="d-flex justify-content-end mt-3">
                 <button class="btn txt-info text-light " data-bs-target="#crossModal" data-bs-toggle="modal">交叉分析 </button>
             </div>
-            <table class="table table-striped mt-3 ">
-                <thead>
-                    <tr>
-                        <th scope="col" style="width:60px;text-align: start;">編號
-                        </th>
-                        <th scope="col" style="text-align: start;"> 名稱
-                        </th>
-                        <th scope="col" style="text-align: start;">備註
-                        </th>
-                        <th scope="col">建立日期
-                        </th>
-                        <th scope="col">更新日期
-                        </th>
-                        <th scope="col" style="width:110px;text-align: end;">用戶數量
-                        </th>
-                        <th scope="col" class="text-start" style="width:80px">建立人員
+            <Table :tableData="tableData" :headers="headers">
+                <template v-slot:header="{ item }">
+                    <div v-if="item === '用戶 RFV'" class="text-center w-100">{{ item }}</div>
+                    <div v-if="item === '操作'" class="text-end ">{{ item }}</div>
+                    <div v-if="item === '用戶數量'" class="text-end ">{{ item }}</div>
+                    <div v-if="item === '更新日期'" class="text-center ">{{ item }}</div>
+                    <div v-if="item === '建立日期'" class="text-center ">{{ item }}</div>
+                 </template>
+                <template v-slot:content="{ value,index2 }">
+                    <div v-if="index2 === 'item6'" class="text-end ">{{ value }}</div>
+                    <div v-if="index2 === 'item4'" class="text-center ">{{ value }}</div>
+                    <div v-if="index2 === 'item5'" class="text-center ">{{ value }}</div>
+                 </template>
+                <template v-slot:actions>
+                    <div class="d-flex gap-2 justify-content-center">
+                        <div class="d-flex justify-content-end">
+                            <button class="btn-secondary " data-bs-toggle="dropdown"
+                                data-bs-auto-close="outside">分析</button>
+                            <div class="dropdown-menu dropdown-menu-end p-4 border-0 shadow-sm">
+                                <h4>2024 閱讀優秀</h4>
+                                <hr>
+                                <p>母體：01-03 月閱讀持續成長用戶 </p>
+                                <p>目標：持續追蹤至 06 月</p>
+                                <div class="readingList">
+                                    <label class="d-flex">
+                                        <input class="form-check-input me-1" type="checkbox" value="" id="2024reading"
+                                            checked>
+                                        <span>2024/01/01 ~ 2024/01/31</span>
+                                    </label>
+                                    <label class="d-flex">
+                                        <input class="form-check-input me-1" type="checkbox" value="" id="2024reading2">
+                                        <span>2024/02/01 ~ 2024/02/28</span>
+                                    </label>
+                                    <label class="d-flex">
+                                        <input class="form-check-input me-1" type="checkbox" value="" id="2024reading3">
+                                        <span> 2024/03/01 ~ 2024/03/31 </span>
 
-                        </th>
-                        <th scope="col" class="text-center">用戶 RFV
-                        </th>
-                        <th scope="col" class="text-center">操作
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="personal-rfv-table-body">
-                    <tr>
-                        <td>
-                            138
-                        </td>
-                        <td>
-                            xxxx
-                        </td>
-                        <td>
-                            xxxx
-                        </td>
-                        <td class="text-center">
-                            2018/12/12
-                        </td>
-                        <td class="text-center">
-                            2018/12/12
-                        </td>
-                        <td class="text-end">
-                            12
-                        </td>
-                        <td class="text-start">
-                            xxxx
-                        </td>
-                        <td class="text-center">
-                            <div class="d-flex gap-2 justify-content-center">
-                                <div class="d-flex justify-content-end">
-                                    <button class="btn-secondary " data-bs-toggle="dropdown"
-                                        data-bs-auto-close="outside">分析</button>
-                                    <div class="dropdown-menu dropdown-menu-end p-4 border-0 shadow-sm">
-                                        <h4>2024 閱讀優秀</h4>
-                                        <hr>
-                                        <p>母體：01-03 月閱讀持續成長用戶 </p>
-                                        <p>目標：持續追蹤至 06 月</p>
-                                        <div class="readingList">
-                                            <label class="d-flex">
-                                                <input class="form-check-input me-1" type="checkbox" value=""
-                                                    id="2024reading" checked>
-                                                <span>2024/01/01 ~ 2024/01/31</span>
-                                            </label>
-                                            <label class="d-flex">
-                                                <input class="form-check-input me-1" type="checkbox" value=""
-                                                    id="2024reading2">
-                                                <span>2024/02/01 ~ 2024/02/28</span>
-                                            </label>
-                                            <label class="d-flex">
-                                                <input class="form-check-input me-1" type="checkbox" value=""
-                                                    id="2024reading3">
-                                                <span> 2024/03/01 ~ 2024/03/31 </span>
-
-                                            </label>
-                                            <label class="d-flex">
-                                                <input class="form-check-input me-1" type="checkbox" value=""
-                                                    id="2024reading4">
-                                                <span>2024/04/01 ~ 2024/04/15 </span>
-                                            </label>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="d-flex justify-content-end">
-                                    <button class="btn-secondary " data-bs-toggle="dropdown">更新</button>
-                                    <div class="dropdown-menu dropdown-menu-end p-4 border-0 shadow-sm">
-                                        <h4>2024 流失用戶</h4>
-                                        <hr>
-                                        <p>母體：01-03 月閱讀持續成長用戶 </p>
-                                        <p>目標：持續追蹤至 06 月</p>
-                                        <p>已完成追蹤數據副本：</p>
-                                        <ol>
-                                            <li>2024/01/01 ~ 2024/01/31</li>
-                                            <li>2024/02/01 ~ 2024/02/28</li>
-                                            <li>2024/03/01 ~ 2024/03/31</li>
-                                            <li>2024/04/01 ~ 2024/04/15</li>
-                                        </ol>
-                                        <p>
-                                            更新 2024/01/01 ~ 2024/01/31 數據副本 ( 運算資源限制，更新數據副本一次最多 31 天。)
-                                        </p>
-                                        <div class="d-flex justify-content-end">
-                                            <button class="btn-secondary " @click="">更新</button>
-                                        </div>
-                                    </div>
+                                    </label>
+                                    <label class="d-flex">
+                                        <input class="form-check-input me-1" type="checkbox" value="" id="2024reading4">
+                                        <span>2024/04/01 ~ 2024/04/15 </span>
+                                    </label>
                                 </div>
                             </div>
-                        </td>
-                        <td class="text-center">
-                            xxxx
-                        </td>
-                    </tr>
-
-                </tbody>
-            </table>
-            <div class="d-flex justify-content-between">
-                <div class="font-support align-text-top">
-                    共 <span id="">3</span> 筆資料
-                </div>
-                <div class="d-flex justify-content-center align-items-center">
-
-                    <div class="btn-group me-2" role="group" aria-label="Second group">
-                        <button type="button" class="pagination-btn btn fs-5 p-0"><i class="icon-left"></i></button>
-
+                        </div>
+                        <div class="d-flex justify-content-end">
+                            <button class="btn-secondary " data-bs-toggle="dropdown">更新</button>
+                            <div class="dropdown-menu dropdown-menu-end p-4 border-0 shadow-sm">
+                                <h4>2024 流失用戶</h4>
+                                <hr>
+                                <p>母體：01-03 月閱讀持續成長用戶 </p>
+                                <p>目標：持續追蹤至 06 月</p>
+                                <p>已完成追蹤數據副本：</p>
+                                <ol>
+                                    <li>2024/01/01 ~ 2024/01/31</li>
+                                    <li>2024/02/01 ~ 2024/02/28</li>
+                                    <li>2024/03/01 ~ 2024/03/31</li>
+                                    <li>2024/04/01 ~ 2024/04/15</li>
+                                </ol>
+                                <p>
+                                    更新 2024/01/01 ~ 2024/01/31 數據副本 ( 運算資源限制，更新數據副本一次最多 31 天。)
+                                </p>
+                                <div class="d-flex justify-content-end">
+                                    <button class="btn-secondary " @click="">更新</button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="btn-group me-2" role="group" aria-label="First group">
-                        <button type="button" class="pagination-btn btn">1</button>
-                        <button type="button" class="pagination-btn btn">2</button>
-                        <button type="button" class="pagination-btn btn">3</button>
-                        <button type="button" class="pagination-btn btn">4</button>
-                        <button type="button" class="pagination-btn btn">...</button>
-                        <button type="button" class="pagination-btn btn">999</button>
+                </template>
+                <template v-slot:actions2>
+                    <div class="dropstart position-static text-end ">
+                        <button type="button" class="bg-transparent fs-6 custom-dropdown dropdown-toggle "
+                            data-bs-toggle="dropdown" aria-expanded="false" data-bs-container="body">
+                            <i class="bi bi-three-dots-vertical"></i>
+                        </button>
+                        <ul class="dropdown-menu border-0 shadow-sm ">
+                            <div>
+                                <button class="btn w-100 d-flex gap-3 rounded-0" data-bs-toggle="modal"
+                                    data-bs-target="#editModal">
+                                    <i class="icon-edit fs-5  "></i> 編輯</button>
+                            </div>
+                            <div>
+                                <button class=" btn  w-100 d-flex gap-3 rounded-0" data-bs-toggle="modal"
+                                    data-bs-target="#shareModal">
+                                    <i class="icon-share fs-5 "></i>分享</button>
+                            </div>
+                            <div>
+                                <button class=" btn  w-100 d-flex gap-3 rounded-0" onclick="goDownload()">
+                                    <i class="icon-savefile fs-5 "></i>名單下載</button>
+                            </div>
+
+                            <div>
+                                <button class=" btn w-100 d-flex gap-3 rounded-0" type="button" data-bs-toggle="modal"
+                                    onclick="showConfirmModal(this)" data-bs-target="#deleteModal">
+                                    <i class="icon-delete fs-5  "></i>刪除</button>
+                            </div>
+                        </ul>
                     </div>
-                    <div class="btn-group me-2" role="group" aria-label="Second group">
-                        <button type="button" class="pagination-btn btn fs-5 p-0"><i class="icon-right"></i></button>
-                    </div>
-                </div>
-            </div>
+                </template>
+
+            </Table>
+
+
         </div>
         <div class="modal fade" id="crossModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg">
