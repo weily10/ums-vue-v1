@@ -19,9 +19,9 @@ onMounted(() => {
         item6: 12,
         item4: '2018/12/12',
         item5: '2018/12/12	'
-        
+
     }]
-    headers.value = ['編號', '名稱', '備註', '用戶數量','建立日期', '更新日期', '用戶 RFV', '操作']
+    headers.value = ['編號', '名稱', '備註', '用戶數量', '建立日期', '更新日期', '用戶 RFV', '操作']
 })
 
 
@@ -91,13 +91,18 @@ onMounted(() => {
                     <div v-if="item === '用戶數量'" class="text-end ">{{ item }}</div>
                     <div v-if="item === '更新日期'" class="text-center ">{{ item }}</div>
                     <div v-if="item === '建立日期'" class="text-center ">{{ item }}</div>
-                 </template>
-                <template v-slot:content="{ value,index2 }">
+                </template>
+                <template v-slot:content="{ value, index2 }">
+
                     <div v-if="index2 === 'item6'" class="text-end ">{{ value }}</div>
-                    <div v-if="index2 === 'item4'" class="text-center ">{{ value }}</div>
-                    <div v-if="index2 === 'item5'" class="text-center ">{{ value }}</div>
-                 </template>
-                <template v-slot:actions>
+                </template>
+                <template v-slot:body>
+ 
+                    <td v-if="index=='item6'" >
+ 
+                    </td>
+                </template>
+                <!-- <template v-slot:actions>
                     <div class="d-flex gap-2 justify-content-center">
                         <div class="d-flex justify-content-end">
                             <button class="btn-secondary " data-bs-toggle="dropdown"
@@ -152,8 +157,8 @@ onMounted(() => {
                             </div>
                         </div>
                     </div>
-                </template>
-                <template v-slot:actions2>
+                </template> -->
+                <template v-slot:actions>
                     <div class="dropstart position-static text-end ">
                         <button type="button" class="bg-transparent fs-6 custom-dropdown dropdown-toggle "
                             data-bs-toggle="dropdown" aria-expanded="false" data-bs-container="body">

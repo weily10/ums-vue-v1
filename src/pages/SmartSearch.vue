@@ -12,9 +12,16 @@ function showConfirmModal() {
     deleteModal.value.show()
 }
 
+
+function closeModal(){
+    
+}
+
 onMounted(() => {
     deleteModal.value = new Modal(document.getElementById(id))
 })
+
+
 
 </script>
 <template>

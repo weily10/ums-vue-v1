@@ -376,17 +376,21 @@ function isActivePage(item) {
 	return item.route === routePath.path ? true : false
 }
 
+var a = 0
+function abc(){
+	a=1
+console.log(a);
+
+}
 
 
 onMounted(() => {
 	window.addEventListener('resize', updateWidth)
+	abc()
 	// getActiveItem()
 })
 
-onUnmounted(() => {
-	window.removeEventListener('resize', updateWidth);
-});
-
+ 
 function updateWidth() {
 	innerwidth.value = window.innerWidth;
 
@@ -402,12 +406,12 @@ watch((innerwidth) => {
 	innerwidth.value = window.innerWidth
 })
 
- 
 
- const setSubitemAcc = (index) => (el) =>{
+
+const setSubitemAcc = (index) => (el) => {
 	subitemAcc.value[index] = el;
- }
- 
+}
+
 
 </script>
 
@@ -448,20 +452,19 @@ watch((innerwidth) => {
 			<div :class="innerwidth <= 734 ? 'offcanvas offcanvas-start' : ''" id="mainmenu" data-bs-backdrop="false"
 				data-bs-scroll="true">
 				<div class="dashboard-nav position-fixed d-flex flex-column z-5 px-2 border-end">
- 						<div class="d-flex justify-content-center align-items-center py-3 ">
-							<div class="">
-								<RouterLink to="/">
-									<span class="fs-3 fw-bolder" style="color:#0055AF">DEMO </span>
-								</RouterLink>
+					<div class="d-flex justify-content-center align-items-center py-3 ">
+						<div class="">
+							<RouterLink to="/">
+								<span class="fs-3 fw-bolder" style="color:#0055AF">DEMO </span>
+							</RouterLink>
 
-							</div>
-
-							<div class="close-btn position-relative">
-								<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
-									aria-label="Close"></button>
-							</div>
 						</div>
- 
+
+						<div class="close-btn position-relative">
+							<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+						</div>
+					</div>
+
 					<nav id="navmenu" class="dashboard-nav-list ">
 						<div class="accordion" id="menu">
 							<div class="accordion-item" v-for="(item, index) in updatedMenuItems">
@@ -487,12 +490,14 @@ watch((innerwidth) => {
 											<div class="accordion" :id="'submenu' + index2">
 												<div class="accordion-item">
 													<div class="accordion-header">
-														<button class="dashboard-nav-item accordion-button position-relative"
+														<button
+															class="dashboard-nav-item accordion-button position-relative"
 															:class="getActiveItem2(item2) === routePath.path ? '' : 'collapsed'"
 															style="padding-left:60px" type="button"
-															data-bs-toggle="collapse" :data-bs-target="'#subitem' + index2 + index"
+															data-bs-toggle="collapse"
+															:data-bs-target="'#subitem' + index2 + index"
 															:aria-expanded="getActiveItem2(item2) === routePath.path ? true : false"
-															:aria-controls="'subitem' + index2 + index" >
+															:aria-controls="'subitem' + index2 + index">
 
 															<span class="linespan"></span><span>
 																{{ item2.text }}</span>
@@ -514,7 +519,8 @@ watch((innerwidth) => {
 																				class="dashboard-nav-item btn-last-child subchild"
 																				:class="{ 'highlighted': isActivePage(item3) }"
 																				style="padding-left:65px" type="button">
-																				<span  :class="getActiveItem2(item2) === routePath.path ?'subgroupLineSpan':''"></span>
+																				<span
+																					:class="getActiveItem2(item2) === routePath.path ? 'subgroupLineSpan' : ''"></span>
 																				{{ item3.text }}
 																			</button>
 																		</RouterLink>
@@ -656,8 +662,8 @@ watch((innerwidth) => {
 					</div>
 				</div>
 			</div>
-			<div class="content pt-3" >
-				<div id="app" >
+			<div class="content pt-3">
+				<div id="app">
 					<router-view>
 					</router-view>
 				</div>
@@ -774,30 +780,30 @@ watch((innerwidth) => {
 }
 
 .dashboard-nav-item:hover>.subgroupLineSpan::before {
-  display: block;
-  content: '';
-  height: 100%;
-  background-color: #0055AF;
-  position: absolute;
-  z-index: 50;
-  left: 50px;
-  width: 1px;
-  top: 0;
+	display: block;
+	content: '';
+	height: 100%;
+	background-color: #0055AF;
+	position: absolute;
+	z-index: 50;
+	left: 50px;
+	width: 1px;
+	top: 0;
 
 }
 
 
 
 .highlighted>.subgroupLineSpan::before {
-  display: block;
-  content: '';
-  height: 100%;
-  background-color: #0055AF;
-  position: absolute;
-  z-index: 50;
-  left: 50px;
-  width: 1px;
-  top: 0;
+	display: block;
+	content: '';
+	height: 100%;
+	background-color: #0055AF;
+	position: absolute;
+	z-index: 50;
+	left: 50px;
+	width: 1px;
+	top: 0;
 }
 
 

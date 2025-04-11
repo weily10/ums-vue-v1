@@ -1,7 +1,6 @@
 <script setup>
 defineProps({
     tableData: Array,
-    item: Array,
     headers: Array
 })
 
@@ -23,15 +22,17 @@ defineProps({
                 </thead>
                 <tbody>
                     <tr v-for="(item, index) in tableData" :key="index">
-                        <td v-for="(value, index2) in item" :key="'cell' + index2">
-                            <slot name="content" :value="value" :index2="index2">{{ value }}</slot>
-                        </td>
-                        <td>
-                            <slot name="actions" :item="item" :index="index"> </slot>
-                        </td>
-                        <td>
-                            <slot name="actions2" :item="item" :index="index"> </slot>
-                        </td>
+                        <slot name="body"  >
+                            <td v-for="(value, index2) in item" :key="'cell' + index2">
+                                <slot name="content" :item="item" :value="value" :index2="index2">{{ value }}</slot>
+                            </td>
+                            <td>
+                                <slot name="actions" :item="item" :index="index"> </slot>
+                            </td>
+                        </slot>
+
+
+
                     </tr>
                 </tbody>
             </table>
