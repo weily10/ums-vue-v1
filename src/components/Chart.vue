@@ -9,6 +9,7 @@ const props = defineProps({
 })
 
 const option = computed(() => (props.option));
+ 
 
 let drawChart
 function initChart() {

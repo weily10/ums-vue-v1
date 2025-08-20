@@ -452,7 +452,10 @@ const setSubitemAcc = (index) => (el) => {
 			<div :class="innerwidth <= 734 ? 'offcanvas offcanvas-start' : ''" id="mainmenu" data-bs-backdrop="false"
 				data-bs-scroll="true">
 				<div class="dashboard-nav position-fixed d-flex flex-column z-5 px-2 border-end">
-					<div class="d-flex justify-content-center align-items-center py-3 ">
+					<div class="d-flex  align-items-center py-3 " :class="innerwidth <= 734?'justify-content-between':'justify-content-center'">
+						<div>
+							
+						</div>
 						<div class="">
 							<RouterLink to="/">
 								<span class="fs-3 fw-bolder" style="color:#0055AF">DEMO </span>
@@ -460,7 +463,7 @@ const setSubitemAcc = (index) => (el) => {
 
 						</div>
 
-						<div class="close-btn position-relative">
+						<div class="close-btn "  >
 							<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 						</div>
 					</div>

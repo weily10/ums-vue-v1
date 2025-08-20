@@ -207,8 +207,8 @@ function addContext2() {
 
                                 </div>
 
-                                <div class="d-flex">
-                                    <div class="fw-semibold text-label pt-1">
+                                <div class="d-flex flex-wrap w-100">
+                                    <div class="fw-semibold text-label pt-1 mb-3">
                                         <div class=" position-relative d-inline-block  hover-label">
 
                                             篩選情境<span class="text-danger">*</span>
@@ -217,16 +217,14 @@ function addContext2() {
                                             </span>
                                         </div>
                                     </div>
-                                    <div>
 
-                                    </div>
-                                    <div class="d-flex gap-2 flex-column ps-2">
-                                        <div class="form-check d-flex align-items-center gap-1">
+                                    <div class="d-flex flex-wrap gap-2 flex-column ps-2 ">
+                                        <div class="form-check d-flex align-items-center gap-1  ">
                                             <div>
                                                 <input class="form-check-input" checked type="checkbox"
                                                     value="member-context-1" id="member-context-1">
                                             </div>
-                                            <div class="form-check-label d-flex align-items-center gap-1"
+                                            <div class="form-check-label d-flex align-items-center gap-1 flex-wrap  "
                                                 for="validsubscriber">
                                                 <div class="col-1">
                                                     <input type="text" class="form-control form-control-sm" />
@@ -234,7 +232,7 @@ function addContext2() {
                                                 <div class="">
                                                     未造訪
                                                 </div>
-                                                <div class="col-2">
+                                                <div style="min-width: 30px;">
                                                     <select class="form-select form-select-sm" type="select"
                                                         value="member-select-1" id="member-select-1">
                                                         <option selected>WEB+APP</option>
@@ -242,7 +240,7 @@ function addContext2() {
                                                         <option value="2">APP</option>
                                                     </select>
                                                 </div>
-                                                <div class="col-2">
+                                                <div style="min-width: 30px;">
                                                     <select class="form-select form-select-sm" type="select" disabled
                                                         value="member-select-1" id="meb_Not_visit_bu">
                                                         <option value="1" selected>聯經日報</option>
@@ -257,7 +255,8 @@ function addContext2() {
                                                     <input type="number" id="member-days-above-1" min="0"
                                                         class="form-control form-control-sm" />
                                                 </div>
-                                                天以上的會員
+                                                <div> 天以上的會員</div>
+
                                                 <div class="position-relative text-label hover-label ms-2">
                                                     <i class=" icon-qa"></i>
                                                     <span class="custom-tooltip-2 rounded p-1 position-absolute">
@@ -266,23 +265,23 @@ function addContext2() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-check d-flex align-items-center gap-1 ">
+                                        <div class="form-check d-flex align-items-center gap-1  ">
                                             <div>
                                                 <input class="form-check-input" type="checkbox" value="member-context-2"
                                                     id="member-context-2">
                                             </div>
-                                            <div class="form-check-label d-flex align-items-center gap-1" for="1">
+                                            <div class="form-check-label d-flex  flex-wrap align-items-center gap-1">
                                                 <div class="col-1">
                                                     <input id="member-days-within-1" type="number" min="0"
                                                         class="form-control form-control-sm" />
                                                 </div>
-                                                <div class="">
+                                                <div style="min-width: 100px;">
                                                     天內，每週消耗
                                                 </div>
                                                 <div class="col-1">
                                                     <input id="member-pts" type="text" class="form-control form-control-sm">
                                                 </div>
-                                                <div>
+                                                <div style="min-width: 60px;">
                                                     點額度，
                                                 </div>
                                                 <div class="col-1">
@@ -290,8 +289,10 @@ function addContext2() {
                                                         class="form-control form-control-sm" />
                                                 </div>
 
+                                                <div style="min-width: 50px;">
+                                                    週以上
+                                                </div>
 
-                                                週以上
                                                 <div class="position-relative text-label hover-label ms-2">
                                                     <i class=" icon-qa"></i>
                                                     <span class="custom-tooltip-2 rounded p-1 position-absolute">
@@ -300,17 +301,17 @@ function addContext2() {
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="form-check d-flex align-items-center gap-1 ">
+                                        <div class="form-check d-flex align-items-center gap-1  ">
                                             <div>
                                                 <input class="form-check-input" type="checkbox" value="member-context-3"
                                                     id="member-context-3">
                                             </div>
-                                            <div class="form-check-label d-flex align-items-center gap-1"
+                                            <div class="form-check-label d-flex align-items-center gap-1 flex-wrap"
                                                 for="member-context-3">
                                                 <div class="col-1">
                                                     <input type="number" min="0" class="form-control form-control-sm" />
                                                 </div>
-                                                <div class="">
+                                                <div style="min-width: 130px;">
                                                     天內，點選方案進到
                                                 </div>
                                                 <div class="col-2">
@@ -352,11 +353,11 @@ function addContext2() {
                                             <div>
                                                 <input class="form-check-input" type="checkbox" value="" id="1">
                                             </div>
-                                            <div class="form-check-label d-flex align-items-center gap-1" for="1">
+                                            <div class="form-check-label d-flex align-items-center gap-1 flex-wrap" for="1">
                                                 <div class="col-1">
                                                     <input type="number" min="0" class="form-control form-control-sm" />
                                                 </div>
-                                                <div class="">
+                                                <div style="min-width:80px">
                                                     天內，造訪
                                                 </div>
                                                 <div class="col-2">
@@ -368,7 +369,7 @@ function addContext2() {
                                                         <option value="3">聯合新聞網</option>
                                                     </select>
                                                 </div>
-                                                <div>
+                                                <div style="min-width:30px">
                                                     單位
                                                 </div>
                                                 <div class="col-2">
@@ -380,13 +381,14 @@ function addContext2() {
                                                         <option value="3">聯合新聞網</option>
                                                     </select>
                                                 </div>
-                                                <div>
+                                                <div style="min-width:100px">
                                                     類別，天數超過
                                                 </div>
                                                 <div class="col-1">
                                                     <input type="number" min="0" class="form-control form-control-sm" />
                                                 </div>
-                                                天以上的會員
+                                                <div style="min-width: 100px ;"> 天以上的會員</div>
+
                                                 <div class="position-relative text-label hover-label ms-2">
                                                     <i class="icon-qa"></i>
                                                     <span class="custom-tooltip-2 rounded p-1 position-absolute">
@@ -1021,7 +1023,7 @@ function addContext2() {
                                 <div id="adv-pref-list" class="d-flex gap-3 ps-2 flex-wrap"
                                     style="row-gap: 0.2rem !important;">
                                     <template v-for="item in preflist">
-                                        
+
                                         <div class="form-check"><input class="form-check-input" type="checkbox"
                                                 name="radio"><label class="form-check-label" for="any">{{ item.name
                                                 }}</label>
