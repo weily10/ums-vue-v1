@@ -1,12 +1,14 @@
 <script setup>
 import { ref, onMounted, watch, onUnmounted } from 'vue';
 import { useRoute } from 'vue-router';
+import api from './api/axios'
 
 let menuItems = ref([])
 const innerwidth = ref(window.innerWidth)
 const routePath = useRoute()
 const activeItem = ref(null)
 const subitemAcc = ref([])
+
 
 menuItems.value = [{
 	text: "使用者中心",
@@ -376,21 +378,25 @@ function isActivePage(item) {
 	return item.route === routePath.path ? true : false
 }
 
-var a = 0
-function abc(){
-	a=1
-console.log(a);
-
+async function test() {
+	await api.get('/api/udn-data').then(res => {
+		console.log('res', res);
+	})
 }
+
+
 
 
 onMounted(() => {
 	window.addEventListener('resize', updateWidth)
-	abc()
+
+ 	test()
+	console.log('adata');
+
 	// getActiveItem()
 })
 
- 
+
 function updateWidth() {
 	innerwidth.value = window.innerWidth;
 
@@ -435,7 +441,8 @@ const setSubitemAcc = (index) => (el) => {
 		</div>
 	</div>
 	<div class="page-content  ">
-		<div id="spinner" class="position-fixed z-start-50 z-3  overlay d-flex justify-content-center align-items-center "
+		<div id="spinner"
+			class="position-fixed z-start-50 z-3  overlay d-flex justify-content-center align-items-center "
 			style="width: 100%; height: 100%;">
 			<div class="spinner-border text-white" role="status">
 				<span class="visually-hidden">Loading...</span>
@@ -452,9 +459,10 @@ const setSubitemAcc = (index) => (el) => {
 			<div :class="innerwidth <= 734 ? 'offcanvas offcanvas-start' : ''" id="mainmenu" data-bs-backdrop="false"
 				data-bs-scroll="true">
 				<div class="dashboard-nav position-fixed d-flex flex-column z-5 px-2 border-end">
-					<div class="d-flex  align-items-center py-3 " :class="innerwidth <= 734?'justify-content-between':'justify-content-center'">
+					<div class="d-flex  align-items-center py-3 "
+						:class="innerwidth <= 734 ? 'justify-content-between' : 'justify-content-center'">
 						<div>
-							
+
 						</div>
 						<div class="">
 							<RouterLink to="/">
@@ -463,8 +471,9 @@ const setSubitemAcc = (index) => (el) => {
 
 						</div>
 
-						<div class="close-btn "  >
-							<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+						<div class="close-btn ">
+							<button type="button" class="btn-close" data-bs-dismiss="offcanvas"
+								aria-label="Close"></button>
 						</div>
 					</div>
 
@@ -484,8 +493,8 @@ const setSubitemAcc = (index) => (el) => {
 									</button>
 								</div>
 								<div class="accordion-collapse collapse position-relative"
-									:class="getActiveItem(item) === routePath.path ? ' show' : ''" data-bs-parent="#menu"
-									:id="'item' + index">
+									:class="getActiveItem(item) === routePath.path ? ' show' : ''"
+									data-bs-parent="#menu" :id="'item' + index">
 
 									<div class="accordion-body group" style="padding-inline:0">
 										<div v-for="(item2, index2) in item.group" :key="index2">
@@ -549,8 +558,8 @@ const setSubitemAcc = (index) => (el) => {
 			</div>
 
 			<div id="searchbar" class="offcanvas offcanvas-start px-2"
-				:class="innerwidth <= 734 ? 'offcanvas offcanvas-start' : ''" style="width: 250px;" data-bs-scroll="true"
-				data-bs-backdrop="false" tabindex="-1" aria-labelledby="offcanvasScrollingLabel">
+				:class="innerwidth <= 734 ? 'offcanvas offcanvas-start' : ''" style="width: 250px;"
+				data-bs-scroll="true" data-bs-backdrop="false" tabindex="-1" aria-labelledby="offcanvasScrollingLabel">
 				<div class="offcanvas-body">
 					<div class="font-b4-me">平台</div>
 					<div class="btn-group mt-1 w-100">
@@ -578,7 +587,8 @@ const setSubitemAcc = (index) => (el) => {
 							</div>
 							<hr class="dropdown-divider">
 							<div class="input-group input-group-sm">
-								<span class="input-group-text border-end-0 bg-white bi bi-search" id="basic-addon6"></span>
+								<span class="input-group-text border-end-0 bg-white bi bi-search"
+									id="basic-addon6"></span>
 								<input type="text" class="form-control border-start-0 " id="tag-lvl-keyword"
 									placeholder="輸入字詞以搜尋">
 							</div>
@@ -592,8 +602,8 @@ const setSubitemAcc = (index) => (el) => {
 						<div class="font-b4-me">開始日期
 						</div>
 						<div class="input-group mt-1">
-							<input type="text" class="form-control border-end-0" placeholder="開始日期" aria-label="Username"
-								aria-describedby="basic-addon1" id="startDate">
+							<input type="text" class="form-control border-end-0" placeholder="開始日期"
+								aria-label="Username" aria-describedby="basic-addon1" id="startDate">
 							<span class="input-group-text bg-white rounded-end "> <i class="icon-calendar"></i></span>
 						</div>
 
@@ -602,8 +612,8 @@ const setSubitemAcc = (index) => (el) => {
 						<div class="font-b4-me">結束日期
 						</div>
 						<div class="input-group mt-1">
-							<input type="text" class="form-control border-end-0" placeholder="結束日期" aria-label="Username"
-								aria-describedby="basic-addon1" id="endDate">
+							<input type="text" class="form-control border-end-0" placeholder="結束日期"
+								aria-label="Username" aria-describedby="basic-addon1" id="endDate">
 							<span class="input-group-text bg-white rounded-end "> <i class="icon-calendar"></i></span>
 						</div>
 
@@ -616,9 +626,9 @@ const setSubitemAcc = (index) => (el) => {
 			</div>
 
 			<button id="controlBtn"
-				class="btn rounded-circle  bg-custom-grey shadow-sm d-flex position-absolute offcanvas-btn " type="button"
-				data-bs-toggle="offcanvas" data-bs-target="#searchbar" aria-controls="offcanvasScrolling"><i
-					class="bi bi-list"></i></button>
+				class="btn rounded-circle  bg-custom-grey shadow-sm d-flex position-absolute offcanvas-btn "
+				type="button" data-bs-toggle="offcanvas" data-bs-target="#searchbar"
+				aria-controls="offcanvasScrolling"><i class="bi bi-list"></i></button>
 
 		</div>
 		<header id="main-header mt-5" class="dashboard-toolbar d-flex justify-content-end">
@@ -729,7 +739,8 @@ const setSubitemAcc = (index) => (el) => {
 							</div>
 							<hr class="dropdown-divider">
 							<div class="input-group input-group-sm">
-								<span class="input-group-text border-end-0 bg-white bi bi-search" id="basic-addon6"></span>
+								<span class="input-group-text border-end-0 bg-white bi bi-search"
+									id="basic-addon6"></span>
 								<input type="text" class="form-control border-start-0 " id="tag-lvl-keyword"
 									placeholder="輸入字詞以搜尋">
 							</div>
@@ -743,8 +754,8 @@ const setSubitemAcc = (index) => (el) => {
 						<div class="font-b4-me">開始日期
 						</div>
 						<div class="input-group mt-1">
-							<input type="text" class="form-control border-end-0" placeholder="開始日期" aria-label="Username"
-								aria-describedby="basic-addon1" id="startDate">
+							<input type="text" class="form-control border-end-0" placeholder="開始日期"
+								aria-label="Username" aria-describedby="basic-addon1" id="startDate">
 							<span class="input-group-text bg-white rounded-end "> <i class="icon-calendar"></i></span>
 						</div>
 
@@ -753,8 +764,8 @@ const setSubitemAcc = (index) => (el) => {
 						<div class="font-b4-me">結束日期
 						</div>
 						<div class="input-group mt-1">
-							<input type="text" class="form-control border-end-0" placeholder="結束日期" aria-label="Username"
-								aria-describedby="basic-addon1" id="endDate">
+							<input type="text" class="form-control border-end-0" placeholder="結束日期"
+								aria-label="Username" aria-describedby="basic-addon1" id="endDate">
 							<span class="input-group-text bg-white rounded-end "> <i class="icon-calendar"></i></span>
 						</div>
 

@@ -8,5 +8,11 @@ import router from './router/index.js'
 // import 'bootstrap/dist/js/bootstrap.bundle'
 // import "bootstrap"
 import 'bootstrap-icons/font/bootstrap-icons.css'
+import api from './api/axios.js'
 
-createApp(App).use(router).mount('#app')
+const app = createApp(App)
+
+app.provide('api', api)   
+app.use(router).mount('#app')
+
+
