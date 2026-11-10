@@ -378,11 +378,6 @@ function isActivePage(item) {
 	return item.route === routePath.path ? true : false
 }
 
-async function test() {
-	await api.get('/api/udn-data').then(res => {
-		console.log('res', res);
-	})
-}
 
 
 
@@ -390,11 +385,7 @@ async function test() {
 onMounted(() => {
 	window.addEventListener('resize', updateWidth)
 
- 	test()
-	console.log('adata');
-
-	// getActiveItem()
-})
+ })
 
 
 function updateWidth() {

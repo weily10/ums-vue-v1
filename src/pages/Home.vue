@@ -1,6 +1,29 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, onMounted, computed } from 'vue';
 import customChart from '../components/Chart.vue'
+import api from '../api/axios.js'
+
+const latest = ref({})
+
+
+
+const formatWan = (n = 0) =>
+    new Intl.NumberFormat('zh-TW', {
+        notation: 'compact',
+        maximumFractionDigits: 2,
+    }).format(n)
+
+const board = computed(() => {
+    const d = latest.value
+    return {
+        activeMembers: formatWan(d.activeMembers),
+        phoneVerifiedCount: formatWan(d.phoneVerifiedCount),
+        emailVerifiedCount: formatWan(d.emailVerifiedCount),
+        dailyNewMembers: formatWan(d.dailyNewMembers),
+        udnVisitingMembers: formatWan(d.udnVisitingMembers),
+        pageViews: formatWan(d.pageViews),
+    }
+})
 
 
 const articleTableData = ref([{
@@ -68,6 +91,11 @@ const option = ref({
 
 const option2 = ref({})
 const option3 = ref({})
+
+async function getBoardData() {
+    const { data } = await api.get('/api/udn-data')
+    latest.value = data[0] ?? {}
+}
 
 
 function loadPlot() {
@@ -178,7 +206,7 @@ function loadPlot() {
 
 
     option3.value = {
-     
+
         color: brandColors,
         title: {
             text: pieChartData1.title,
@@ -220,6 +248,10 @@ function loadPlot() {
     }
 
 }
+
+onMounted(() => {
+    getBoardData()
+})
 
 
 
@@ -288,7 +320,7 @@ function loadPlot() {
 
                                 </h4>
                                 <h1 class="mb-0">
-                                    3,658.7萬
+                                    {{ board.activeMembers }}
                                 </h1>
                             </div>
                             <span class="font-support mt-auto ">
@@ -315,7 +347,7 @@ function loadPlot() {
                                     手機完成驗證數
                                 </h4>
                                 <h1 class="mb-0">
-                                    7,838.4萬
+                                    {{board.phoneVerifiedCount}}
                                 </h1>
                             </div>
                             <span class="font-support mt-auto ">
@@ -342,7 +374,7 @@ function loadPlot() {
                                     EMAIL 完成驗證數
                                 </h4>
                                 <h1 class="mb-0">
-                                    2,576.6萬
+                                    {{board.emailVerifiedCount}}
                                 </h1>
                             </div>
                             <span class="font-support mt-4">
@@ -360,10 +392,11 @@ function loadPlot() {
 
                                     </h4>
                                     <h1 class="mb-0">
-                                        1,568.0
+                                        {{board.dailyNewMembers}}
                                     </h1>
                                     <div class="text-success mt-3 ">
-                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                        <div
+                                            class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                             <span class="border border-success rounded p-1">
                                                 <i class="icon-double-up"></i>
                                                 <span class="ps-1 font-support text-success ">
@@ -396,7 +429,8 @@ function loadPlot() {
                                         11.8萬
                                     </h1>
                                     <div class="text-success mt-3 ">
-                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                        <div
+                                            class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                             <span class="border border-success rounded p-1">
                                                 <i class="icon-double-up"></i>
                                                 <span class="ps-1 font-support text-success ">
@@ -619,20 +653,20 @@ function loadPlot() {
                                     <th>
                                     </th>
                                     <th scope="col" class="text-start">文章 ID <button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">文章標題 <button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">網站 <button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-end">瀏覽量<button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                 </tr>
                             </thead>
@@ -714,20 +748,20 @@ function loadPlot() {
                                     <th>
                                     </th>
                                     <th scope="col" class="text-start">文章 ID <button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">文章標題 <button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">網站 <button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-end">瀏覽量<button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                 </tr>
                             </thead>
@@ -802,20 +836,20 @@ function loadPlot() {
                                     <th>
                                     </th>
                                     <th scope="col" class="text-start">文章 ID <button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">文章標題 <button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-start">網站 <button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                     <th scope="col" class="text-end">瀏覽量<button
-                                            class="bg-transparent rounded-circle p-0 text-white"><i class="icon-sequence"
-                                                @click=""></i></button>
+                                            class="bg-transparent rounded-circle p-0 text-white"><i
+                                                class="icon-sequence" @click=""></i></button>
                                     </th>
                                 </tr>
                             </thead>
