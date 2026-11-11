@@ -3,6 +3,7 @@ import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import router from '../router/index.js'
 import { ref, onMounted } from 'vue'
 import ConfirmModal from '../components/ConfirmModal.vue'
+import api from '../api/axios.js'
 
 let deleteModal = ref(false)
 let id = 'deleteModal'
@@ -27,6 +28,12 @@ const items = ref([
     }
 ])
 
+async function getData(){
+    const adsData = await api.get('/api/ads-data')
+
+    
+}
+
 
 function toSmartAdKeywordAdvAddPage() {
     router.push({ name: "SmartAdThemeAdvertisingAdd" })
@@ -38,6 +45,7 @@ function viewAnalysisReport() {
 }
 
 onMounted(() => {
+    getData()
     deleteModal.value = new Modal(document.getElementById(id))
 })
 
