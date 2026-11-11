@@ -71,11 +71,11 @@ const option = ref({
     },
     dataset: {
         source: [
-            ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
-            ['2023年11月27日', 103010, 75000, 230654],
-            ['2023年11月28日', 810300, 730004, 230654],
-            ['2023年11月29日', 23864, 65214, 42145],
-            ['2023年11月30日', 633219, 74249, 421412],
+            // ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
+            // ['2023年11月27日', 103010, 75000, 230654],
+            // ['2023年11月28日', 810300, 730004, 230654],
+            // ['2023年11月29日', 23864, 65214, 42145],
+            // ['2023年11月30日', 633219, 74249, 421412],
         ],
     },
     xAxis: {
@@ -93,21 +93,36 @@ const option2 = ref({})
 const option3 = ref({})
 
 async function getBoardData() {
-    const { data } = await api.get('/api/udn-data')
+    const {data} = await api.get('/api/udn-data')
+ 
+     
     latest.value = data[0] ?? {}
+    console.log('latest',latest.value);
+    
+
+    option.value.dataset.source = [
+        ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
+        ...data.map(d => [
+            new Date(d.date).toLocaleDateString('zh-TW', {
+                year: 'numeric', month: 'long', day: 'numeric',
+            }),
+            d.pageViews,
+            d.articleViews,
+            d.interaction
+        ]),
+    ]
+
+    console.log('option', option);
 }
 
 
-function loadPlot() {
+async function loadPlot() {
+
     const chartdata = {
         title: '事件日趨勢',
         subtext: '',
         source: [
-            ['product', '瀏覽量', '文章瀏覽量', '互動事件量'],
-            ['2023年11月27日', 103010, 75000, 230654],
-            ['2023年11月28日', 810300, 730004, 230654],
-            ['2023年11月29日', 23864, 65214, 42145],
-            ['2023年11月30日', 633219, 74249, 421412],
+
         ],
         xAxis: { type: 'category' },
         series: [{ type: 'bar' }, { type: 'bar' }, { type: 'bar' }]
@@ -347,7 +362,7 @@ onMounted(() => {
                                     手機完成驗證數
                                 </h4>
                                 <h1 class="mb-0">
-                                    {{board.phoneVerifiedCount}}
+                                    {{ board.phoneVerifiedCount }}
                                 </h1>
                             </div>
                             <span class="font-support mt-auto ">
@@ -374,7 +389,7 @@ onMounted(() => {
                                     EMAIL 完成驗證數
                                 </h4>
                                 <h1 class="mb-0">
-                                    {{board.emailVerifiedCount}}
+                                    {{ board.emailVerifiedCount }}
                                 </h1>
                             </div>
                             <span class="font-support mt-4">
@@ -392,7 +407,7 @@ onMounted(() => {
 
                                     </h4>
                                     <h1 class="mb-0">
-                                        {{board.dailyNewMembers}}
+                                        {{ board.dailyNewMembers }}
                                     </h1>
                                     <div class="text-success mt-3 ">
                                         <div
@@ -426,7 +441,7 @@ onMounted(() => {
                                         UDN 到站會員數
                                     </h4>
                                     <h1 class="mb-0">
-                                        11.8萬
+                                        {{ board.dailyNewMembers }}
                                     </h1>
                                     <div class="text-success mt-3 ">
                                         <div
@@ -467,7 +482,7 @@ onMounted(() => {
                                     瀏覽量
                                 </h4>
                                 <h1 class="mb-0">
-                                    1,568.0
+                                    {{ board.pageViews }}
                                 </h1>
                                 <div class="text-success mt-3 ">
                                     <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
@@ -513,7 +528,7 @@ onMounted(() => {
 
                                 </h4>
                                 <h1 class="mb-0">
-                                    3,658.7萬
+                                    {{ board.activeMembers }}
                                 </h1>
                             </div>
                             <span class="font-support mt-auto ">
@@ -540,7 +555,7 @@ onMounted(() => {
                                     手機完成驗證數
                                 </h4>
                                 <h1 class="mb-0">
-                                    7,838.4萬
+                                    {{ board.phoneVerifiedCount }}
                                 </h1>
                             </div>
                             <span class="font-support mt-auto ">
@@ -567,7 +582,7 @@ onMounted(() => {
                                     EMAIL 完成驗證數
                                 </h4>
                                 <h1 class="mb-0">
-                                    2,576.6萬
+                                    {{ board.emailVerifiedCount }}
                                 </h1>
                             </div>
                             <span class="font-support mt-4">
