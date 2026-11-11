@@ -28,10 +28,14 @@ const items = ref([
     }
 ])
 
-async function getData(){
-    const adsData = await api.get('/api/ads-data')
+async function getData() {
+    const { data } = await api.get('/api/ads-data')
 
-    
+    items.value = data
+    console.log('data', items.value);
+
+
+
 }
 
 
@@ -54,9 +58,9 @@ function showConfirmModal1() {
 }
 
 function closeModal() {
-     deleteModal.value.hide()
+    deleteModal.value.hide()
 }
- 
+
 
 
 
@@ -140,7 +144,8 @@ function closeModal() {
                                 </th>
                                 <th scope="col" class="text-center align-text-top" style="min-width: 80px;">行為分析</th>
                                 <th scope="col" class="text-center align-text-top" style="min-width: 60px;">載具</th>
-                                <th scope="col" class="text-start align-text-top" style="min-width: 100px;"> 可投遞曝光數 (Desktop
+                                <th scope="col" class="text-start align-text-top" style="min-width: 100px;"> 可投遞曝光數
+                                    (Desktop
                                     / Mobile)
                                 </th>
                                 <th scope="col" class="text-start align-text-top" style="min-width: 80px;">桌機名單
@@ -163,49 +168,51 @@ function closeModal() {
                             <template v-for="(item, index) in items" :key="index">
                                 <tr>
                                     <td>
-                                        {{ item.no }}
+                                        {{ item.itemNo }}
                                     </td>
                                     <td>
-                                        {{ item.no2 }}
+                                        {{ item.code }}
                                     </td>
                                     <td>
-                                        {{ item.themename }}
+                                        {{ item.topicName }}
                                     </td>
                                     <td>
-                                        {{ item.themeTag }}
+                                        {{ item.topicTag }}
                                     </td>
                                     <td>
-                                        {{ item.analysis }}
+                                        {{ item.matchingAnalysis }}
                                     </td>
                                     <td>
-                                        {{ item.actionanalysis }}
+                                        {{ item.behaviorAnalysis }}
                                     </td>
                                     <td>
                                         {{ item.zaiju }}
                                     </td>
                                     <td>
-                                        {{ item.desktopmobile }}
+                                        {{ item.deliverableImpressions?.desktop }}/{{
+                                        item.deliverableImpressions?.desktop }}
                                     </td>
                                     <td>
-                                        {{ item.list }}
+                                        {{ item.desktopList }}
                                     </td>
                                     <td>
-                                        {{ item.status }}
+                                        {{ item.desktopListStatus }}
                                     </td>
                                     <td>
-                                        {{ item.phonelist }}
+                                        {{ item.mobileList }}
                                     </td>
                                     <td>
-                                        {{ item.phonestatus }}
+                                        {{ item.mobileListStatus }}
                                     </td>
                                     <td>
-                                        {{ item.creatorname }}
+                                        {{ item.createdBy }}
                                     </td>
                                     <td>
-                                        {{ item.createdate }}
+                                        {{ item.createdAt }}
                                     </td>
                                     <td class="">
-                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label ">
+                                        <div
+                                            class="list-icon position-relative d-inline-block fw-semibold  hover-label ">
                                             <button class=" btn rounded-circle btn-sm" type="button"
                                                 @click="router.push({ name: 'SmartAdThemeAdvertisingAdd' })">
                                                 <i class="bi bi-copy fs-6"
@@ -215,7 +222,8 @@ function closeModal() {
                                                 複製
                                             </span>
                                         </div>
-                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                        <div
+                                            class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                             <button class="btn rounded-circle btn-sm" type="button"
                                                 @click="viewAnalysisReport()">
                                                 <i class="bi bi-graph-up fs-6"></i></button>
@@ -224,7 +232,8 @@ function closeModal() {
                                                 檢視分析報告
                                             </span>
                                         </div>
-                                        <div class="list-icon position-relative d-inline-block fw-semibold  hover-label">
+                                        <div
+                                            class="list-icon position-relative d-inline-block fw-semibold  hover-label">
                                             <button class=" btn rounded-circle btn-sm" type="button"
                                                 @click="showConfirmModal1">
                                                 <i class="bi bi-trash fs-6"></i></button>
@@ -258,13 +267,14 @@ function closeModal() {
                             <button type="button" class="pagination-btn btn">999</button>
                         </div>
                         <div class="btn-group me-2" role="group" aria-label="Second group">
-                            <button type="button" class="pagination-btn btn fs-5 p-0"><i class="icon-right"></i></button>
+                            <button type="button" class="pagination-btn btn fs-5 p-0"><i
+                                    class="icon-right"></i></button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
         <ConfirmModal :id="id" @confirmClose="closeModal" :message="'確定刪除該筆資料?'"></ConfirmModal>
-      
+
     </div>
 </template>
