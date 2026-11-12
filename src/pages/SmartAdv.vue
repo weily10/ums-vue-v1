@@ -165,7 +165,7 @@ function closeModal() {
                             </tr>
                         </thead>
                         <tbody id="smart-ad-theme-detail-tbody">
-                            <template v-for="(item, index) in items" :key="index">
+                            <template v-for="(item, index) in items.data" :key="index">
                                 <tr>
                                     <td>
                                         {{ item.itemNo }}
@@ -190,7 +190,7 @@ function closeModal() {
                                     </td>
                                     <td>
                                         {{ item.deliverableImpressions?.desktop }}/{{
-                                        item.deliverableImpressions?.desktop }}
+                                            item.deliverableImpressions?.desktop }}
                                     </td>
                                     <td>
                                         {{ item.desktopList }}
@@ -250,27 +250,21 @@ function closeModal() {
                 </div>
                 <div class="d-flex justify-content-between">
                     <div class="font-support align-text-top">
-                        共 <span id="">3</span> 筆資料
+                        共 <span id="">{{ items.length }}</span> 筆資料
                     </div>
-                    <div class="d-flex justify-content-center align-items-center">
-
-                        <div class="btn-group me-2" role="group" aria-label="Second group">
-                            <button type="button" class="pagination-btn btn fs-5 p-0"><i class="icon-left"></i></button>
-
-                        </div>
-                        <div class="btn-group me-2" role="group" aria-label="First group">
-                            <button type="button" class="pagination-btn btn">1</button>
-                            <button type="button" class="pagination-btn btn">2</button>
-                            <button type="button" class="pagination-btn btn">3</button>
-                            <button type="button" class="pagination-btn btn">4</button>
-                            <button type="button" class="pagination-btn btn">...</button>
-                            <button type="button" class="pagination-btn btn">999</button>
-                        </div>
-                        <div class="btn-group me-2" role="group" aria-label="Second group">
-                            <button type="button" class="pagination-btn btn fs-5 p-0"><i
-                                    class="icon-right"></i></button>
-                        </div>
-                    </div>
+                    <nav aria-label="Page navigation example">
+                        <ul class="pagination justify-content-end">
+                            <li class="page-item">
+                                <a class="page-link" href="#" tabindex="-1" >Previous</a>
+                            </li>
+                            <li class="page-item"><a class="page-link" href="#">1</a></li>
+                            <li class="page-item"><a class="page-link" href="#">2</a></li>
+                            <li class="page-item"><a class="page-link" href="#">3</a></li>
+                            <li class="page-item">
+                                <a class="page-link" href="#">Next</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </div>
             </div>
         </div>
