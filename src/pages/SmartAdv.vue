@@ -1,13 +1,18 @@
 <script setup>
 import { Modal } from 'bootstrap/dist/js/bootstrap.bundle.min.js'
 import router from '../router/index.js'
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import ConfirmModal from '../components/ConfirmModal.vue'
 import api from '../api/axios.js'
 
 let deleteModal = ref(false)
 let id = 'deleteModal'
-
+let controller
+const page = ref(1)
+const pageSize = ref(10)
+const loading = ref(false)
+const error = ref('')
+const totalPages = ref(0)
 
 const items = ref([
     {
@@ -33,10 +38,36 @@ async function getData() {
 
     items.value = data
     console.log('data', items.value);
-
-
-
 }
+
+async function load(p = 1) {
+    controller?.abort()
+    controller = new AbortController()
+    loading.value = true
+    try {
+        const { data } = await api.get('/api/ads-data', {
+            params: { page: p, pageSize: pageSize.value },
+            signal: controller.signal
+        })
+        console.log(data);
+
+        items.value = data
+        page.value = data.page
+        totalPages.value = data.totalPages
+
+    } catch (err) {
+        error.value = err.response?.data?.message || err.message
+    } finally {
+        loading.value = false
+    }
+}
+
+const visiblePages = computed(() => {
+    const range = 2
+    const start = Math.max(1, page.value - range)
+    const end = Math.min(totalPages.value, page.value + range)
+    return Array.from({ length: Math.max(end - start + 1, 0) }, (_, i) => start + i)
+})
 
 
 function toSmartAdKeywordAdvAddPage() {
@@ -49,7 +80,7 @@ function viewAnalysisReport() {
 }
 
 onMounted(() => {
-    getData()
+    load(1)
     deleteModal.value = new Modal(document.getElementById(id))
 })
 
@@ -252,16 +283,32 @@ function closeModal() {
                     <div class="font-support align-text-top">
                         共 <span id="">{{ items.length }}</span> 筆資料
                     </div>
-                    <nav aria-label="Page navigation example">
+                    <nav aria-label="Page navigation">
                         <ul class="pagination justify-content-end">
-                            <li class="page-item">
-                                <a class="page-link" href="#" tabindex="-1" >Previous</a>
+                            <li class="page-item" :class="{ disabled: page === 1 }">
+                                <a class="page-link" href="#" @click.prevent="load(page - 1)" tabindex="-1">Previous</a>
                             </li>
-                            <li class="page-item"><a class="page-link" href="#">1</a></li>
-                            <li class="page-item"><a class="page-link" href="#">2</a></li>
-                            <li class="page-item"><a class="page-link" href="#">3</a></li>
-                            <li class="page-item">
-                                <a class="page-link" href="#">Next</a>
+                            <li v-if="visiblePages[0] > 1" class="page-item">
+                                <a class="page-link" href="#" @click.prevent="load(1)">1</a>
+                            </li>
+                            <li v-if="visiblePages[0] > 2" class="page-item disabled">
+                                <span class="page-link">…</span>
+                            </li>
+                            <li class="page-item" v-for="p in visiblePages" :key="p"><a class="page-link" href="#"
+                                    @click.prevent="load(p)">{{ p }}</a></li>
+                            <li v-if="visiblePages[visiblePages.length - 1] < totalPages - 1"
+                                class="page-item disabled">
+                                <span class="page-link">…</span>
+                            </li>
+
+
+                            <li v-if="visiblePages[visiblePages.length - 1] < totalPages" class="page-item">
+                                <a class="page-link" href="#" @click.prevent="load(totalPages)">{{ totalPages }}</a>
+                            </li>
+
+
+                            <li class="page-item" :class="{ disabled: page === totalPages }">
+                                <a class="page-link" href="#" @click.prevent="load(page + 1)">Next</a>
                             </li>
                         </ul>
                     </nav>
