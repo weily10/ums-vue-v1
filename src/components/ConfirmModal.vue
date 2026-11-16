@@ -24,7 +24,7 @@ const props = defineProps({
                 </div>
                 <div class="modal-footer border-0">
                     <button type="button" class="btn" @click="$emit('confirmClose')">取消</button>
-                    <button type="button" class="btn primary " @click="$emit('confirmClose')">確定</button>
+                    <button type="button" class="btn primary " @click="$emit('confirmDelete')">確定</button>
                 </div>
             </div>
         </div>

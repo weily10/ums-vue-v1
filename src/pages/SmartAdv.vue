@@ -13,6 +13,7 @@ const pageSize = ref(10)
 const loading = ref(false)
 const error = ref('')
 const totalPages = ref(0)
+const _id = ref(null)
 
 const items = ref([
     {
@@ -84,11 +85,24 @@ onMounted(() => {
     deleteModal.value = new Modal(document.getElementById(id))
 })
 
-function showConfirmModal1() {
+function showConfirmModal1(item) {
+
+
+    _id.value = item._id
+    console.log('item', _id);
     deleteModal.value.show()
 }
 
 function closeModal() {
+    deleteModal.value.hide()
+}
+
+async function confirmDelete() {
+
+    await api.put(`/api/ads-data/${_id.value}/delete`).then(res => {
+        console.log(res);
+
+    })
     deleteModal.value.hide()
 }
 
@@ -242,37 +256,40 @@ function closeModal() {
                                         {{ item.createdAt }}
                                     </td>
                                     <td class="">
-                                        <div
-                                            class="list-icon position-relative d-inline-block fw-semibold  hover-label ">
-                                            <button class=" btn rounded-circle btn-sm" type="button"
-                                                @click="router.push({ name: 'SmartAdThemeAdvertisingAdd' })">
-                                                <i class="bi bi-copy fs-6"
-                                                    style="padding-right: 2px; padding-left: 2px;"></i></button>
-                                            <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
-                                                style=" top: 100%;right: -50%;">
-                                                複製
-                                            </span>
+                                        <div class="btn-group dropstart">
+                                            <button type="button"
+                                                class="bg-transparent fs-6 custom-dropdown dropdown-toggle"
+                                                data-bs-toggle="dropdown" aria-expanded="false">
+                                                <i class="bi bi-three-dots-vertical"></i>
+                                            </button>
+                                            <ul class="dropdown-menu border-0 shadow-sm">
+                                                <div>
+                                                    <button class=" btn  w-100 d-flex gap-3 rounded-0"
+                                                        @click="router.push({ name: 'MarketingConfigView' })">
+                                                        <i class="bi bi-eye-fill"></i> 檢視</button>
+                                                </div>
+                                                <div>
+                                                    <button class=" btn  w-100 d-flex gap-3 rounded-0" type="button"
+                                                        @click="router.push({ name: 'SmartAdThemeAdvertisingAdd' })">
+                                                        <i class="bi bi-copy"></i>複製</button>
+
+
+                                                </div>
+                                                <div>
+                                                    <button class=" btn  w-100 d-flex gap-3 rounded-0" type="button"
+                                                        @click="viewAnalysisReport()">
+                                                        <i class="bi bi-graph-up  "></i>檢視分析報告</button>
+
+                                                </div>
+                                                <div>
+                                                    <button class="btn  w-100 d-flex gap-3 rounded-0" type="button"
+                                                        @click="showConfirmModal1(item)">
+                                                        <i class="bi bi-trash  "></i>刪除</button>
+
+                                                </div>
+                                            </ul>
                                         </div>
-                                        <div
-                                            class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                            <button class="btn rounded-circle btn-sm" type="button"
-                                                @click="viewAnalysisReport()">
-                                                <i class="bi bi-graph-up fs-6"></i></button>
-                                            <span class="custom-tooltip-2 rounded  position-absolute z-3 mt-1"
-                                                style=" top: 100%;right: -50%;">
-                                                檢視分析報告
-                                            </span>
-                                        </div>
-                                        <div
-                                            class="list-icon position-relative d-inline-block fw-semibold  hover-label">
-                                            <button class=" btn rounded-circle btn-sm" type="button"
-                                                @click="showConfirmModal1">
-                                                <i class="bi bi-trash fs-6"></i></button>
-                                            <span class="custom-tooltip-2 rounded position-absolute z-3 mt-1"
-                                                style=" top: 100%;right: -50%;">
-                                                刪除
-                                            </span>
-                                        </div>
+
                                     </td>
                                 </tr>
                             </template>
@@ -315,7 +332,8 @@ function closeModal() {
                 </div>
             </div>
         </div>
-        <ConfirmModal :id="id" @confirmClose="closeModal" :message="'確定刪除該筆資料?'"></ConfirmModal>
+        <ConfirmModal :id="id" @confirmClose="closeModal" @confirmDelete="confirmDelete" :message="'確定刪除該筆資料?'">
+        </ConfirmModal>
 
     </div>
 </template>
