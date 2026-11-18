@@ -14,6 +14,7 @@ const loading = ref(false)
 const error = ref('')
 const totalPages = ref(0)
 const _id = ref(null)
+const detailData = ref([])
 
 const items = ref([
     {
@@ -53,6 +54,7 @@ async function load(p = 1) {
         console.log(data);
 
         items.value = data
+        detailData.value = data.data
         page.value = data.page
         totalPages.value = data.totalPages
 
@@ -100,7 +102,7 @@ function closeModal() {
 async function confirmDelete() {
 
     await api.put(`/api/ads-data/${_id.value}/delete`).then(res => {
-        console.log(res);
+         load(page.value)
 
     })
     deleteModal.value.hide()
@@ -210,7 +212,7 @@ async function confirmDelete() {
                             </tr>
                         </thead>
                         <tbody id="smart-ad-theme-detail-tbody">
-                            <template v-for="(item, index) in items.data" :key="index">
+                            <template v-for="(item, index) in detailData" :key="index">
                                 <tr>
                                     <td>
                                         {{ item.itemNo }}
