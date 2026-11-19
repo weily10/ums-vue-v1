@@ -73,8 +73,8 @@ function addThemeBadge() {
                 <div class="font-b4-me">主題名稱 <span class="text-danger"> *</span>
                 </div>
                 <div class="input-group mt-1">
-                    <input type="text" class="form-control " placeholder="主題名稱" aria-label="Username" name="adAddThemeName"
-                        aria-describedby="basic-addon1" id="ad-add-theme-name">
+                    <input type="text" class="form-control " placeholder="主題名稱" aria-label="Username"
+                        name="adAddThemeName" aria-describedby="basic-addon1" id="ad-add-theme-name">
                 </div>
                 <div id="adAddThemeNamePlace">
 
@@ -91,8 +91,8 @@ function addThemeBadge() {
                 </label>
             </div>
             <div class="form-check mt-3 d-flex align-items-center">
-                <input id="ad-add-mobile" name="addMobile" class="form-check-input me-2 required-one-of-two" type="checkbox"
-                    value="1" aria-label="Checkbox for following text input">
+                <input id="ad-add-mobile" name="addMobile" class="form-check-input me-2 required-one-of-two"
+                    type="checkbox" value="1" aria-label="Checkbox for following text input">
                 <label class="form-check-label d-flex gap-2 align-items-center " for="ad-add-desktop">
                     Mobile
                     <div>
@@ -120,8 +120,8 @@ function addThemeBadge() {
 
                     </div>
                     <div class="input-group mt-1">
-                        <input type="number" class="form-control " placeholder="限幾日內上架的文章" id="ad-add-browse-article-days"
-                            name="adAddBrowseArticleDays">
+                        <input type="number" class="form-control " placeholder="限幾日內上架的文章"
+                            id="ad-add-browse-article-days" name="adAddBrowseArticleDays">
                     </div>
                     <div id="erroradAddBrowseArticleDays">
                     </div>
@@ -142,37 +142,13 @@ function addThemeBadge() {
             </div>
         </div>
         <div class="d-flex justify-content-end gap-3 mt-3">
-            <div>
-                <button class="btn txt-info text-light" type="submit" @click="">
-                    智能推薦關鍵字
-                </button>
-            </div>
-            <div>
-                <button class="btn secondary" type="submit" @click="">
-                    自訂推薦關鍵字
-                </button>
-            </div>
+
+            <button class="btn primary" type="submit" @click="">
+                新增
+            </button>
 
         </div>
-        <div class="bg-grey mt-3 p-3">
-            <h3> 主題標籤 - 自訂標籤
-            </h3>
-            <table class="table table-striped ">
-                <thead>
-                    <tr>
-                        <th class="text-start">
-                            主題 (全選)
-                        </th>
-                        <th class="text-start">
-                            推薦標籤
-                        </th>
-                    </tr>
-                </thead>
-                <tbody id="adThemeTable">
 
-                </tbody>
-            </table>
-        </div>
     </form>
 </template>
 

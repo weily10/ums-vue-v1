@@ -15,6 +15,9 @@ const error = ref('')
 const totalPages = ref(0)
 const _id = ref(null)
 const detailData = ref([])
+const topicName = ref('')
+const code = ref('')
+
 
 const items = ref([
     {
@@ -48,7 +51,7 @@ async function load(p = 1) {
     loading.value = true
     try {
         const { data } = await api.get('/api/ads-data', {
-            params: { page: p, pageSize: pageSize.value },
+            params: { page: p, pageSize: pageSize.value, topicName: topicName.value, code: code.value },
             signal: controller.signal
         })
         console.log(data);
@@ -89,7 +92,6 @@ onMounted(() => {
 
 function showConfirmModal1(item) {
 
-
     _id.value = item._id
     console.log('item', _id);
     deleteModal.value.show()
@@ -102,10 +104,14 @@ function closeModal() {
 async function confirmDelete() {
 
     await api.put(`/api/ads-data/${_id.value}/delete`).then(res => {
-         load(page.value)
+        load(page.value)
 
     })
     deleteModal.value.hide()
+}
+
+async function search() {
+    await load(page.value)
 }
 
 
@@ -136,36 +142,20 @@ async function confirmDelete() {
                             <span class="input-group-text border-end-0 bg-white bi bi-search"
                                 id="newsletter-search-basic-addon"></span>
                             <input type="text" class="form-control border-start-0 " id="smart-ad-theme-name"
-                                placeholder="主題名稱(模糊查詢)">
+                                placeholder="主題名稱(模糊查詢)" v-model="topicName" @keyup.enter="search">
                         </div>
                     </div>
-                    <div>
-                        <label class="font-b4-me">可投遞曝光數</label>
-                        <div class=" d-flex align-items-center gap-1 ">
-                            <div class="col">
-                                <input type="number" class="form-control " placeholder="最小值" aria-label="Username"
-                                    aria-describedby="basic-addon1" id="smart-ad-theme-deliverable-impressions-min">
 
-                            </div>
-                            <div>
-                                ~
-                            </div>
-                            <div class="col">
-                                <input type="number" class="form-control" placeholder="最大值" aria-label="Username"
-                                    aria-describedby="basic-addon1" id="smart-ad-theme-deliverable-impressions-max">
-                            </div>
-                        </div>
-                    </div>
                     <div class="col">
                         <label for="newsletter-search-input-group" class=" font-b4-me"> 編號查詢 </label>
                         <div class="input-group" id="smart-ad-theme-number-search" style="min-width: 350px;">
                             <span class="input-group-text border-end-0 bg-white bi bi-search" id=""></span>
                             <input type="text" class="form-control border-start-0 " id="smart-ad-theme-theme-theme"
-                                placeholder="編號查詢">
+                                placeholder="編號查詢" v-model="code" @keyup.enter="search">
                         </div>
                     </div>
                     <div class=" pt-4 d-flex gap-2 ms-auto">
-                        <button class="btn primary" type="button" @click="">
+                        <button class="btn primary" type="button" @click="search" >
                             查詢
                         </button>
                     </div>
