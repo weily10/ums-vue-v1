@@ -38,12 +38,16 @@ const items = ref([
     }
 ])
 
+
+
 async function getData() {
     const { data } = await api.get('/api/ads-data')
 
     items.value = data
     console.log('data', items.value);
 }
+
+
 
 async function load(p = 1) {
     controller?.abort()
@@ -54,10 +58,20 @@ async function load(p = 1) {
             params: { page: p, pageSize: pageSize.value, topicName: topicName.value, code: code.value },
             signal: controller.signal
         })
-        console.log(data);
 
         items.value = data
-        detailData.value = data.data
+
+        const fmt = new Intl.DateTimeFormat('zh-TW', {
+            dateStyle: 'medium',
+            timeStyle: 'short',
+            timeZone: 'Asia/Taipei',
+        })
+        detailData.value = data.data.map(item => ({
+            ...item,
+           createdAt : fmt.format(new Date(item.createdAt)),
+        }))
+        console.log('aaaa', detailData.value);
+
         page.value = data.page
         totalPages.value = data.totalPages
 
@@ -118,6 +132,7 @@ async function search() {
 
 
 
+
 </script>
 
 <template>
@@ -155,7 +170,7 @@ async function search() {
                         </div>
                     </div>
                     <div class=" pt-4 d-flex gap-2 ms-auto">
-                        <button class="btn primary" type="button" @click="search" >
+                        <button class="btn primary" type="button" @click="search">
                             查詢
                         </button>
                     </div>
